@@ -63,7 +63,7 @@ UI [Routes description](./api/RouteDescription/index.md) is used to inform the U
 
 ### Site Navigation
 
-Navigation description is what is used to create the navigation menu that the user will see.
+[Navigation description](./api/NavigationEntryDescription/index.md) is what is used to create the navigation menu that the user will see.
 
 
 ### Page Content
