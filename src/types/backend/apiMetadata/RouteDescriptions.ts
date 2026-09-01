@@ -2,6 +2,10 @@ import {
     RouteObject
 } from "react-router"
 
+import {
+    apiRootMetadata
+} from "./root"
+
 
 /**
  * Available keys for use to select route action.
@@ -30,6 +34,14 @@ export interface RouteHandleDescription {
      * URL base for the backend.
      */
     backend_url?: string
+
+    /**
+     * Cached {@link apiRootMetadata} from the backend at
+     * {@link RouteHandleDescription.backend_url}. This key **must not be
+     * populated** by the end-user when declaring routes. The key is
+     * automatically populated by {@link dynamicRouter}
+     */
+    metadata?: apiRootMetadata | undefined
 
     /**
      * This key is only used by {@link Redirect} layout.

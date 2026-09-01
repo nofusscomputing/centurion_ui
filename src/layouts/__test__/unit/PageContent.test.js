@@ -90,6 +90,8 @@ import List from "../../../layout/List";
 import Ticket from "../../../layout/Ticket";
 import { NotificationContextProvider } from "../../../components/NotificationDrawer";
 import PageContent from "../../PageContent";
+import { backendContext } from "../../../App/providers/backend";
+import Base from "../../Base";
 
 
 const fs = require('fs')
@@ -132,6 +134,8 @@ describe("PageContent Layout", () => {
         }
 
     }
+
+    const rootMetadata = rootMetadataLoader().metadata;
 
 
     describe("List Layout", () => {
@@ -179,11 +183,9 @@ describe("PageContent Layout", () => {
                     };
                 }
 
-
                 const Stub = createRoutesStub([
                     {
                         Component: UI,
-                        loader: rootMetadataLoader,
                         children: [
                             {
                                 Component: PageContent,
@@ -200,10 +202,17 @@ describe("PageContent Layout", () => {
                 ]);
 
 
-                render(
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[options.urls.self]} />
-                    </NotificationContextProvider>
+                const rendered = render(
+                    <backendContext.Provider
+                        value = {{
+                            rootMetadata: rootMetadata,
+                            url: 'url'
+                        }}
+                    >
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[options.urls.self]} />
+                        </NotificationContextProvider>
+                    </backendContext.Provider>
                 );
 
                 const headings = await screen.findAllByRole("heading", { level: 1 })
@@ -230,7 +239,6 @@ describe("PageContent Layout", () => {
                 const Stub = createRoutesStub([
                     {
                         Component: UI,
-                        loader: rootMetadataLoader,
                         children: [
                             {
                                 Component: PageContent,
@@ -248,9 +256,16 @@ describe("PageContent Layout", () => {
 
 
                 render(
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[options.urls.self]} />
-                    </NotificationContextProvider>
+                    <backendContext.Provider
+                        value = {{
+                            rootMetadata: rootMetadata,
+                            url: 'url'
+                        }}
+                    >
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[options.urls.self]} />
+                        </NotificationContextProvider>
+                    </backendContext.Provider>
                 );
 
                 const headings = await screen.findAllByRole("heading", { level: 1 })
@@ -313,7 +328,6 @@ describe("PageContent Layout", () => {
                 const Stub = createRoutesStub([
                     {
                         Component: UI,
-                        loader: rootMetadataLoader,
                         children: [
                             {
                                 Component: PageContent,
@@ -331,9 +345,16 @@ describe("PageContent Layout", () => {
 
 
                 render(
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[data._urls._self.split('api/v2')[1]]} />
-                    </NotificationContextProvider>
+                    <backendContext.Provider
+                        value = {{
+                            rootMetadata: rootMetadata,
+                            url: 'url'
+                        }}
+                    >
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[data._urls._self.split('api/v2')[1]]} />
+                        </NotificationContextProvider>
+                    </backendContext.Provider>
                 );
 
                 const headings = await screen.findAllByRole("heading", { level: 1 })
@@ -360,7 +381,6 @@ describe("PageContent Layout", () => {
                 const Stub = createRoutesStub([
                     {
                         Component: UI,
-                        loader: rootMetadataLoader,
                         children: [
                             {
                                 Component: PageContent,
@@ -378,9 +398,16 @@ describe("PageContent Layout", () => {
 
 
                 render(
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[data._urls._self.split('api/v2')[1]]} />
-                    </NotificationContextProvider>
+                    <backendContext.Provider
+                        value = {{
+                            rootMetadata: rootMetadata,
+                            url: 'url'
+                        }}
+                    >
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[data._urls._self.split('api/v2')[1]]} />
+                        </NotificationContextProvider>
+                    </backendContext.Provider>
                 );
 
                 const headings = await screen.findAllByRole("heading", { level: 1 })
@@ -445,7 +472,6 @@ describe("PageContent Layout", () => {
                 const Stub = createRoutesStub([
                     {
                         Component: UI,
-                        loader: rootMetadataLoader,
                         children: [
                             {
                                 Component: PageContent,
@@ -463,9 +489,16 @@ describe("PageContent Layout", () => {
 
 
                 render(
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[data._urls._self.split('api/v2')[1]]} />
-                    </NotificationContextProvider>
+                    <backendContext.Provider
+                        value = {{
+                            rootMetadata: rootMetadata,
+                            url: 'url'
+                        }}
+                    >
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[data._urls._self.split('api/v2')[1]]} />
+                        </NotificationContextProvider>
+                    </backendContext.Provider>
                 );
 
 
@@ -493,7 +526,6 @@ describe("PageContent Layout", () => {
                 const Stub = createRoutesStub([
                     {
                         Component: UI,
-                        loader: rootMetadataLoader,
                         children: [
                             {
                                 Component: PageContent,
@@ -511,9 +543,16 @@ describe("PageContent Layout", () => {
 
 
                 render(
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[data._urls._self.split('api/v2')[1]]} />
-                    </NotificationContextProvider>
+                    <backendContext.Provider
+                        value = {{
+                            rootMetadata: rootMetadata,
+                            url: 'url'
+                        }}
+                    >
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[data._urls._self.split('api/v2')[1]]} />
+                        </NotificationContextProvider>
+                    </backendContext.Provider>
                 );
 
                 const headings = await screen.findAllByRole("heading", { level: 1 })

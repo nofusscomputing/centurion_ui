@@ -25,10 +25,27 @@ import PageContent from "../../layouts/PageContent"
 import RouteErrorBoundary from "../../layouts/ErrorBoundary"
 import UI from "../../layouts/ui"
 
+import {
+    RouteDescription
+} from "../../types/backend/apiMetadata/RouteDescriptions"
+
 
 
 /**
- * This function builds the UI routes from an object.
+ * A dynamic router that sets up the initial layout, ready to make an 
+ * {@link apiRootMetadata} request to the {@link UIEnvironment.API_URL} to load
+ * the initial routes from the backend when the user navigates.
+ * 
+ * On any occasion a user navigates to a path not within the current route
+ * tree, the dynamic loader will run. If the path to navigate to, has a parent
+ * that is a {@link BackendLayout} then a request for its
+ * {@link apiRootMetadata} will be made. If the parent is not a
+ * {@link BackendLayout}, then a `HTTP/404` will be returned as would be
+ * expected.
+ * 
+ * When any request is made, to a {@link apiRootMetadata}, that data will be
+ * cached in {@link RouteHandleDescription.metadata} so that the
+ * {@link BackendProvider} can make it available to child routes.
  * 
  * @summary Dynamic Router
  * 
@@ -83,11 +100,6 @@ const dynamicRouter = () => {
                                     {
                                         id: "UI",
                                         Component: UI,
-                                        loader: (params) => pageLoaders['django_root_metadata']({
-                                            ...params,
-                                            baseURL: window.env.API_URL,
-                                        }),
-                                        shouldRevalidate: () => false,
                                         ErrorBoundary: RouteErrorBoundary,
                                         HydrateFallback: () => StateSplash({titleText: "Loading UI", icon: StateIcon.loading }),
                                         children: [
@@ -161,6 +173,21 @@ const dynamicRouter = () => {
                     });
 
                     const data = await apiMetadata.clone().json();
+
+                    let routeToUpdate: RouteDescription;
+
+                    if( matches.length === 0 ) {
+
+                         routeToUpdate = this.routes[0].children[(this.routes[0].children.length - 1)]
+
+                    } else {
+
+                        routeToUpdate = matches[(matches.length - 1)].route
+
+                    }
+
+                    // cache the rootMetadata from this backend.
+                    routeToUpdate.handle.metadata = data;
 
                     patch(id, routesFromObject({
                         routes: data.routes,

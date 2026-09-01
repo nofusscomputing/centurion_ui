@@ -197,13 +197,13 @@ describe("Error Boundary", () => {
         },
         {
             name: 'UI  - loader',
-            value: Object.hasOwn(routes[0].children[2].children[0].children[0], 'loader'),
-            expected: true
+            value: routes[0].children[2].children[0].children[0].loader,
+            expected: undefined
         },
         {
             name: 'UI - shouldRevalidate',
-            value: Object.hasOwn(routes[0].children[2].children[0].children[0], 'shouldRevalidate'),
-            expected: true
+            value: routes[0].children[2].children[0].children[0].shouldRevalidate,
+            expected: undefined
         },
         {
             name: 'UI - children',
