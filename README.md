@@ -12,7 +12,7 @@
 
 <br>
 
-![GitHub forks](https://img.shields.io/github/forks/NofussComputing/centurion_ui?logo=github&style=plastic&color=000000&labell=Forks) ![GitHub stars](https://img.shields.io/github/stars/NofussComputing/centurion_ui?color=000000&logo=github&style=plastic) ![Github Watchers](https://img.shields.io/github/watchers/NofussComputing/centurion_ui?color=000000&label=Watchers&logo=github&style=plastic)
+![GitHub forks](https://img.shields.io/github/forks/nofusscomputing/centurion_ui?logo=github&style=plastic&color=000000&labell=Forks) ![GitHub stars](https://img.shields.io/github/stars/nofusscomputing/centurion_ui?color=000000&logo=github&style=plastic) ![Github Watchers](https://img.shields.io/github/watchers/nofusscomputing/centurion_ui?color=000000&label=Watchers&logo=github&style=plastic)
 
 
 
@@ -25,7 +25,7 @@
 ----
 
 
-This project is hosted on [Github](https://github.com/NofussComputing/centurion_ui) and has a read-only copy hosted on [gitlab](https://gitlab.com/nofusscomputing/projects/centurion_ui).
+This project is hosted on [Github](https://github.com/nofusscomputing/centurion_ui) and has a read-only copy hosted on [gitlab](https://gitlab.com/nofusscomputing/projects/centurion_ui).
 
 ----
 
