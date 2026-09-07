@@ -230,8 +230,8 @@ describe("Error Boundary", () => {
         },
         {
             name: 'page - ErrorBoundary',
-            value: routes[0].children[2].children[0].children[0].children[0].errorElement,
-            expected: undefined
+            value: routes[0].children[2].children[0].children[0].errorElement.type,
+            expected: RouteErrorBoundary
         },
         {
             name: 'page - handle.base_url',
