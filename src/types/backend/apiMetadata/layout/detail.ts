@@ -5,6 +5,7 @@
  * This layout is for displaying a single object from a dataset.
  * 
  * @category Description
+ * @see [Detail Layout - Demo Site](https://centurion-ui.nofusscomputing.com/layout/detail/1)
  * @since 0.10.0
  */
 export interface layoutDetail {

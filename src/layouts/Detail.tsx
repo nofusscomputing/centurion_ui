@@ -15,6 +15,7 @@ import Detail from "../layout/Detail";
  * @category Layout
  * @see {@link apiObject} for backend object structure.
  * @see {@link layoutDetail} for describing this layout.
+ * @see [Detail Layout - Demo Site](https://centurion-ui.nofusscomputing.com/layout/detail/1)
  * @since 0.14.0
  */
 const DetailLayout = () => Detail();
