@@ -678,19 +678,27 @@ export type APISubmitActionProps = {
  * @example
  * Form submission must include a serialized form state:
  *
+ * ``` html
+ * 
  * <Form method={method}>
  *   <input type="hidden" name="formState" value={JSON.stringify(formState)} />
  *   <input type="hidden" name="metadata" value={JSON.stringify(metadata)} />
  *   <input type="hidden" name="tz" value={timezone} />
  * </Form>
  *
+ * ```
+ * 
  * @example
  * Basic usage inside a React Router route definition:
  *
+ * ``` js
+ * 
  * {
  *   path: "/:module/:id",
  *   action: APISubmitAction
  * }
+ * 
+ * ```
  * 
  * @category Loader
  * @since 0.9.0
