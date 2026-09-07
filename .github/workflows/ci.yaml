@@ -260,6 +260,36 @@ jobs:
 
 
 
+  kustomize:
+    name: Kustomize Manifest Update
+    runs-on: ubuntu-latest
+    if: >-
+      (
+        github.ref_name == 'master'
+        || github.ref_name == 'development'
+        || startsWith(github.ref_name, 'feat-')
+      )
+    needs:
+      - docker
+      - test-unit
+    environment:
+      name: Demo
+      url: https://centurion-ui.nofusscomputing.com
+    steps:
+
+
+
+      - name: Trigger Update Centurion UI Manifests
+        env:
+          GH_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+        run: |
+          gh workflow run manifest_update.yaml \
+            --repo nofusscomputing/kubernetes \
+            --ref development \
+            -f KUSTOMIZE_APP_DIR=centurion_ui;
+
+
+
   badge-endpoint:
     name: Publish Badge endpoint files
     if: ${{ github.ref_name == 'master' || github.ref_name == 'development' }}
