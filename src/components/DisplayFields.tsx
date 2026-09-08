@@ -39,6 +39,9 @@ import { useIsMobile } from "../hooks/useIsMobile";
 import UserContext from "../hooks/UserContext";
 import URLSanitize from "../functions/URLSanitize";
 import { apiObject } from "../types/backend/apiObject/object";
+import { layoutDataset } from "../types/backend/apiMetadata/layout/dataset";
+import { layoutDetail } from "../types/backend/apiMetadata/layout/detail";
+import { layoutTable } from "../types/backend/apiMetadata/layout/table";
 
 
 /**
@@ -318,6 +321,11 @@ export type DisplayFieldsProps = {
     existingFormData?: object | null
 
     /**
+     * Form component to use
+     */
+    FormComponent?: typeof Form
+
+    /**
      * Set fields to create mode.
      */
     isCreate?: boolean
@@ -325,7 +333,7 @@ export type DisplayFieldsProps = {
     /**
      * Page Layout information.
      */
-    layout: LayoutDataset | LayoutDetail | LayoutTable
+    layout: layoutDataset | layoutDetail | layoutTable
 
     /**
      * API Metadata for the object.
@@ -352,6 +360,7 @@ export type DisplayFieldsProps = {
  */
 const DisplayFields = ({
     existingFormData = null,
+    FormComponent = Form,
     isCreate = false,
     layout = null,
     metadata,
@@ -569,7 +578,7 @@ const DisplayFields = ({
     if( isEdit ) {
 
         cardData = (
-            <Form
+            <FormComponent
                 action = {
                     (String(location.pathname).endsWith('/add') || isCreate)
                     ?
@@ -615,7 +624,7 @@ const DisplayFields = ({
                 <input id="metadata" type="hidden" name="metadata" value={JSON.stringify(pageMetadata)} />
                 <input id="tz" type="hidden" name="tz" value={user.settings.timezone} />
 
-            </Form>
+            </FormComponent>
         );
 
     }
