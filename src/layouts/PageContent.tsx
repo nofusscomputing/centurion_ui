@@ -208,7 +208,7 @@ const PageContent = (): React.JSX.Element => {
                 { additionalPageFooter && additionalPageFooter }
 
                 <PageSection
-                    aria-labelledby = "Page Foorer"
+                    aria-labelledby = "Page Footer"
                     component = "footer"
                     variant="secondary"
                     style={{

@@ -13,12 +13,18 @@ import {
     Avatar,
     Button,
     ButtonVariant,
+    Content,
     Divider,
     Dropdown,
     DropdownGroup,
     DropdownItem,
     DropdownList,
     MenuToggle,
+    Modal,
+    ModalBody,
+    ModalFooter,
+    ModalHeader,
+    ModalVariant,
     NotificationBadge,
     NotificationBadgeVariant,
     Toolbar,
@@ -50,6 +56,8 @@ import {
 import {
     useNotificationActions
 } from "../../hooks/useNotificationActions";
+import { useBackendProvider } from "../../App/providers/backend";
+import IconLoader from "../IconLoader";
 
 
 
@@ -84,9 +92,13 @@ const HeaderToolbar = () => {
 
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const { mode: themeMode, setMode: setThemeMode, modes: colorModes } = useTheme(THEME_TYPES.COLOR);
 
     const revalidator = useRevalidator();
+
+    const backend = useBackendProvider();
 
     const onKebabDropdownSelect = () => {
         setIsKebabDropdownOpen(false);
@@ -117,6 +129,10 @@ const HeaderToolbar = () => {
     const onNotificationBadgeClick = () => {
         removeAllAlerts();
         setNotificationsOpen(!isNotificationsOpen)
+    };
+
+    const toggleModal = (_event: React.MouseEvent<Element, MouseEvent> | KeyboardEvent | MouseEvent) => {
+        setIsModalOpen(!isModalOpen);
     };
 
 
@@ -183,10 +199,14 @@ const HeaderToolbar = () => {
                             Settings
                         </Link>
                     </DropdownItem>
-                    <DropdownItem icon = {<HelpIcon />}>
-                        <Link to="https://nofusscomputing.com/projects/centurion_erp/" target="_blank">
-                            Help
-                        </Link>
+                    <DropdownItem
+                        icon = {<HelpIcon />}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            toggleModal(e)
+                        }}
+                    >
+                            About
                     </DropdownItem>
                 </>
             )
@@ -206,6 +226,7 @@ const HeaderToolbar = () => {
 
 
     return (
+        <>
         <Toolbar id="page-toolbar" isStatic>
             <ToolbarContent>
                 <ToolbarGroup
@@ -258,11 +279,11 @@ const HeaderToolbar = () => {
                         </ToolbarItem>
                         <ToolbarItem>
                             <Button
-                                aria-label="Help"
-                                component={Link}
-                                    // @ts-expect-error TS[2322]
-                                    to="https://nofusscomputing.com/projects/centurion_erp/"
-                                    target="_blank"
+                                aria-label="About"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    toggleModal(e)
+                                }}
                                 variant={ButtonVariant.plain}
                                 icon={<QuestionCircleIcon />}
                             />
@@ -359,6 +380,87 @@ const HeaderToolbar = () => {
                 </ToolbarItem>
             </ToolbarContent>
         </Toolbar>
+
+        <Modal
+            isOpen={isModalOpen}
+            variant={ModalVariant.medium}
+            onClose={(e: React.MouseEvent<Element, MouseEvent> | KeyboardEvent | MouseEvent) => toggleModal(e)}
+            ouiaId="AboutModal"
+            aria-labelledby="basic-modal-title"
+            aria-describedby="modal-box-body-basic"
+        >
+            <ModalHeader title="About Application" labelId="basic-modal-title" />
+
+            <ModalBody id="modal-box-body-basic">
+
+                <Content component="h3">
+                    Backend
+                </Content>
+
+                <Content>
+                    <dl>
+                        <dt>Name</dt>
+                        <dd>{backend.rootMetadata?.name ? backend.rootMetadata.name : "-" }</dd>
+                        <dt>Version</dt>
+                        <dd>{backend.rootMetadata?.version?.version ? backend.rootMetadata.version.version : "-" }</dd>
+                        <dt>Commit</dt>
+                        <dd>
+                            { backend.rootMetadata?.version?.sha ?
+                            <a href={backend.rootMetadata.version.project_url + '/commit/' + backend.rootMetadata.version.sha} target="_blank">
+                                {backend.rootMetadata.version.sha}
+                            </a> : "-" }
+                        </dd>
+                        <dt>Project</dt>
+                        <dd>
+                            {backend.rootMetadata?.version?.project_url ?
+                                <a href={backend.rootMetadata.version.project_url} target="_blank">
+                                {backend.rootMetadata.version.project_url}
+                            </a> : "-" }
+                        </dd>
+                    </dl>
+                    <Divider />
+                </Content>
+
+                <Content component="h3">
+                    Frontend
+                </Content>
+
+                <Content>
+                    <dl>
+                        <dt>Name</dt>
+                        <dd>Centurion UI</dd>
+                        <dt>Version</dt>
+                        <dd>{ window.api?.CI_COMMIT_TAG ?  window.api.CI_COMMIT_TAG : "-" }</dd>
+                        <dt>Commit</dt>
+                        <dd>
+                            {window.api?.CI_COMMIT_SHA ? (
+                                <a href={window.env.CI_PROJECT_URL + '/commit/' + window.env.CI_COMMIT_SHA} target="_blank">
+                                    {window.env.CI_COMMIT_SHA}
+                                </a>
+                            ): "development" }
+                        </dd>
+                        <dt>Project</dt>
+                        <dd>
+                            { window.api?.CI_PROJECT_URL ? (
+                                <a href={window.env.CI_PROJECT_URL} target="_blank">
+                                    {window.api.CI_PROJECT_URL}
+                                </a>
+                            ) : "-" }
+                        </dd>
+                    </dl>
+                </Content>
+            </ModalBody>
+
+            <ModalFooter>
+                <Content>
+                <a href="https://nofusscomputing.com/projects/centurion_erp/" target="_blank"><IconLoader size="xl" name = 'documentation' /></a>
+                <a href={window.env.API_URL} target="_blank"><IconLoader name = 'webhook' size="xl"/></a>
+                <a href={`${window.env.API_URL}/docs`} target="_blank"><IconLoader size="xl" name = 'swagger_docs' /></a>
+                <a href="https://github.com/nofusscomputing/centurion_erp" target="_blank"><IconLoader name = 'git' size="xl" /></a>
+                </Content>
+            </ModalFooter>
+        </Modal>
+        </>
     );
 
 };
