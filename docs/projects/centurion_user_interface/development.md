@@ -15,15 +15,23 @@ We do have Code API documentation. and it can be found in the [API documentation
 
 This section contains the musts for development of this project.
 
-- Use Typescript of Javascript
+- Use Typescript instead of Javascript.
 
     !!! note
         As this project started of using javascript, some files will not be typescript. If there is a major refactor to a javascript file, it's also to be converted to typescript. **All** new files are to be typescript.
 
 - Document code. At a minimum at least typing and param descriptions.
 
-!!! tip
-    We use typedoc for [API documentation](./api/index.md) generation. For the available tags, see the [typedoc](https://typedoc.org/documents/Tags.html) documentation.
+    !!! tip
+        We use typedoc for [API documentation](./api/index.md) generation. For the available tags, see the [typedoc](https://typedoc.org/documents/Tags.html) documentation.
+
+- HTML Forms
+
+    - Form component **must** be from react-router **only**. Generally this form object will derive from [fetcher](https://reactrouter.com/7.18.2/how-to/fetchers#2-create-a-fetcher), `fetcher.Form`.
+
+    - HTML form elements are how route actions obtain the data to submit. This means that any state for the field must also remain with the field. This does not prevent the occasion where you may need to store data in a js state object. Just that if you do, the form field is also kept in sync.
+
+- Fetching and submission of data is to be via loaders and fetchers. If this is not possible, don't use built-in `fetch`, use the available fetchers within hooks.
 
 
 ## Mock API
