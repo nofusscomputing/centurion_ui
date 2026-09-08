@@ -175,14 +175,15 @@ const HeaderToolbar = () => {
     const KebabDropdownItems = () => {    // Mobile Menu
             return (
                 <>
-                    <DropdownItem>
-                        <CogIcon />
+                    <DropdownItem icon = {<RhUiRefreshIcon />}>
+                        <Link to="" onClick={ (e) => { e.preventDefault(); revalidator.revalidate() } }>Reload Content</Link>
+                    </DropdownItem>
+                    <DropdownItem icon = {<CogIcon />}>
                         <Link to={URLSanitize(user.settings._urls._self)}>
                             Settings
                         </Link>
                     </DropdownItem>
-                    <DropdownItem>
-                        <HelpIcon />
+                    <DropdownItem icon = {<HelpIcon />}>
                         <Link to="https://nofusscomputing.com/projects/centurion_erp/" target="_blank">
                             Help
                         </Link>
