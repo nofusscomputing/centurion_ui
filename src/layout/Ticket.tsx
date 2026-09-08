@@ -310,7 +310,7 @@ const Ticket = (): React.JSX.Element => {
                             { ticket_metadata && 
                             <>
                                 {editing_description && 
-                                    <Form
+                                    <fetcher.Form
                                         className = "pf-v6-c-form pf-m-vertical"
                                         id={'create-' + ticketElementId()}
                                         method="PATCH"
@@ -326,7 +326,7 @@ const Ticket = (): React.JSX.Element => {
 
                                         <input id="metadata" type="hidden" name="metadata" value={JSON.stringify(ticket_metadata)} />
                                         <input id="tz" type="hidden" name="tz" value={user.settings.timezone} />
-                                    </Form>}
+                                    </fetcher.Form>}
 
                                 {!editing_description &&
                                     ticketDescriptionCard}
@@ -423,7 +423,7 @@ const Ticket = (): React.JSX.Element => {
     if( new_ticket ) {
 
         return (
-            <Form
+            <fetcher.Form
                 className = "pf-v6-c-form pf-m-vertical"
                 id={'create-' + ticketElementId()} method="POST" action={String(document.location.href).replace(document.location.origin, '')}
                 onSubmit={(e) => {
@@ -434,7 +434,7 @@ const Ticket = (): React.JSX.Element => {
 
                 <input id="metadata" type="hidden" name="metadata" value={JSON.stringify(ticket_metadata)} />
                 <input id="tz" type="hidden" name="tz" value={user.settings.timezone} />
-            </Form>
+            </fetcher.Form>
         )
     } else {
 
