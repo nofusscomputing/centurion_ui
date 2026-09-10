@@ -9,41 +9,6 @@ import PageContent from "../../../../layouts/PageContent";
 
 
 
-// jest.mock("../../index", () => {
-//     const actual = jest.requireActual("../../index");
-
-//     let renderedRoutes = null;
-
-//     const myRoutes = [
-//         {
-//             index: true,
-//             Component: () => {
-
-//             //     const matches = useMatches();
-
-//             //     useEffect(() => {
-
-//             //         renderedRoutes = matches;
-
-//             //     }, [ matches ]);
-
-//             }
-
-//         }
-//     ]
-
-//     return {
-//         __esModule: true,
-//         ...actual,
-//         appRoutes: myRoutes,
-//         __mock: {
-//             appRoutes: myRoutes,
-//             renderedRoutes: renderedRoutes
-//         },
-//     };
-// });
-
-
 const router = dynamicRouter();
 
 const routes = router.routes;
@@ -51,30 +16,6 @@ const routes = router.routes;
 
 describe("Error Boundary", () => {
 
-
-    // let MockApp = null
-
-    // let renderedRoutes = null;
-
-    // afterEach(() => {
-
-    //     jest.restoreAllMocks();
-
-    //     MockApp = null
-
-    // });
-
-    // beforeEach(() => {
-
-    //     const { __mock } = jest.requireMock("../../index");
-
-    //     MockApp = __mock.appRoutes;
-
-    //     renderedRoutes = __mock.renderedRoutes;
-        
-
-
-    // })
 
     const testParams = [
         {
@@ -256,13 +197,13 @@ describe("Error Boundary", () => {
         },
         {
             name: 'UI  - loader',
-            value: Object.hasOwn(routes[0].children[2].children[0].children[0], 'loader'),
-            expected: true
+            value: routes[0].children[2].children[0].children[0].loader,
+            expected: undefined
         },
         {
             name: 'UI - shouldRevalidate',
-            value: Object.hasOwn(routes[0].children[2].children[0].children[0], 'shouldRevalidate'),
-            expected: true
+            value: routes[0].children[2].children[0].children[0].shouldRevalidate,
+            expected: undefined
         },
         {
             name: 'UI - children',
@@ -289,8 +230,8 @@ describe("Error Boundary", () => {
         },
         {
             name: 'page - ErrorBoundary',
-            value: routes[0].children[2].children[0].children[0].children[0].errorElement,
-            expected: undefined
+            value: routes[0].children[2].children[0].children[0].errorElement.type,
+            expected: RouteErrorBoundary
         },
         {
             name: 'page - handle.base_url',
@@ -332,6 +273,4 @@ describe("Error Boundary", () => {
 
         });
     });
-
-    test.skip("Render checks", () => {});
 });

@@ -4,6 +4,7 @@ import {
 } from "react";
 
 import {
+    Form,
     useLocation
 } from "react-router";
 
@@ -37,6 +38,7 @@ import URLSanitize from "../../../functions/URLSanitize";
  * @returns Card Component ready to be placed.
  */
 const DetailSection = ({
+    FormComponent = Form,
     layout,
     data,
     metadata,
@@ -69,6 +71,7 @@ const DetailSection = ({
         cardData = (
             <DisplayFields
                 existingFormData = {data}
+                FormComponent = {FormComponent}
                 isCreate = {String(location.pathname).endsWith('/add')}
                 layout = {layout}
                 metadata = {metadata}

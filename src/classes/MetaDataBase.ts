@@ -27,12 +27,12 @@ export class MetaDataBase extends
     documentation: String;
 
     /**
-     * Field definitions describing the {@link APIDataObject}
+     * Field definitions describing the {@link apiObject}
      */
     fields: {
 
         /**
-         * Name of the field must match the {@link APIDataObject} field name.
+         * Name of the field must match the {@link apiObject} field name.
          */
         [key: string]: APIDataFieldJson
                             | APIDataFieldMarkdown
@@ -41,7 +41,7 @@ export class MetaDataBase extends
     };
 
     /**
-     * What layout the API {@link APIDataObject} will use
+     * What layout the API {@link apiObject} will use
      */
     layout: UILayout;
 

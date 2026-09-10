@@ -3,6 +3,10 @@ import {
 } from ".";
 
 import {
+    apiObject
+} from "../../types/backend/apiObject/object";
+
+import {
     APIMetadata
 } from "../../../types/APIMetadata";
 
@@ -25,7 +29,7 @@ const djangoLoader = async ({
     baseURL,
     request,
 }: loaderNamedParams
-): Promise<{metadata: APIMetadata, page_data: APIDataObject}> => {
+): Promise<{metadata: APIMetadata, page_data: apiObject}> => {
 
 
     const {apiMetadata, apiData} = await useDjangoFetcher({

@@ -9,7 +9,7 @@
  * Using a string value for the column, must be a valid field name.
  * 
  * Using an object as the value enables any field to be setup so that it is
- * a link to any of the urls within {@link APIDataObject}
+ * a link to any of the urls within {@link apiObject}
  * 
  * @example
  * ``` json
@@ -24,6 +24,7 @@
  * for using any of the objects fields to link to its own data view page.
  * 
  * @category Description
+ * @see [List Layout - Demo Site](https://centurion-ui.nofusscomputing.com/layout/table)
  * @since 0.10.0
  */
 export interface layoutDataset {

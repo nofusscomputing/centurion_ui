@@ -98,7 +98,7 @@
       ]
     }
   ],
-  "routes": {
+  "routes": [{
         "id": "root",
         "path": "/",
         "children": [
@@ -106,7 +106,7 @@
                 "id": "settings",
                 "path": "settings",
                 "component": "settings",
-                "loader": "django,"
+                "loader": "django"
             },
             {
                 "path": ":module",
@@ -155,5 +155,5 @@
                 ]
             }
         ]
-    }
+    }]
 }

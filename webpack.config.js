@@ -98,7 +98,7 @@ module.exports = (env, argv) => {
         },
 
         optimization: {
-            minimize: {
+            minimize: isDevelopment ? false : {
                 css: {
                     comments: false
                 }

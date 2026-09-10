@@ -3,7 +3,7 @@ title: Notifications
 description: Notifications Documentation for Centurion User Interface by No Fuss Computing
 date: 2026-05-11
 template: project.html
-about: https://github.com/nofusscomputing/centurion_erp_ui/
+about: https://github.com/nofusscomputing/centurion_ui/
 ---
 
 The UI has the ability to receive notifications.

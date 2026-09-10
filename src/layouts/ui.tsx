@@ -1,6 +1,5 @@
 import {
     Outlet,
-    useLoaderData,
 } from "react-router";
 
 import {
@@ -13,6 +12,9 @@ import '../../node_modules/@patternfly/patternfly/components/Page/page.css'
 
 import '../../node_modules/@patternfly/patternfly/patternfly.css'
 
+import {
+    useBackendProvider
+} from "../App/providers/backend";
 
 import Header from "../components/page/Header";
 import {
@@ -40,7 +42,7 @@ import { UserProvider } from "../hooks/UserContext";
  */
 const UI = (): React.JSX.Element => {
 
-    const { metadata: rootMetadata } = useLoaderData();
+    const backend = useBackendProvider();
 
     const {
         alerts,
@@ -82,11 +84,11 @@ const UI = (): React.JSX.Element => {
                         masthead = {<Header />}
                         notificationDrawer = { setNotificationsOpen !== undefined ? <Notifications /> : null }
                         sidebar = {<Navbar
-                            apiMetadata = {rootMetadata}
+                            apiMetadata = {backend.rootMetadata}
                         />}
                     >
 
-                        {rootMetadata && <Outlet />}
+                        {backend.rootMetadata && <Outlet />}
 
                     </Page>
 

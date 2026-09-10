@@ -2,8 +2,8 @@ INHERIT: docs_template/mkdocs.yml
 
 docs_dir: 'docs'
 
-repo_name: Centurion ERP UI
-repo_url: https://github.com/nofusscomputing/centurion_erp_ui
+repo_name: Centurion UI
+repo_url: https://github.com/nofusscomputing/centurion_ui
 edit_uri: '/edit/development/docs/'
 theme: 
   icon:
@@ -27,43 +27,31 @@ nav:
 
   - Centurion User Interface:
 
-    - projects/centurion_user_interface/index.md
+    - API:
 
-    - projects/centurion_user_interface/development.md
+      - projects/centurion_user_interface/api/index.md
 
-    - projects/centurion_user_interface/metadata.md
+    - User Interface:
 
-    - projects/centurion_user_interface/navigation.md
+      - Components:
 
-    - projects/centurion_user_interface/setup.md
+        - projects/centurion_user_interface/user/components/comment.md
 
-    - projects/centurion_user_interface/url.md
+      - Fields:
 
-    - Interface:
+        - projects/centurion_user_interface/user/fields/markdown.md
 
       - projects/centurion_user_interface/user/index.md
 
       - projects/centurion_user_interface/user/notifications.md
 
-    - API:
+    - projects/centurion_user_interface/index.md
 
-      - projects/centurion_user_interface/api/index.md
+    - projects/centurion_user_interface/development.md
 
-    - Components:
+    - projects/centurion_user_interface/describing.md
 
-      - projects/centurion_user_interface/components/comment.md
-
-    - Fields:
-
-      - projects/centurion_user_interface/fields/markdown.md
-
-    - Layouts:
-
-      - projects/centurion_user_interface/layout/index.md
-
-      - projects/centurion_user_interface/layout/list.md
-
-      - projects/centurion_user_interface/layout/ticket.md
+    - projects/centurion_user_interface/setup.md
 
 - Operations: 
 

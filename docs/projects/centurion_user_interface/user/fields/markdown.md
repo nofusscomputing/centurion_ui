@@ -3,7 +3,7 @@ title: Markdown
 description: Markdown for Centurion User Interface by No Fuss Computing
 date: 2026-03-30
 template: project.html
-about: https://github.com/nofusscomputing/centurion_erp_ui/
+about: https://github.com/nofusscomputing/centurion_ui/
 ---
 
 <!-- markdownlint-disable code-fence-style fenced-code-language -->

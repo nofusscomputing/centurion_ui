@@ -2,6 +2,7 @@ import { WarningModal } from "@patternfly/react-component-groups";
 import { Button, ButtonVariant, Spinner } from "@patternfly/react-core";
 import React, { useState } from "react";
 import { apiFetch } from "../hooks/apiFetch";
+import { apiObject } from "../types/backend/apiObject/object";
 
 
 const sleep = ms => new Promise(r => setTimeout(r, ms))
@@ -60,7 +61,7 @@ export type ActionDialogProps = {
     /**
      * Data from the API.
      */
-    objectData: APIDataObject
+    objectData: apiObject
 
     /**
      * Metadata from the API.

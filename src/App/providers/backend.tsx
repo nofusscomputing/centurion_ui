@@ -9,6 +9,13 @@ import {
     useMatches
 } from "react-router";
 
+import {
+    apiRootMetadata
+} from "../../types/backend/apiMetadata/root";
+import {
+    RouteDescription,
+} from "../../types/backend/apiMetadata/RouteDescriptions";
+
 
 
 /**
@@ -25,14 +32,24 @@ import {
 export type BackendContext = {
 
     /**
+     * Root metadata from the backend.
+     */
+    rootMetadata: apiRootMetadata
+
+    /**
      * Url to the backend
      */
     url: string
 }
 
 
-
-const backendContext = createContext<BackendContext>({url: null});
+/**
+ * @internal
+ */
+export const backendContext = createContext<BackendContext>({
+    rootMetadata: null,
+    url: null
+});
 
 
 
@@ -62,7 +79,8 @@ export interface BackendProviderProps {
  * - Around a route layout.
  * 
  * To use this provider directly {@link useBackendProvider} is available.
- * However you should not require to call this provider directly. This is
+ * 
+ * You should not ever need to declare this provider directly. This is
  * because when declaring your routes, as soon as a `backend_url` has been
  * supplied, this provider is automatically added via {@link BackendLayout}.
  * 
@@ -73,7 +91,12 @@ export interface BackendProviderProps {
  * ...
  * 
  * return (
- *     <BackendProvider url = "https://my-backend-provider-url.tld/api/v2">
+ *     <BackendProvider
+ *         value = {
+ *             metadata: apiRootMetadata,
+ *             url = "https://my-backend-provider-url.tld/api/v2"
+ *         }
+ *     >
  *         <RouterProvider router={router} />
  *     </BackendProvider>
  * );
@@ -92,9 +115,11 @@ export function BackendProvider({
     children
 }: BackendProviderProps) {
 
-    const routes = useMatches();
+    const routes: Array<RouteDescription> = useMatches();
 
     const [ url, setURL ] = useState(null);
+
+    const [ rootMetadata, setRootMetadata ] = useState(null);
 
     useEffect(() => {
 
@@ -108,6 +133,10 @@ export function BackendProvider({
 
                 setURL(routes[i].handle.backend_url);
 
+                if( ! Object(routes[i].handle).hasOwnProperty('metadata') ) continue;
+
+                setRootMetadata(routes[i].handle.metadata);
+
                 break;
             }
         }
@@ -115,7 +144,12 @@ export function BackendProvider({
 
 
     return (
-        <backendContext.Provider value = {{url: url}}>
+        <backendContext.Provider
+            value = {{
+                rootMetadata: rootMetadata,
+                url: url
+            }}
+            >
             {children}
         </backendContext.Provider>
     );
