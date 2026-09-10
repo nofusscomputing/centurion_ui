@@ -1,41 +1,12 @@
-/**
- * 
- * This Object contains many single objects.
- * 
- * @summary A Set of Objects.
- * 
- * @category Backend
- * @expand
- * 
- */
-interface APIDataset {
-
-    /**
-     * DataObjects part of this dataset.
-     */
-    results: APIDataObject[];
-
-    /**
-     * URLs used for paginated results.
-     */
-    links: DatasetLinks;
-
-    /**
-     * Definitions for dataset.
-     */
-    meta: DatasetMeta;
-}
-
-
 
 /**
  * 
  * This set of URLs are used for navigating the paginated results.
  * 
  * @category Backend / Data Type
- * @expand
+ * @since 0.1.0
  */
-interface DatasetLinks {
+export interface DatasetLinks {
 
     /**
      * URL to the first page of the complete dataset
@@ -64,12 +35,14 @@ interface DatasetLinks {
 
 /**
  * @category Backend / Data Type
- * @expand
+ * @since 0.1.0
  */
-interface DatasetMeta {
+export interface DatasetMeta {
 
     /**
      * Pagination details.
+     * 
+     * @expandType DatasetMetaPagination
      */
     pagination: DatasetMetaPagination;
 }
@@ -81,9 +54,9 @@ interface DatasetMeta {
  * Provides the details required for pagination.
  * 
  * @category Backend / Data Type
- * @expand
+ * @since 0.1.0
  */
-interface DatasetMetaPagination {
+export interface DatasetMetaPagination {
 
     /**
      * Total number of objects in the complete dataset.

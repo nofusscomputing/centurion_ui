@@ -45,6 +45,7 @@ import UserContext from "../hooks/UserContext"
 import URLSanitize from "../functions/URLSanitize";
 import ListItem from "./ListItem";
 import { useNotificationActions } from "../hooks/useNotificationActions";
+import { apiObject } from "../types/backend/apiObject/object";
 
 
 
@@ -363,7 +364,7 @@ export type CommentProps = {
     /**
      * Data from the API. This object is not required when `isCreate = true`
      */
-    objectData?: APIDataObject,
+    objectData?: apiObject,
 
     /**
      * Metadata from the API.

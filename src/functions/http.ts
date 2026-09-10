@@ -56,6 +56,8 @@ export interface HTTPNamedParams {
  * This object is intended to serve as the single point for all HTTP requests
  * that the UI will make.
  * 
+ * @example
+ * 
  * When calling this fetcher, ensure that you have provided everything required
  * to make the request.
  * 

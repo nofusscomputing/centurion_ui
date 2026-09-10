@@ -3,16 +3,16 @@ title: Centurion UI
 description: Documentation home for Centurion User Interface by No Fuss Computing
 date: 2024-09-27
 template: project.html
-about: https://github.com/nofusscomputing/centurion_erp_ui/
+about: https://github.com/nofusscomputing/centurion_ui/
 ---
 
 <span style="text-align: center;">
 
 <br>
 
-![Project Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fnofusscomputing%2Fcenturion_erp_ui%2Frefs%2Fheads%2Fdevelopment%2F.centurion%2Fproject_status.json)
+![Project Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fnofusscomputing%2Fcenturion_erp_ui%2Frefs%2Fheads%2Fdevelopment%2F.centurion%2Fproject_status.json) [![Static Badge](https://img.shields.io/badge/https%3A%2F%2Fcenturion--ui.nofusscomputing.com-gdfgdf?style=plastic&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPD94bWwgdmVyc2lvbj0iMS4wIj8%2BCjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgMzAgMzAiIHdpZHRoPSIzMCIgaGVpZ2h0PSIzMCI%2BCgk8ZyBmaWxsPSJyZ2JhKDExMCwgMTU4LCAyNTUsIDEpIj4KCQk8cGF0aCBkPSJNMjAuNDM3IDIuNjljLTMuMzcgMC01Ljc3OCAzLjA1LTguMTg2IDUuMjk3LjMyMiAwIC44MDQtLjE2IDEuMjg1LS4xNi44MDMgMCAxLjYwNS4xNiAyLjQwOC40OCAxLjI4NC0xLjI4MyAyLjU2OC0yLjcyNyA0LjQ5NC0yLjcyNy45NjMgMCAyLjA4Ny40OCAyLjg5IDEuMTIzIDEuNjA1IDEuNjA1IDEuNjA1IDQuMTc0IDAgNS43OGwtNC4xNzQgNC4xNzJjLS42NDIuNjQyLTEuOTI2IDEuMTI0LTIuODkgMS4xMjQtMi4yNDYgMC0zLjM3LTEuNDQ2LTQuMTcyLTMuMjEybC0yLjA4NiAyLjA4N2MxLjI4NCAyLjQwOCAzLjIxIDQuMTczIDYuMSA0LjE3MyAxLjkyNiAwIDMuNjktLjgwMiA0LjgxNS0yLjA4Nmw0LjE3Mi00LjE3NGMxLjQ0NS0xLjQ0NCAyLjQwOC0zLjIxIDIuNDA4LTUuMjk3LS4zMi0zLjUzLTMuNTMtNi41OC03LjA2My02LjU4eiIvPgoJCTxwYXRoIGQ9Ik0xMy41MzUgMjIuMTEzbC0xLjQ0NCAxLjQ0NGMtLjY0LjY0Mi0xLjkyNSAxLjEyNC0yLjg5IDEuMTI0LS45NjIgMC0yLjA4NS0uNDgtMi44ODgtMS4xMjMtMS42MDUtMS42MDUtMS42MDUtNC4zMzQgMC01Ljc3OGw0LjE3NC00LjE3NWMuNjQyLS42NDIgMS45MjYtMS4xMjMgMi44OS0xLjEyMyAyLjI0NiAwIDMuMzcgMS42MDUgNC4xNzIgMy4yMWwyLjA4Ny0yLjA4N2MtMS4yODQtMi40MDctMy4yMS00LjE3My02LjEtNC4xNzMtMS45MjYgMC0zLjY5Mi44MDMtNC44MTUgMi4wODdMNC41NDcgMTUuNjljLTIuNzMgMi43My0yLjczIDcuMDYzIDAgOS42MyAyLjU2OCAyLjU3IDcuMDYyIDIuNzMgOS40NyAwbDMuMDUtMy4wNWMtLjQ4Mi4xNjItLjk2My4xNjItMS40NDUuMTYyLS44MDMgMC0xLjQ0NSAwLTIuMDg3LS4zMnoiLz4KCTwvZz4KPC9zdmc%2BCg%3D%3D&label=Demo%20SIte&color=%236e9eff)](https://centurion-ui.nofusscomputing.com/)
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/nofusscomputing/centurion-erp-ui?style=plastic&logo=docker&color=0db7ed)](https://hub.docker.com/r/nofusscomputing/centurion-erp-ui)
+[![Docker Pulls](https://img.shields.io/docker/pulls/nofusscomputing/centurion-ui?style=plastic&logo=docker&color=0db7ed)](https://hub.docker.com/r/nofusscomputing/centurion-ui)
 
 ----
 
@@ -38,39 +38,17 @@ about: https://github.com/nofusscomputing/centurion_erp_ui/
 **Centurion UI** is a metadata-driven frontend that renders and interacts with structured data provided by backends such as [Centurion ERP](../centurion_erp/index.md). Unlike traditional UIs, it **does not handle security or business logic** — those remain fully on the backend. The UI’s role is to interpret and display data as views, pages, and components, letting users focus on using applications rather than building interfaces.
 
 
-## Components of Centurion UI
+## Documentation
 
-For Centurion UI to function dynamically, metadata that Centurion UI requires must be in an expected format. To aid in this we have broken down each area of that metadata so that its easier to parse. Those areas are:
-
-- [User Interface](./user/index.md)
+Centurion UI documentation has been broken down into the following areas:
 
 - [Setup Centurion UI](./setup.md)
 
-    How to setup Centurion UI for your backend.
+- [Describe your data](./describing.md)
 
-- [Backend Metadata](./metadata.md)
+- [User Interface](./user/index.md)
 
-    What and how your backend should provide for Centurion UI to function.
-
-- [Navigation](./navigation.md)
-
-    Metadata structure for providing UI navigation.
-
-- User Details
-
-    Metadata structure for providing user details.
-
-- [View Layout](./layout/index.md)
-
-    Metadata structure for providing the layout that will be rendered.
-
-- Field Types
-
-    Metadata structure for providing the different field types that the UI can handle.
-
-    - [Makrdown](./fields/markdown.md)
-
-- [URLs](./url.md)
+- [Development](./development.md)
 
 
 ## How It Works
@@ -82,6 +60,8 @@ Centurion UI treats data much like a **database client**:
 - Users or IT teams can create new components and dashboards from available data without writing frontend code.
 
 This approach ensures that **adding new features to your backend requires no UI changes**, saving time and effort. Components, pages, and dashboards update automatically whenever backend data or structure changes.
+
+Want to see Centurion UI in action, navigate to the demo site at <https://centurion-ui.nofusscomputing.com/>. This demo site is the latest commit of the `feat-` branch. This will normally be `feat-next-release`.
 
 
 ## Development Philosophy

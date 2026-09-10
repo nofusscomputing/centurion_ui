@@ -98,7 +98,7 @@ import userEvent from "@testing-library/user-event";
 import NotificationLayout from "../../../layouts/Notifications";
 import PageContent from "../../../layouts/PageContent";
 import { NavbarContextProvider } from "../../page/Navbar";
-// import List from "../../../layout/List";
+import { backendContext } from "../../../App/providers/backend";
 
 
 const fs = require('fs')
@@ -193,6 +193,9 @@ describe("NotificationDrawer", () => {
     }
 
 
+    const rootMetadata = rootMetadataLoader().metadata;
+
+
     test("Has action menu", async () => {
 
 
@@ -230,22 +233,9 @@ describe("NotificationDrawer", () => {
         };
 
 
-        // const Stub = createRoutesStub([
-        //     {
-        //         Component: UI,
-        //         children: [
-        //             {
-        //                 path: objectMetadata.urls.self,
-        //                 Component: InnerComponent,
-        //             }
-        //         ],
-        //     }
-        // ]);
-
             const Stub = createRoutesStub([
                 {
                     Component: UI,
-                    loader: rootMetadataLoader,
                     children: [
                         {
                             Component: PageContent,
@@ -261,9 +251,16 @@ describe("NotificationDrawer", () => {
             ]);
 
         const rendered = render(
-            <NotificationContextProvider>
-                <Stub initialEntries={[objectMetadata.urls.self]} />
-            </NotificationContextProvider>
+            <backendContext.Provider
+                value = {{
+                    rootMetadata: rootMetadata,
+                    url: 'url'
+                }}
+            >
+                <NotificationContextProvider>
+                    <Stub initialEntries={[objectMetadata.urls.self]} />
+                </NotificationContextProvider>
+            </backendContext.Provider>
         );
 
         await waitFor(() => {
@@ -352,7 +349,6 @@ describe("NotificationDrawer", () => {
             const Stub = createRoutesStub([
                 {
                     Component: UI,
-                    loader: rootMetadataLoader,
                     children: [
                         {
                             Component: PageContent,
@@ -368,9 +364,16 @@ describe("NotificationDrawer", () => {
             ]);
 
             const rendered = render(
-                <NotificationContextProvider>
-                    <Stub initialEntries={[objectMetadata.urls.self]} />
-                </NotificationContextProvider>
+                <backendContext.Provider
+                    value = {{
+                        rootMetadata: rootMetadata,
+                        url: 'url'
+                    }}
+                >
+                    <NotificationContextProvider>
+                        <Stub initialEntries={[objectMetadata.urls.self]} />
+                    </NotificationContextProvider>
+                </backendContext.Provider>
             );
 
             await waitFor(() => {
@@ -451,7 +454,6 @@ describe("NotificationDrawer", () => {
             const Stub = createRoutesStub([
                 {
                     Component: UI,
-                    loader: rootMetadataLoader,
                     children: [
                         {
                             Component: PageContent,
@@ -467,9 +469,16 @@ describe("NotificationDrawer", () => {
             ]);
 
             const rendered = render(
-                <NotificationContextProvider>
-                    <Stub initialEntries={[objectMetadata.urls.self]} />
-                </NotificationContextProvider>
+                <backendContext.Provider
+                    value = {{
+                        rootMetadata: rootMetadata,
+                        url: 'url'
+                    }}
+                >
+                    <NotificationContextProvider>
+                        <Stub initialEntries={[objectMetadata.urls.self]} />
+                    </NotificationContextProvider>
+                </backendContext.Provider>
             );
 
             await waitFor(() => {
@@ -556,7 +565,6 @@ describe("NotificationDrawer", () => {
                 const Stub = createRoutesStub([
                     {
                         Component: UI,
-                        loader: rootMetadataLoader,
                         children: [
                             {
                                 Component: PageContent,
@@ -572,9 +580,16 @@ describe("NotificationDrawer", () => {
                 ]);
 
                 const rendered = render(
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[objectMetadata.urls.self]} />
-                    </NotificationContextProvider>
+                    <backendContext.Provider
+                        value = {{
+                            rootMetadata: rootMetadata,
+                            url: 'url'
+                        }}
+                    >
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[objectMetadata.urls.self]} />
+                        </NotificationContextProvider>
+                    </backendContext.Provider>
                 );
 
                 await waitFor(() => {
@@ -657,7 +672,6 @@ describe("NotificationDrawer", () => {
                 const Stub = createRoutesStub([
                     {
                         Component: UI,
-                        loader: rootMetadataLoader,
                         children: [
                             {
                                 Component: PageContent,
@@ -673,9 +687,16 @@ describe("NotificationDrawer", () => {
                 ]);
 
                 const rendered = render(
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[objectMetadata.urls.self]} />
-                    </NotificationContextProvider>
+                    <backendContext.Provider
+                        value = {{
+                            rootMetadata: rootMetadata,
+                            url: 'url'
+                        }}
+                    >
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[objectMetadata.urls.self]} />
+                        </NotificationContextProvider>
+                    </backendContext.Provider>
                 );
 
                 await waitFor(() => {
@@ -759,7 +780,6 @@ describe("NotificationDrawer", () => {
             const Stub = createRoutesStub([
                 {
                     Component: UI,
-                    loader: rootMetadataLoader,
                     children: [
                         {
                             Component: PageContent,
@@ -775,9 +795,16 @@ describe("NotificationDrawer", () => {
             ]);
 
             const rendered = render(
-                <NotificationContextProvider>
-                    <Stub initialEntries={[objectMetadata.urls.self]} />
-                </NotificationContextProvider>
+                <backendContext.Provider
+                    value = {{
+                        rootMetadata: rootMetadata,
+                        url: 'url'
+                    }}
+                >
+                    <NotificationContextProvider>
+                        <Stub initialEntries={[objectMetadata.urls.self]} />
+                    </NotificationContextProvider>
+                </backendContext.Provider>
             );
 
             await waitFor(() => {
@@ -847,7 +874,6 @@ describe("NotificationDrawer", () => {
             const Stub = createRoutesStub([
                 {
                     Component: UI,
-                    loader: rootMetadataLoader,
                     children: [
                         {
                             Component: PageContent,
@@ -863,9 +889,16 @@ describe("NotificationDrawer", () => {
             ]);
 
             const rendered = render(
-                <NotificationContextProvider>
-                    <Stub initialEntries={[objectMetadata.urls.self]} />
-                </NotificationContextProvider>
+                <backendContext.Provider
+                    value = {{
+                        rootMetadata: rootMetadata,
+                        url: 'url'
+                    }}
+                >
+                    <NotificationContextProvider>
+                        <Stub initialEntries={[objectMetadata.urls.self]} />
+                    </NotificationContextProvider>
+                </backendContext.Provider>
             );
 
             await waitFor(() => {
@@ -933,7 +966,6 @@ describe("NotificationDrawer", () => {
             const Stub = createRoutesStub([
                 {
                     Component: UI,
-                    loader: rootMetadataLoader,
                     children: [
                         {
                             Component: PageContent,
@@ -949,9 +981,16 @@ describe("NotificationDrawer", () => {
             ]);
 
             const rendered = render(
-                <NotificationContextProvider>
-                    <Stub initialEntries={[objectMetadata.urls.self]} />
-                </NotificationContextProvider>
+                <backendContext.Provider
+                    value = {{
+                        rootMetadata: rootMetadata,
+                        url: 'url'
+                    }}
+                >
+                    <NotificationContextProvider>
+                        <Stub initialEntries={[objectMetadata.urls.self]} />
+                    </NotificationContextProvider>
+                </backendContext.Provider>
             );
 
             await waitFor(() => {
@@ -1019,7 +1058,6 @@ describe("NotificationDrawer", () => {
             const Stub = createRoutesStub([
                 {
                     Component: UI,
-                    loader: rootMetadataLoader,
                     children: [
                         {
                             Component: PageContent,
@@ -1035,9 +1073,16 @@ describe("NotificationDrawer", () => {
             ]);
 
             const rendered = render(
-                <NotificationContextProvider>
-                    <Stub initialEntries={[objectMetadata.urls.self]} />
-                </NotificationContextProvider>
+                <backendContext.Provider
+                    value = {{
+                        rootMetadata: rootMetadata,
+                        url: 'url'
+                    }}
+                >
+                    <NotificationContextProvider>
+                        <Stub initialEntries={[objectMetadata.urls.self]} />
+                    </NotificationContextProvider>
+                </backendContext.Provider>
             );
 
             await waitFor(() => {
@@ -1092,7 +1137,6 @@ describe("NotificationDrawer", () => {
             const Stub = createRoutesStub([
                 {
                     Component: UI,
-                    loader: rootMetadataLoader,
                     children: [
                         {
                             Component: PageContent,
@@ -1108,9 +1152,16 @@ describe("NotificationDrawer", () => {
             ]);
 
             const rendered = render(
-                <NotificationContextProvider>
-                    <Stub initialEntries={[objectMetadata.urls.self]} />
-                </NotificationContextProvider>
+                <backendContext.Provider
+                    value = {{
+                        rootMetadata: rootMetadata,
+                        url: 'url'
+                    }}
+                >
+                    <NotificationContextProvider>
+                        <Stub initialEntries={[objectMetadata.urls.self]} />
+                    </NotificationContextProvider>
+                </backendContext.Provider>
             );
 
             await waitFor(() => {
@@ -1192,7 +1243,6 @@ describe("NotificationDrawer", () => {
             const Stub = createRoutesStub([
                 {
                     Component: UI,
-                    loader: rootMetadataLoader,
                     children: [
                         {
                             Component: PageContent,
@@ -1208,9 +1258,16 @@ describe("NotificationDrawer", () => {
             ]);
 
             const rendered = render(
-                <NotificationContextProvider>
-                    <Stub initialEntries={[objectMetadata.urls.self]} />
-                </NotificationContextProvider>
+                <backendContext.Provider
+                    value = {{
+                        rootMetadata: rootMetadata,
+                        url: 'url'
+                    }}
+                >
+                    <NotificationContextProvider>
+                        <Stub initialEntries={[objectMetadata.urls.self]} />
+                    </NotificationContextProvider>
+                </backendContext.Provider>
             );
 
             await waitFor(() => {
@@ -1263,7 +1320,6 @@ describe("NotificationDrawer", () => {
             const Stub = createRoutesStub([
                 {
                     Component: UI,
-                    loader: rootMetadataLoader,
                     children: [
                         {
                             // Component: PageContent,
@@ -1279,9 +1335,16 @@ describe("NotificationDrawer", () => {
             ]);
 
             const rendered = render(
-                <NotificationContextProvider>
-                    <Stub initialEntries={[objectMetadata.urls.self]} />
-                </NotificationContextProvider>
+                <backendContext.Provider
+                    value = {{
+                        rootMetadata: rootMetadata,
+                        url: 'url'
+                    }}
+                >
+                    <NotificationContextProvider>
+                        <Stub initialEntries={[objectMetadata.urls.self]} />
+                    </NotificationContextProvider>
+                </backendContext.Provider>
             );
 
             await waitFor(() => {
@@ -1352,7 +1415,6 @@ describe("NotificationDrawer", () => {
             const Stub = createRoutesStub([
                 {
                     Component: UI,
-                    loader: rootMetadataLoader,
                     children: [
                         {
                             Component: PageContent,
@@ -1368,9 +1430,16 @@ describe("NotificationDrawer", () => {
             ]);
 
             const rendered = render(
-                <NotificationContextProvider>
-                    <Stub initialEntries={[objectMetadata.urls.self]} />
-                </NotificationContextProvider>
+                <backendContext.Provider
+                    value = {{
+                        rootMetadata: rootMetadata,
+                        url: 'url'
+                    }}
+                >
+                    <NotificationContextProvider>
+                        <Stub initialEntries={[objectMetadata.urls.self]} />
+                    </NotificationContextProvider>
+                </backendContext.Provider>
             );
 
             await waitFor(() => {
@@ -1436,7 +1505,6 @@ describe("NotificationDrawer", () => {
             const Stub = createRoutesStub([
                 {
                     Component: UI,
-                    loader: rootMetadataLoader,
                     children: [
                         {
                             Component: PageContent,
@@ -1452,9 +1520,16 @@ describe("NotificationDrawer", () => {
             ]);
 
             const rendered = render(
-                <NotificationContextProvider>
-                    <Stub initialEntries={[objectMetadata.urls.self]} />
-                </NotificationContextProvider>
+                <backendContext.Provider
+                    value = {{
+                        rootMetadata: rootMetadata,
+                        url: 'url'
+                    }}
+                >
+                    <NotificationContextProvider>
+                        <Stub initialEntries={[objectMetadata.urls.self]} />
+                    </NotificationContextProvider>
+                </backendContext.Provider>
             );
 
             await waitFor(() => {
@@ -1528,7 +1603,6 @@ describe("NotificationDrawer", () => {
             const Stub = createRoutesStub([
                 {
                     Component: UI,
-                    loader: rootMetadataLoader,
                     children: [
                         {
                             Component: PageContent,
@@ -1544,9 +1618,16 @@ describe("NotificationDrawer", () => {
             ]);
 
             const rendered = render(
-                <NotificationContextProvider>
-                    <Stub initialEntries={[objectMetadata.urls.self]} />
-                </NotificationContextProvider>
+                <backendContext.Provider
+                    value = {{
+                        rootMetadata: rootMetadata,
+                        url: 'url'
+                    }}
+                >
+                    <NotificationContextProvider>
+                        <Stub initialEntries={[objectMetadata.urls.self]} />
+                    </NotificationContextProvider>
+                </backendContext.Provider>
             );
 
             await waitFor(() => {
@@ -1612,7 +1693,6 @@ describe("NotificationDrawer", () => {
             const Stub = createRoutesStub([
                 {
                     Component: UI,
-                    loader: rootMetadataLoader,
                     children: [
                         {
                             path: objectMetadata.urls.self,
@@ -1623,9 +1703,16 @@ describe("NotificationDrawer", () => {
             ]);
 
             const rendered = render(
-                <NotificationContextProvider>
-                    <Stub initialEntries={[objectMetadata.urls.self]} />
-                </NotificationContextProvider>
+                <backendContext.Provider
+                    value = {{
+                        rootMetadata: rootMetadata,
+                        url: 'url'
+                    }}
+                >
+                    <NotificationContextProvider>
+                        <Stub initialEntries={[objectMetadata.urls.self]} />
+                    </NotificationContextProvider>
+                </backendContext.Provider>
             );
 
             await waitFor(() => {
@@ -1707,7 +1794,6 @@ describe("NotificationDrawer", () => {
             const Stub = createRoutesStub([
                 {
                     Component: UI,
-                    loader: rootMetadataLoader,
                     children: [
                         {
                             path: objectMetadata.urls.self,
@@ -1719,9 +1805,16 @@ describe("NotificationDrawer", () => {
 
 
             const rendered = render(
-                <NotificationContextProvider>
-                    <Stub initialEntries={[objectMetadata.urls.self]} />
-                </NotificationContextProvider>
+                <backendContext.Provider
+                    value = {{
+                        rootMetadata: rootMetadata,
+                        url: 'url'
+                    }}
+                >
+                    <NotificationContextProvider>
+                        <Stub initialEntries={[objectMetadata.urls.self]} />
+                    </NotificationContextProvider>
+                </backendContext.Provider>
             );
 
             await waitFor(() => {

@@ -22,6 +22,7 @@ import URLSanitize from "../functions/URLSanitize";
 import {
     usePageContext
 } from "../layouts/PageContent";
+import { apiObject } from "../types/backend/apiObject/object";
 
 
 /**
@@ -33,7 +34,7 @@ import {
  */
 const Settings = (): React.JSX.Element => {
 
-    const {metadata, page_data} = useLoaderData<{metadata: APIMetadata, page_data: APIDataObject}>();
+    const {metadata, page_data} = useLoaderData<{metadata: APIMetadata, page_data: apiObject}>();
 
     const {
         setPageDescription, setPageHeading, setPageHeaderIcons

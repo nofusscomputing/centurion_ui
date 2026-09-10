@@ -44,6 +44,7 @@ import FieldData from "../functions/FieldData";
 import IconLoader from "./IconLoader";
 import URLSanitize from "../functions/URLSanitize";
 import StateSplash, { StateIcon } from "./StateSplash";
+import { apiObject } from "../types/backend/apiObject/object";
 
 
 /**
@@ -643,7 +644,7 @@ export type DataSetListCellsProps = {
     /**
      * An individual rows data as presented by the API.
      */
-    rowData: APIDataObject,
+    rowData: apiObject,
 
     /**
      * Objects metadata as presented by the API.

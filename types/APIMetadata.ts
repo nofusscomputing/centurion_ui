@@ -2,7 +2,7 @@
 
 /**
  * 
- * API Metadata object is used to describe both {@link APIDataset} and {@link APIDataObject}.
+ * API Metadata object is used to describe both {@link apiDataset} and {@link apiObject}.
  * 
  * @summary Object Metadata.
  * 
@@ -13,7 +13,7 @@
 export interface APIMetadata {
 
     /**
-     * Field definitions describing the {@link APIDataObject}
+     * Field definitions describing the {@link apiObject}
      * 
      * @expandType apiField
      */

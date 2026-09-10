@@ -8,7 +8,7 @@ import { UILayout } from "./layout";
 
 /**
  * API metadata is provided by the backend and must be accessible via the URL
- * used to access the endpoint in question. This object is obtained via a
+ * used to access the backend in question. This object is obtained via a
  * `HTTP/OPTIONS` request and must be returned as a JSON object that matches
  * this interface.
  * 
