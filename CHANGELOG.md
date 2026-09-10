@@ -1,3 +1,21 @@
+## 0.14.0 (2026-09-10)
+
+### feat
+
+- **component**: Add About modal dialog
+- **component**: Whn in mobile view Add header "refresh" button to hamburger menu
+- Add error boundary to PageContent route
+- Add the navigation description
+- **function**: As part of dynamic route loading, cache the root metadata
+- **function**: Use routes supplied by backend
+
+### Refactoring
+
+- **component**: Enable Form component passthrough
+- **layout**: Update TicketLayout to use fetch.Form
+- **layout**: migrate backend data types
+- **layout**: Add placeholder DetailLayout until Detail is refactored.
+
 ## 0.13.2 (2026-08-30)
 
 ### Fixes
