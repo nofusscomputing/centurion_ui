@@ -750,7 +750,7 @@ export async function APISubmitAction({
         }
 
 
-        let value = '';
+        let value: any = '';
 
         switch( String(metadata.fields[fieldName].type).toLowerCase() ) {
 
@@ -762,6 +762,12 @@ export async function APISubmitAction({
                     iso: true,
                     tz: formFields.tz
                 });
+
+                break;
+
+            case 'relationship':
+
+                value = JSON.parse(fieldValue);
 
                 break;
 
