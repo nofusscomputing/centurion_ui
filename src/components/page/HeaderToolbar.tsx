@@ -430,10 +430,10 @@ const HeaderToolbar = () => {
                         <dt>Name</dt>
                         <dd>Centurion UI</dd>
                         <dt>Version</dt>
-                        <dd>{ window.api?.CI_COMMIT_TAG ?  window.api.CI_COMMIT_TAG : "-" }</dd>
+                        <dd>{ window.env?.CI_COMMIT_TAG ?  window.env.CI_COMMIT_TAG : "-" }</dd>
                         <dt>Commit</dt>
                         <dd>
-                            {window.api?.CI_COMMIT_SHA ? (
+                            {window.env?.CI_COMMIT_SHA ? (
                                 <a href={window.env.CI_PROJECT_URL + '/commit/' + window.env.CI_COMMIT_SHA} target="_blank">
                                     {window.env.CI_COMMIT_SHA}
                                 </a>
@@ -441,9 +441,9 @@ const HeaderToolbar = () => {
                         </dd>
                         <dt>Project</dt>
                         <dd>
-                            { window.api?.CI_PROJECT_URL ? (
+                            { window.env?.CI_PROJECT_URL ? (
                                 <a href={window.env.CI_PROJECT_URL} target="_blank">
-                                    {window.api.CI_PROJECT_URL}
+                                    {window.env.CI_PROJECT_URL}
                                 </a>
                             ) : "-" }
                         </dd>
