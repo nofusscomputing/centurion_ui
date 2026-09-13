@@ -1,3 +1,10 @@
+## 0.14.1 (2026-09-13)
+
+### Fixes
+
+- **component**: Add hidden field for DualFiledSelector data
+- **component**: Use correct window var when accessing env
+
 ## 0.14.0 (2026-09-10)
 
 ### feat
