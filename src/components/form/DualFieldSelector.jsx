@@ -258,7 +258,8 @@ const DualFieldSelector = ({
 
 
 
-  return ( 
+  return (
+    <>
     <DualListSelector>
 
         <DualListSelectorPane
@@ -321,6 +322,8 @@ const DualFieldSelector = ({
         </DualListSelectorPane>
 
     </DualListSelector>
+    <input id={name} type="hidden" name={name} value = {`[${chosenOptions.map((option) => option.id)}]`} />
+    </>
     )
 
 };
