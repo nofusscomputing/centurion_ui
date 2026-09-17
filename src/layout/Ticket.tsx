@@ -6,10 +6,10 @@ import React, {
 } from "react";
 
 import {
-    Form,
     useActionData,
     useFetcher,
     useLoaderData,
+    useNavigate,
     useParams
 } from "react-router";
 
@@ -93,6 +93,8 @@ const Ticket = (): React.JSX.Element => {
 
     const [ editing_description, setEditingDescription ] = useState( false )
 
+    const navigate = useNavigate();
+
     const {page_data, metadata} = useLoaderData();
 
     const [ ticket_data, setTicketData] = useState(null)
@@ -110,6 +112,20 @@ const Ticket = (): React.JSX.Element => {
     )
 
     const user = useContext(UserContext);
+
+
+    useEffect(() => {
+
+        let a = fetcher;
+
+        if(fetcher.data?.body?._urls?._self && fetcher.data?.ok) {
+
+            // setTicketData(fetcher.data.body);
+            navigate( URLSanitize(fetcher.data.body._urls._self));
+
+        }
+
+    }, [fetcher])
 
 
     useEffect(() => {
