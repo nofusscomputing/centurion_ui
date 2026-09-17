@@ -15,9 +15,14 @@ COPY . /workdir
 
 WORKDIR /workdir
 
+RUN uname -m
+RUN node --version
+RUN node -e "console.log(process.arch); console.log(process.platform)"
+RUN npm --version
 
-RUN npm install; \
-    npm run build
+RUN npm ci --foreground-scripts
+
+RUN npm run build
 
 
 
