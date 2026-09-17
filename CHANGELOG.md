@@ -1,3 +1,11 @@
+## 0.14.2 (2026-09-17)
+
+### Fixes
+
+- **component**: When submitting a form if field is an empty string, don't attempt to process.
+- **component**: When creating a new ticket, redirect to ticket when created
+- **component**: Add button for DisplayTable to use `new` url for adding an object
+
 ## 0.14.1 (2026-09-13)
 
 ### Fixes
