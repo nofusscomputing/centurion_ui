@@ -213,7 +213,7 @@ const DisplayTable = ({
     const AddButton = () => {
 
 
-        if( 'pk' in params ) {
+        if( 'pk' in params && ! Object.hasOwn(metadata.urls, 'new') ) {
         /**
          * If the model has the pk param then inline editing should be enabled.
          */
@@ -250,7 +250,7 @@ const DisplayTable = ({
                         return (
                             <Button
                                 variant="primary"
-                                component={(props) => <Link {...props} to={URLSanitize(metadata.urls.sub_models[model_name]) + "/add"} />}
+                                component={(props) => <Link {...props} to={URLSanitize(metadata.urls.sub_models[model_name].url) + "/add"} />}
                             >
                                 Add {model_name}
                             </Button>
