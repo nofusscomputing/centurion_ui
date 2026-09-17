@@ -743,7 +743,11 @@ export async function APISubmitAction({
 
     for (const [fieldName, fieldValue] of Object.entries(formFields)) {
 
-        if( ! metadata.fields.hasOwnProperty(fieldName) ) {    // field not part of request
+        if(
+            ! metadata.fields.hasOwnProperty(fieldName)
+            ||
+            fieldValue === ''
+        ) {    // field not part of request
 
             continue;
 
