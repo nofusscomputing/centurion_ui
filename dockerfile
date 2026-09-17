@@ -16,7 +16,7 @@ COPY . /workdir
 WORKDIR /workdir
 
 
-RUN npm ci
+RUN npm ci --foreground-scripts
 
 RUN npm run build
 
