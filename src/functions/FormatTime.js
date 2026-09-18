@@ -1,7 +1,7 @@
 /**
  * 
  * @param {String} time DateTime String to be converted <YYYY-MM-DDTHH:SSZ> / <YYYY-MM-DD HH:SS>
- * @param {Boolean} iso Convert the time to an ISO8601 UTC String
+ * @param {Boolean} iso Convert the time to an ISO8601 String
  * @param {String} tz Timezone name to convert the time to.
  * @returns 
  */
@@ -125,11 +125,10 @@ export function FormatTime({
 
             time = time + user_timezone
 
-        } else {
-
-            calculation_offset = (actual_timezone_offset ) + (actual_timezone_offset + user_timezone_offset )
         }
 
+
+        calculation_offset = (actual_timezone_offset ) + ( actual_timezone_offset + user_timezone_offset )
 
         const tester = new Date(String(time))
 
@@ -144,7 +143,7 @@ export function FormatTime({
 
         }
 
-    const value = iso ? datetime.toISOString().replace(/(\.\d+)Z/, 'Z') : datetime.format('HH:mm DD MMM YYYY')
+    const value = iso ? datetime.format('YYYY-MM-DDTHH:mm:ss') : datetime.format('HH:mm DD MMM YYYY')
 
     return String( value );
 }
