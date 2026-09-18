@@ -1,3 +1,14 @@
+## 0.14.3 (2026-09-18)
+
+### Fixes
+
+- **function**: When formatting datetime to iso, dont change timezone to GMT/UTC
+- **function**: FormatTime still requires calculation offset to convert iso8601 "local time"
+
+### Tests
+
+- **function**: Unit Test Cases for FormatTime ISO8601 "Local Time"
+
 ## 0.14.2 (2026-09-17)
 
 ### Fixes
