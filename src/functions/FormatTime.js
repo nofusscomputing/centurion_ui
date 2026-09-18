@@ -125,11 +125,10 @@ export function FormatTime({
 
             time = time + user_timezone
 
-        } else {
-
-            calculation_offset = (actual_timezone_offset ) + (actual_timezone_offset + user_timezone_offset )
         }
 
+
+        calculation_offset = (actual_timezone_offset ) + ( actual_timezone_offset + user_timezone_offset )
 
         const tester = new Date(String(time))
 
