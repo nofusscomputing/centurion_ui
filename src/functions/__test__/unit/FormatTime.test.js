@@ -1,7 +1,142 @@
 import { FormatTime } from "../../FormatTime";
 
 
-// afterEach(cleanup);
+describe("to ISO", () => {
+
+
+    describe("UTC Timezone", () => {
+
+
+        test("localtime", () => {
+
+            expect(FormatTime({
+                time: "2026-09-18T11:43:00",
+                iso: true,
+                tz: 'UTC'
+            })).toBe('2026-09-18T11:43:00')
+
+        });
+
+
+        test("time in Z", () => {
+
+            expect(FormatTime({
+                time: "2026-09-18T09:30:00Z",
+                iso: true,
+                tz: 'UTC'
+            })).toBe('2026-09-18T09:30:00')
+
+        });
+
+
+        test("time match timezone", () => {
+
+            expect(FormatTime({
+                time: "2026-09-18T11:43:00+00:00",
+                iso: true,
+                tz: 'UTC'
+            })).toBe('2026-09-18T11:43:00')
+
+        });
+
+    });
+
+
+    describe("Positive Timezone", () => {
+
+
+        test("localtime", () => {
+
+            expect(FormatTime({
+                time: "2026-09-18T11:43:00",
+                iso: true,
+                tz: 'Australia/Darwin'
+            })).toBe('2026-09-18T11:43:00')
+
+        });
+
+
+        test("time in Z", () => {
+
+            expect(FormatTime({
+                time: "2026-09-18T00:00:00Z",
+                iso: true,
+                tz: 'Australia/Darwin'
+            })).toBe('2026-09-18T09:30:00')
+
+        });
+
+
+        test("time match timezone", () => {
+
+            expect(FormatTime({
+                time: "2026-09-18T11:43:00+09:30",
+                iso: true,
+                tz: 'Australia/Darwin'
+            })).toBe('2026-09-18T11:43:00')
+
+        });
+
+    });
+
+
+    describe("Negative Timezone", () => {
+
+
+        test('localtime', () => {
+
+            expect(FormatTime({
+                time: '2025-02-27T17:00:00',
+                iso: true,
+                tz: 'US/Arizona'
+            })).toBe('2025-02-27T17:00:00');
+        
+        });
+
+
+        test('time in Z', () => {
+
+            expect(FormatTime({
+                time: '2025-02-27T00:00:00Z',
+                iso: true,
+                tz: 'US/Arizona'
+            })).toBe('2025-02-26T17:00:00');
+        
+        });
+
+
+        test('time match timezone', () => {
+
+            expect(FormatTime({
+                time: '2025-02-27T00:00:00-07:00',
+                iso: true,
+                tz: 'US/Arizona'
+            })).toBe('2025-02-27T00:00:00');
+        
+        });
+
+
+    });
+
+
+    describe("Positive to Negative Timezone", () => {
+
+
+        test('time match timezone', () => {
+
+            expect(FormatTime({
+                time: '2025-02-27T17:00:00-07:00',
+                iso: true,
+                tz: 'Australia/Darwin'
+            })).toBe('2025-02-28T09:30:00');
+        
+        });
+
+
+    });
+
+
+});
 
 
 describe('Months format correctly', () => {
@@ -161,7 +296,7 @@ describe('From UTC', () => {
             time: '2025-02-27T00:00:00Z',
             iso: true,
             tz: 'Australia/Darwin'
-        })).toBe('2025-02-27T00:00:00Z');
+        })).toBe('2025-02-27T09:30:00');
 
     });
 
@@ -198,7 +333,7 @@ describe('to UTC', () => {
             time: '2025-02-27T09:30:00',
             iso: true,
             tz: 'Australia/Darwin'
-        })).toBe('2025-02-27T00:00:00Z');
+        })).toBe('2025-02-27T09:30:00');
 
     });
 
