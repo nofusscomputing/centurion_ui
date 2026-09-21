@@ -22,10 +22,8 @@ import {
     useNotificationContext
 } from "../components/NotificationDrawer";
 import
-    Navbar,
-    {
-        NavbarContextProvider
-} from "../components/page/Navbar";
+    Navbar
+from "../components/page/Navbar";
 
 import { UserProvider } from "../hooks/UserContext";
 
@@ -65,34 +63,30 @@ const UI = (): React.JSX.Element => {
     return (
         <UserProvider>
 
-                <NavbarContextProvider>
+            {alerts !== undefined && <AlertGroup
+                hasAnimations
+                isToast
+                isLiveRegion
+                overflowMessage={overflowMessage}
+                onOverflowClick={onAlertGroupOverflowClick}
+            >
+                {alerts.slice(0, maxDisplayed)}
+            </AlertGroup>}
 
-                    {alerts !== undefined && <AlertGroup
-                        hasAnimations
-                        isToast
-                        isLiveRegion
-                        overflowMessage={overflowMessage}
-                        onOverflowClick={onAlertGroupOverflowClick}
-                    >
-                        {alerts.slice(0, maxDisplayed)}
-                    </AlertGroup>}
+            <Page
+                isContentFilled
+                isManagedSidebar
+                isNotificationDrawerExpanded = {isNotificationsOpen}
+                masthead = {<Header />}
+                notificationDrawer = { setNotificationsOpen !== undefined ? <Notifications /> : null }
+                sidebar = {<Navbar
+                    apiMetadata = {backend.rootMetadata}
+                />}
+            >
 
-                    <Page
-                        isContentFilled
-                        isManagedSidebar
-                        isNotificationDrawerExpanded = {isNotificationsOpen}
-                        masthead = {<Header />}
-                        notificationDrawer = { setNotificationsOpen !== undefined ? <Notifications /> : null }
-                        sidebar = {<Navbar
-                            apiMetadata = {backend.rootMetadata}
-                        />}
-                    >
+                {backend.rootMetadata && <Outlet />}
 
-                        {backend.rootMetadata && <Outlet />}
-
-                    </Page>
-
-                </NavbarContextProvider>
+            </Page>
 
         </UserProvider>
     );

@@ -49,7 +49,11 @@ export type NavbarContext = {
 
 
 
-const navbarContext = createContext<NavbarContext>(null);
+const navbarContext = createContext<NavbarContext>({
+    navVariant: 'default',
+    isSidebarOpen: true,
+    onSidebarToggle: undefined
+});
 
 
 
