@@ -47,6 +47,7 @@ const UI = (): React.JSX.Element => {
     const backend = useBackendProvider();
 
     const {
+        navVariant,
         isSidebarOpen,
     } = useNavbarContext();
 
@@ -87,7 +88,7 @@ const UI = (): React.JSX.Element => {
                 isNotificationDrawerExpanded = {isNotificationsOpen}
                 masthead = {<Header />}
                 notificationDrawer = { setNotificationsOpen !== undefined ? <Notifications /> : null }
-                sidebar = {
+                sidebar = { navVariant == 'default' ?
                     <PageSidebar
                         id = "fill-sidebar"
                         isSidebarOpen = {isSidebarOpen}
@@ -96,6 +97,7 @@ const UI = (): React.JSX.Element => {
                             <Navbar />
                         </PageSidebarBody>
                     </PageSidebar>
+                    : undefined
                 }
             >
 
