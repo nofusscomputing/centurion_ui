@@ -456,9 +456,9 @@ const Ticket = (): React.JSX.Element => {
 
 
         return (
-            <>
+            <PageSection isFilled = {true}>
                 {ticketLayout}
-            </>
+            </PageSection>
         )
 
     }
