@@ -9,6 +9,8 @@ import {
     MastheadToggle,
     PageToggleButton,
     Title,
+    Toolbar,
+    ToolbarContent,
 } from "@patternfly/react-core";
 
 import HeaderToolbar from "./HeaderToolbar";
@@ -65,7 +67,11 @@ const Header = ({
                 </Title>
             </MastheadMain>
             <MastheadContent>
-                <HeaderToolbar />
+                <Toolbar id="page-toolbar" isStatic>
+                    <ToolbarContent>
+                        <HeaderToolbar />
+                    </ToolbarContent>
+                </Toolbar>
             </MastheadContent>
         </Masthead>
     );
