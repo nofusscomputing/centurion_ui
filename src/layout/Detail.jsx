@@ -8,8 +8,10 @@ import {
 import {
     Form,
     Link,
+    useFetcher,
     useLoaderData,
     useLocation,
+    useNavigate,
     useOutletContext,
 } from "react-router";
 
@@ -51,9 +53,13 @@ const Detail = () => {
         setPageDescription, setPageHeading, setPageHeaderIcons
     } = usePageContext();
 
+    const fetcher = useFetcher();
+
     const location = useLocation();
 
     const {metadata, page_data} = useLoaderData();
+
+    const navigate = useNavigate();
 
 
     const [ notes, setNotes ] = useState(null)
@@ -61,6 +67,18 @@ const Detail = () => {
     const [ notes_form, setNotesForm ] = useState({})
     const [ note_metadata, setNoteMetadata ] = useState(null)
 
+
+    useEffect(() => {
+
+        let a = fetcher;
+
+        if(fetcher.data?.body?._urls?._self && fetcher.data?.ok) {
+
+            navigate( URLSanitize(fetcher.data.body._urls._self));
+
+        }
+
+    }, [fetcher])
 
     useEffect(() => {
 
@@ -311,6 +329,7 @@ const Detail = () => {
 
                                     <FlexItem>
                                         <DetailSection
+                                            FormComponent = {fetcher.Form}
                                             index = { section_index }
                                             layout = {section}
                                             data = { page_data }
