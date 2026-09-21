@@ -15,6 +15,7 @@ import {
     NavExpandable,
     NavItem,
     NavList,
+    NavProps,
     Skeleton
 } from "@patternfly/react-core";
 
@@ -34,6 +35,11 @@ import {
  * @since 0.13.0
  */
 export type NavbarContext = {
+
+    /**
+     * Orientation of the navigation.
+     */
+    navVariant: NavProps['variant']
 
     /**
      * Current value of sidebar Open.
@@ -67,6 +73,8 @@ export const NavbarContextProvider = ({
     children
 }): React.JSX.Element => {
 
+    const [navVariant, setNavVariant] = useState<NavbarContext['navVariant']>('default');
+
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
     const onSidebarToggle = () => {
@@ -75,6 +83,7 @@ export const NavbarContextProvider = ({
 
     return (
         <navbarContext.Provider value={{
+            navVariant: navVariant,
             isSidebarOpen: isSidebarOpen,
             onSidebarToggle: onSidebarToggle
         }}>
@@ -101,6 +110,9 @@ const Navbar = () => {
 
     const [ activeItem, setActiveItem ] = useState(null);
 
+    const {
+        navVariant,
+    } = useNavbarContext();
 
     const location = useLocation();
 
@@ -170,6 +182,7 @@ const Navbar = () => {
             aria-label = "Expandable global"
             onSelect = {onSelect}
             onToggle = {onToggle}
+            variant = { navVariant }
         >
             <NavList>
                 { ! navigationEntries && 
