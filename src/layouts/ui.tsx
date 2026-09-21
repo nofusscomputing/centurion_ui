@@ -5,6 +5,8 @@ import {
 import {
     AlertGroup,
     Page,
+    PageSidebar,
+    PageSidebarBody,
 } from "@patternfly/react-core";
 
 
@@ -22,8 +24,10 @@ import {
     useNotificationContext
 } from "../components/NotificationDrawer";
 import
-    Navbar
-from "../components/page/Navbar";
+    Navbar,
+    {
+        useNavbarContext,
+} from "../components/page/Navbar";
 
 import { UserProvider } from "../hooks/UserContext";
 
@@ -41,6 +45,10 @@ import { UserProvider } from "../hooks/UserContext";
 const UI = (): React.JSX.Element => {
 
     const backend = useBackendProvider();
+
+    const {
+        isSidebarOpen,
+    } = useNavbarContext();
 
     const {
         alerts,
@@ -79,7 +87,16 @@ const UI = (): React.JSX.Element => {
                 isNotificationDrawerExpanded = {isNotificationsOpen}
                 masthead = {<Header />}
                 notificationDrawer = { setNotificationsOpen !== undefined ? <Notifications /> : null }
-                sidebar = {<Navbar />}
+                sidebar = {
+                    <PageSidebar
+                        id = "fill-sidebar"
+                        isSidebarOpen = {isSidebarOpen}
+                    >
+                        <PageSidebarBody>
+                            <Navbar />
+                        </PageSidebarBody>
+                    </PageSidebar>
+                }
             >
 
                 {backend.rootMetadata && <Outlet />}

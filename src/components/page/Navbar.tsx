@@ -15,8 +15,6 @@ import {
     NavExpandable,
     NavItem,
     NavList,
-    PageSidebar,
-    PageSidebarBody,
     Skeleton
 } from "@patternfly/react-core";
 
@@ -103,7 +101,6 @@ const Navbar = () => {
 
     const [ activeItem, setActiveItem ] = useState(null);
 
-    const {isSidebarOpen, onSidebarToggle } = useNavbarContext();
 
     const location = useLocation();
 
@@ -169,63 +166,63 @@ const Navbar = () => {
 
 
     return (
-        <PageSidebar isSidebarOpen={isSidebarOpen} id="fill-sidebar">
-            <PageSidebarBody>
-                <Nav onSelect={onSelect} onToggle={onToggle} aria-label="Expandable global">
-                    <NavList>
-                        { ! navigationEntries && 
-                             [...Array(7)].map((_, index) => {
+        <Nav
+            aria-label = "Expandable global"
+            onSelect = {onSelect}
+            onToggle = {onToggle}
+        >
+            <NavList>
+                { ! navigationEntries && 
+                        [...Array(7)].map((_, index) => {
+                        return (
+                            <Skeleton key = {index} />
+                        )
+                    })
+                }
+                { navigationEntries && navigationEntries.map((module, index) => {
+
+                    const groupId = `navigation-${module.name}-${index}`
+
+                    return (
+                        <NavExpandable
+                            groupId={`navigation-${module.name}-${index}`}
+                            isActive={activeGroup === groupId}
+                            isExpanded={activeGroup === groupId}
+                            icon={<IconLoader
+                                name = {'icon' in module ? String(module.icon) : String(module.name)}
+                                size = "lg"
+                            />}
+                            key={`navigation-${module.name}-${index}`}
+                            title = {module.display_name}
+                        >
+                            {module.pages.map((page, page_index) => {
+
                                 return (
-                                    <Skeleton key = {index} />
-                                )
-                            })
-                        }
-                        { navigationEntries && navigationEntries.map((module, index) => {
 
-                            const groupId = `navigation-${module.name}-${index}`
-
-                            return (
-                                <NavExpandable
-                                    groupId={`navigation-${module.name}-${index}`}
-                                    isActive={activeGroup === groupId}
-                                    isExpanded={activeGroup === groupId}
-                                    icon={<IconLoader
-                                        name = {'icon' in module ? String(module.icon) : String(module.name)}
-                                        size = "lg"
-                                    />}
-                                    key={`navigation-${module.name}-${index}`}
-                                    title = {module.display_name}
-                                >
-                                    {module.pages.map((page, page_index) => {
-
-                                        return (
-
-                                            <NavItem
+                                    <NavItem
+                                        id={`${groupId}_${page.name}`}
+                                        groupId={groupId}
+                                        itemId={`${groupId}_${page.name}-${page_index}`}
+                                        key={`${groupId}_${page.name}-${page_index}`}
+                                        isActive={activeItem === `${groupId}_${page.name}-${page_index}`}
+                                        icon={
+                                            <IconLoader
                                                 id={`${groupId}_${page.name}`}
-                                                groupId={groupId}
-                                                itemId={`${groupId}_${page.name}-${page_index}`}
-                                                key={`${groupId}_${page.name}-${page_index}`}
-                                                isActive={activeItem === `${groupId}_${page.name}-${page_index}`}
-                                                icon={
-                                                    <IconLoader
-                                                        id={`${groupId}_${page.name}`}
-                                                        name = {'icon' in page ? String(page.icon) : String(page.name)}
-                                                        size = "lg"
-                                                    />
-                                                }
-                                                component={(props) => <Link children={props.children.filter(v => v !== null && v !== undefined)} className={props.className} to={page.link}/>}
-                                            >
-                                                {page.display_name}
-                                            </NavItem>
-                                        );
-                                    })}
-                                </NavExpandable>
-                            )
-                        })}
-                    </NavList>
-                </Nav>
-            </PageSidebarBody>
-        </PageSidebar>
+                                                name = {'icon' in page ? String(page.icon) : String(page.name)}
+                                                size = "lg"
+                                            />
+                                        }
+                                        component={(props) => <Link children={props.children.filter(v => v !== null && v !== undefined)} className={props.className} to={page.link}/>}
+                                    >
+                                        {page.display_name}
+                                    </NavItem>
+                                );
+                            })}
+                        </NavExpandable>
+                    )
+                })}
+            </NavList>
+        </Nav>
     );
 }
  
