@@ -1,3 +1,9 @@
+## 0.14.4 (2026-09-21)
+
+### Fixes
+
+- **layout**: On create from DetailLayout redirect to created object
+
 ## 0.14.3 (2026-09-18)
 
 ### Fixes
