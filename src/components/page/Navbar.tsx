@@ -1,5 +1,7 @@
 import {
     createContext,
+    Dispatch,
+    SetStateAction,
     useContext,
     useEffect,
     useState
@@ -41,6 +43,8 @@ export type NavbarContext = {
      */
     navVariant: NavProps['variant']
 
+    setNavVariant: Dispatch<SetStateAction<NavProps['variant']>>
+
     /**
      * Current value of sidebar Open.
      */
@@ -56,6 +60,7 @@ export type NavbarContext = {
 
 const navbarContext = createContext<NavbarContext>({
     navVariant: 'default',
+    setNavVariant: undefined,
     isSidebarOpen: true,
     onSidebarToggle: undefined
 });
@@ -84,6 +89,7 @@ export const NavbarContextProvider = ({
     return (
         <navbarContext.Provider value={{
             navVariant: navVariant,
+            setNavVariant: setNavVariant,
             isSidebarOpen: isSidebarOpen,
             onSidebarToggle: onSidebarToggle
         }}>
@@ -112,6 +118,7 @@ const Navbar = () => {
 
     const {
         navVariant,
+        setNavVariant,
     } = useNavbarContext();
 
     const location = useLocation();
@@ -124,7 +131,9 @@ const Navbar = () => {
 
         if(backend.rootMetadata) {
 
-            setNavigationEntries(backend.rootMetadata.navigation)
+            setNavigationEntries(backend.rootMetadata.navigation.menu);
+
+            setNavVariant(backend.rootMetadata.navigation.variant || 'default');
 
         }
 
@@ -137,6 +146,7 @@ const Navbar = () => {
         if( navigationEntries ) {
 
             let index = 0;
+
             for(let menu of navigationEntries) {
 
                 let page_index = 0;
@@ -195,6 +205,25 @@ const Navbar = () => {
                 { navigationEntries && navigationEntries.map((module, index) => {
 
                     const groupId = `navigation-${module.name}-${index}`
+
+                    if( navVariant === 'horizontal' ) {
+
+                        return(
+                            <NavItem
+                                component={(props) => <Link children={props.children.filter(v => v !== null && v !== undefined)} className={props.className} to={module.link}/>}
+                                groupId={`navigation-${module.name}-${index}`}
+                                icon={<IconLoader
+                                    name = {'icon' in module ? String(module.icon) : String(module.name)}
+                                    size = "lg"
+                                />}
+                                isActive={activeGroup === groupId}
+                                id={`navigation-${module.name}-${index}`}
+                            >
+                                {module.display_name}
+                            </NavItem>
+                        );
+                    }
+
 
                     return (
                         <NavExpandable
