@@ -1,7 +1,10 @@
 import {
     apiCommonMetadata
 } from ".";
-import { NavigationEntryDescription } from "./navigation";
+
+import {
+    NavigationDescription,
+} from "./navigation";
 
 import {
     RouteDescription
@@ -58,9 +61,9 @@ export interface apiRootMetadata extends apiCommonMetadata {
     /**
      * Navigation structure for the UI.
      * 
-     * @expandType NavigationEntryDescription
+     * @expandType NavigationDescription
      */
-    navigation: Array<NavigationEntryDescription>;
+    navigation: NavigationDescription;
 
     /**
      * Route layout description the UI will use to create the route layout.

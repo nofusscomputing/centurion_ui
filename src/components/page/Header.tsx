@@ -9,10 +9,12 @@ import {
     MastheadToggle,
     PageToggleButton,
     Title,
+    Toolbar,
+    ToolbarContent,
 } from "@patternfly/react-core";
 
 import HeaderToolbar from "./HeaderToolbar";
-import {
+import Navbar, {
     useNavbarContext
 } from "./Navbar";
 
@@ -45,12 +47,17 @@ export type HeaderProps = {}
 const Header = ({
 }: HeaderProps): React.JSX.Element => {
 
+    const {
+        navVariant,
+    } = useNavbarContext();
+
     const { isSidebarOpen, onSidebarToggle } = useNavbarContext();
 
 
     return (
         <Masthead>
             <MastheadMain>
+                { navVariant === 'default' &&
                 <MastheadToggle>
                     <PageToggleButton
                         isHamburgerButton
@@ -59,13 +66,18 @@ const Header = ({
                         onSidebarToggle={onSidebarToggle}
                         id="fill-nav-toggle"
                     />
-                </MastheadToggle>
+                </MastheadToggle>}
                 <Title headingLevel="h1" className="nfc-text-no-wrap">
                     <Link style={{textDecoration: "none"}} to='/'>Centurion ERP</Link>
                 </Title>
             </MastheadMain>
             <MastheadContent>
-                <HeaderToolbar />
+                <Toolbar id="page-toolbar" isStatic>
+                    <ToolbarContent>
+                        { navVariant === 'horizontal' && <Navbar />}
+                        <HeaderToolbar />
+                    </ToolbarContent>
+                </Toolbar>
             </MastheadContent>
         </Masthead>
     );

@@ -244,6 +244,7 @@ const Markdown = (): React.JSX.Element => {
     return (
         <>
             <PageSection
+                isFilled = {true}
                 padding={{ default: 'noPadding'}}
             >
                 <Sidebar

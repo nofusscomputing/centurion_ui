@@ -193,6 +193,7 @@ const Detail = () => {
             <PageSection
                 className="pf-m-sticky-top"
                 type="tabs"
+                isFilled = {true}
             >
                 <Tabs
                     activeKey={activeTabKey}

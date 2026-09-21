@@ -1,5 +1,9 @@
 ## v0.15.0
 
+- Navigation Context Provider moved to the BackEnd layout.
+
+- Navigation can be defined as either _"vertical"_ (default when nothing specified) or _"horizontal"_. This must be specified as part of the [Navigation Description](https://nofusscomputing.com/projects/centurion_user_interface/api/NavigationDescription).
+
 
 ## v0.14.0
 
