@@ -79,9 +79,7 @@ const UI = (): React.JSX.Element => {
                 isNotificationDrawerExpanded = {isNotificationsOpen}
                 masthead = {<Header />}
                 notificationDrawer = { setNotificationsOpen !== undefined ? <Notifications /> : null }
-                sidebar = {<Navbar
-                    apiMetadata = {backend.rootMetadata}
-                />}
+                sidebar = {<Navbar />}
             >
 
                 {backend.rootMetadata && <Outlet />}

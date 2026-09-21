@@ -21,9 +21,10 @@ import {
 } from "@patternfly/react-core";
 
 import IconLoader from '../IconLoader';
+
 import {
-    APIMetadata
-} from '../../../types/APIMetadata';
+    useBackendProvider
+} from '../../App/providers/backend';
 
 
 
@@ -88,22 +89,6 @@ export const NavbarContextProvider = ({
 
 
 /**
- * @summary Props for the Navbar component
- * 
- * @category Props
- * @since 0.1.0
- */
-export type NavbarProps = {
-
-    /**
-     * Backend root Metadata.
-     */
-    apiMetadata: APIMetadata
-}
-
-
-
-/**
  * 
  * Renders the complete site navigation in a sidebar.
  * 
@@ -112,9 +97,7 @@ export type NavbarProps = {
  * @category Component
  * @since 0.1.0 
  */
-const Navbar = ({
-   apiMetadata,
-}: NavbarProps) => {
+const Navbar = () => {
 
     const [ activeGroup, setActiveGroup ] = useState(null);
 
@@ -126,16 +109,17 @@ const Navbar = ({
 
     const [ navigationEntries, setNavigationEntries ] = useState(null)
 
+    const backend = useBackendProvider();
 
     useEffect(() => {
 
-        if(apiMetadata) {
+        if(backend.rootMetadata) {
 
-            setNavigationEntries(apiMetadata.navigation)
+            setNavigationEntries(backend.rootMetadata.navigation)
 
         }
 
-    }, [ apiMetadata ]);
+    }, [ backend.rootMetadata ]);
 
 
 
