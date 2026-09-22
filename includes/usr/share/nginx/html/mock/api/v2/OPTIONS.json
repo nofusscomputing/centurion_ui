@@ -1,159 +1,162 @@
 {
-  "name": "Centurion UI",
-  "description": "Centurion UI Demo",
-  "urls": {
-    "self": "/mock/api/v2"
-  },
-  "renders": [
-    "application/json",
-    "text/html"
-  ],
-  "parses": [
-    "application/json",
-    "application/x-www-form-urlencoded",
-    "multipart/form-data"
-  ],
-  "allowed_methods": [
-    "GET",
-    "HEAD",
-    "OPTIONS"
-  ],
-  "layout": [],
-  "version": {
-    "project_url": null,
-    "sha": null,
-    "version": "UI Demo"
-  },
-  "navigation": [
-    {
-      "display_name": "Fields",
-      "name": "fields",
-      "pages": [
-        {
-          "display_name": "Boolean",
-          "name": "boolean",
-          "link": "/features/fields/2"
-        },
-        {
-          "display_name": "Choice",
-          "name": "choice",
-          "link": "/features/fields/3"
-        },
-        {
-          "display_name": "Date",
-          "name": "date",
-          "link": "/features/fields/4"
-        },
-        {
-          "display_name": "Date with Time",
-          "name": "datetime",
-          "link": "/features/fields/5"
-        },
-        {
-          "display_name": "Email",
-          "name": "email",
-          "link": "/features/fields/6"
-        },
-        {
-          "display_name": "Integer",
-          "name": "integer",
-          "link": "/features/fields/7"
-        },
-        {
-          "display_name": "JSON",
-          "name": "json",
-          "link": "/features/fields/8"
-        },
-        {
-          "display_name": "Markdown",
-          "name": "markdown",
-          "link": "/features/fields/9"
-        },
-        {
-          "display_name": "String",
-          "name": "string",
-          "link": "/features/fields/1"
-        }
-      ]
+    "name": "Centurion UI",
+    "description": "Centurion UI Demo",
+    "urls": {
+        "self": "/mock/api/v2"
     },
-    {
-      "display_name": "Layouts",
-      "name": "layout",
-      "pages": [
-        {
-          "display_name": "List",
-          "name": "list",
-          "link": "/layout/table"
-        },
-        {
-          "display_name": "Detail",
-          "name": "detail",
-          "link": "/layout/detail/1"
-        },
-        {
-          "display_name": "Ticket",
-          "name": "ticket",
-          "link": "/layout/ticket/request"
-        }
-      ]
-    }
-  ],
-  "routes": [{
-        "id": "root",
-        "path": "/",
-        "children": [
+    "renders": [
+        "application/json",
+        "text/html"
+    ],
+    "parses": [
+        "application/json",
+        "application/x-www-form-urlencoded",
+        "multipart/form-data"
+    ],
+    "allowed_methods": [
+        "GET",
+        "HEAD",
+        "OPTIONS"
+    ],
+    "layout": [],
+    "version": {
+        "project_url": null,
+        "sha": null,
+        "version": "UI Demo"
+    },
+    "navigation": {
+        "menu": [
             {
-                "id": "settings",
-                "path": "settings",
-                "component": "settings",
-                "loader": "django"
-            },
-            {
-                "path": ":module",
-                "children": [
+                "display_name": "Fields",
+                "name": "fields",
+                "pages": [
                     {
-                        "path": "ticket",
-                        "children": [
-                            {
-                                "path": ":type",
-                                "children": [
-                                    {
-                                        "index": true,
-                                        "component": "list",
-                                        "loader": "django"
-                                    },
-                                    {
-                                        "path": ":pk",
-                                        "component": "ticket",
-                                        "loader": "django"
-                                    }
-                                ]
-                            }
-                        ]
+                        "display_name": "Boolean",
+                        "name": "boolean",
+                        "link": "/features/fields/2"
                     },
                     {
-                        "path": ":model",
-                        "children": [
-                            {
-                                "index": true,
-                                "component": "list",
-                                "loader": "django"
-                            },
-                            {
-                                "path": ":pk",
-                                "children": [
-                                    {
-                                        "index": true,
-                                        "component": "detail",
-                                        "loader": "django"
-
-                                    }
-                                ]
-                            }
-                        ]
+                        "display_name": "Choice",
+                        "name": "choice",
+                        "link": "/features/fields/3"
+                    },
+                    {
+                        "display_name": "Date",
+                        "name": "date",
+                        "link": "/features/fields/4"
+                    },
+                    {
+                        "display_name": "Date with Time",
+                        "name": "datetime",
+                        "link": "/features/fields/5"
+                    },
+                    {
+                        "display_name": "Email",
+                        "name": "email",
+                        "link": "/features/fields/6"
+                    },
+                    {
+                        "display_name": "Integer",
+                        "name": "integer",
+                        "link": "/features/fields/7"
+                    },
+                    {
+                        "display_name": "JSON",
+                        "name": "json",
+                        "link": "/features/fields/8"
+                    },
+                    {
+                        "display_name": "Markdown",
+                        "name": "markdown",
+                        "link": "/features/fields/9"
+                    },
+                    {
+                        "display_name": "String",
+                        "name": "string",
+                        "link": "/features/fields/1"
+                    }
+                ]
+            },
+            {
+                "display_name": "Layouts",
+                "name": "layout",
+                "pages": [
+                    {
+                        "display_name": "List",
+                        "name": "list",
+                        "link": "/layout/table"
+                    },
+                    {
+                        "display_name": "Detail",
+                        "name": "detail",
+                        "link": "/layout/detail/1"
+                    },
+                    {
+                        "display_name": "Ticket",
+                        "name": "ticket",
+                        "link": "/layout/ticket/request"
                     }
                 ]
             }
         ]
-    }]
+    },
+    "routes": [
+        {
+            "id": "root",
+            "path": "/",
+            "children": [
+                {
+                    "id": "settings",
+                    "path": "settings",
+                    "component": "settings",
+                    "loader": "django"
+                },
+                {
+                    "path": ":module",
+                    "children": [
+                        {
+                            "path": "ticket",
+                            "children": [
+                                {
+                                    "path": ":type",
+                                    "children": [
+                                        {
+                                            "index": true,
+                                            "component": "list",
+                                            "loader": "django"
+                                        },
+                                        {
+                                            "path": ":pk",
+                                            "component": "ticket",
+                                            "loader": "django"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "path": ":model",
+                            "children": [
+                                {
+                                    "index": true,
+                                    "component": "list",
+                                    "loader": "django"
+                                },
+                                {
+                                    "path": ":pk",
+                                    "children": [
+                                        {
+                                            "index": true,
+                                            "component": "detail",
+                                            "loader": "django"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 }
