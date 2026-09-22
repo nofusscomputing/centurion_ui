@@ -1,6 +1,6 @@
 {
-    "name": "Centurion UI",
-    "description": "Centurion UI Demo",
+    "name": "Centurion UI Demo",
+    "description": "This mock backend is for demonstrating the features that Centurion UI has.",
     "urls": {
         "self": "/mock/api/v2"
     },
