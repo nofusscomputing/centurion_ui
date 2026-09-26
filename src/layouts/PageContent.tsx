@@ -199,11 +199,7 @@ const PageContent = (): React.JSX.Element => {
 
                 </PageSection>
 
-                <PageSection isFilled={true}>
-
                     <Outlet />
-
-                </PageSection>
 
                 { additionalPageFooter && additionalPageFooter }
 

@@ -677,9 +677,17 @@ export const Comment = ({
             >
                 Edit
             </DropdownItem>}
-            <DropdownItem key="copy-link" >
+
+            { comment_page_data && <DropdownItem
+                key="copy-link"
+                onClick = {  ()=> {
+                    navigator.clipboard.writeText(`${document.location.href.split(
+                        document.location.pathname
+                    )[0]}${document.location.pathname}#comment-${comment_page_data.id}`);
+                }}
+            >
                 Copy Link
-            </DropdownItem>
+            </DropdownItem>}
             </>}
         </>
     );
@@ -721,6 +729,8 @@ export const Comment = ({
         >
             
             <CardHeader
+                id = {comment_page_data ? `comment-${comment_page_data.id}` : 'new' }
+                
                 actions={{ actions: headerActions, hasNoOffset: true}}
             >
                 {comment_header_text}

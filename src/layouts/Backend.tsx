@@ -6,12 +6,19 @@ import {
     BackendProvider
 } from "../App/providers/backend";
 
+import {
+    NavbarContextProvider
+} from "../components/page/Navbar";
+
 
 
 /**
  * This layout is intended to be the component on any route that contains
  * handle `backend_url`. This is so that every child layout can obtain the
  * correct backend details.
+ * 
+ * This layout also contains the {@link NavbarContextProvider}. This is so that
+ * navigation can be setup per provider.
  * 
  * @summary Backend layout
  * 
@@ -22,9 +29,11 @@ const BackendLayout = (): React.JSX.Element => {
 
     return (
         <BackendProvider>
+            <NavbarContextProvider>
 
-            <Outlet />
+                <Outlet />
 
+            </NavbarContextProvider>
         </BackendProvider>
     );
 
