@@ -257,9 +257,11 @@ describe("NotificationDrawer", () => {
                     url: 'url'
                 }}
             >
-                <NotificationContextProvider>
-                    <Stub initialEntries={[objectMetadata.urls.self]} />
-                </NotificationContextProvider>
+                <NavbarContextProvider>
+                    <NotificationContextProvider>
+                        <Stub initialEntries={[objectMetadata.urls.self]} />
+                    </NotificationContextProvider>
+                </NavbarContextProvider>
             </backendContext.Provider>
         );
 
@@ -370,9 +372,11 @@ describe("NotificationDrawer", () => {
                         url: 'url'
                     }}
                 >
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[objectMetadata.urls.self]} />
-                    </NotificationContextProvider>
+                    <NavbarContextProvider>
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[objectMetadata.urls.self]} />
+                        </NotificationContextProvider>
+                    </NavbarContextProvider>
                 </backendContext.Provider>
             );
 
@@ -475,9 +479,11 @@ describe("NotificationDrawer", () => {
                         url: 'url'
                     }}
                 >
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[objectMetadata.urls.self]} />
-                    </NotificationContextProvider>
+                    <NavbarContextProvider>
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[objectMetadata.urls.self]} />
+                        </NotificationContextProvider>
+                    </NavbarContextProvider>
                 </backendContext.Provider>
             );
 
@@ -586,9 +592,11 @@ describe("NotificationDrawer", () => {
                             url: 'url'
                         }}
                     >
-                        <NotificationContextProvider>
-                            <Stub initialEntries={[objectMetadata.urls.self]} />
-                        </NotificationContextProvider>
+                        <NavbarContextProvider>
+                            <NotificationContextProvider>
+                                <Stub initialEntries={[objectMetadata.urls.self]} />
+                            </NotificationContextProvider>
+                        </NavbarContextProvider>
                     </backendContext.Provider>
                 );
 
@@ -693,9 +701,11 @@ describe("NotificationDrawer", () => {
                             url: 'url'
                         }}
                     >
-                        <NotificationContextProvider>
-                            <Stub initialEntries={[objectMetadata.urls.self]} />
-                        </NotificationContextProvider>
+                        <NavbarContextProvider>
+                            <NotificationContextProvider>
+                                <Stub initialEntries={[objectMetadata.urls.self]} />
+                            </NotificationContextProvider>
+                        </NavbarContextProvider>
                     </backendContext.Provider>
                 );
 
@@ -801,9 +811,11 @@ describe("NotificationDrawer", () => {
                         url: 'url'
                     }}
                 >
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[objectMetadata.urls.self]} />
-                    </NotificationContextProvider>
+                    <NavbarContextProvider>
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[objectMetadata.urls.self]} />
+                        </NotificationContextProvider>
+                    </NavbarContextProvider>
                 </backendContext.Provider>
             );
 
@@ -895,9 +907,11 @@ describe("NotificationDrawer", () => {
                         url: 'url'
                     }}
                 >
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[objectMetadata.urls.self]} />
-                    </NotificationContextProvider>
+                    <NavbarContextProvider>
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[objectMetadata.urls.self]} />
+                        </NotificationContextProvider>
+                    </NavbarContextProvider>
                 </backendContext.Provider>
             );
 
@@ -987,9 +1001,11 @@ describe("NotificationDrawer", () => {
                         url: 'url'
                     }}
                 >
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[objectMetadata.urls.self]} />
-                    </NotificationContextProvider>
+                    <NavbarContextProvider>
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[objectMetadata.urls.self]} />
+                        </NotificationContextProvider>
+                    </NavbarContextProvider>
                 </backendContext.Provider>
             );
 
@@ -1079,9 +1095,11 @@ describe("NotificationDrawer", () => {
                         url: 'url'
                     }}
                 >
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[objectMetadata.urls.self]} />
-                    </NotificationContextProvider>
+                    <NavbarContextProvider>
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[objectMetadata.urls.self]} />
+                        </NotificationContextProvider>
+                    </NavbarContextProvider>
                 </backendContext.Provider>
             );
 
@@ -1158,9 +1176,11 @@ describe("NotificationDrawer", () => {
                         url: 'url'
                     }}
                 >
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[objectMetadata.urls.self]} />
-                    </NotificationContextProvider>
+                    <NavbarContextProvider>
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[objectMetadata.urls.self]} />
+                        </NotificationContextProvider>
+                    </NavbarContextProvider>
                 </backendContext.Provider>
             );
 
@@ -1264,9 +1284,11 @@ describe("NotificationDrawer", () => {
                         url: 'url'
                     }}
                 >
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[objectMetadata.urls.self]} />
-                    </NotificationContextProvider>
+                    <NavbarContextProvider>
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[objectMetadata.urls.self]} />
+                        </NotificationContextProvider>
+                    </NavbarContextProvider>
                 </backendContext.Provider>
             );
 
@@ -1341,9 +1363,11 @@ describe("NotificationDrawer", () => {
                         url: 'url'
                     }}
                 >
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[objectMetadata.urls.self]} />
-                    </NotificationContextProvider>
+                    <NavbarContextProvider>
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[objectMetadata.urls.self]} />
+                        </NotificationContextProvider>
+                    </NavbarContextProvider>
                 </backendContext.Provider>
             );
 
@@ -1436,9 +1460,11 @@ describe("NotificationDrawer", () => {
                         url: 'url'
                     }}
                 >
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[objectMetadata.urls.self]} />
-                    </NotificationContextProvider>
+                    <NavbarContextProvider>
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[objectMetadata.urls.self]} />
+                        </NotificationContextProvider>
+                    </NavbarContextProvider>
                 </backendContext.Provider>
             );
 
@@ -1526,9 +1552,11 @@ describe("NotificationDrawer", () => {
                         url: 'url'
                     }}
                 >
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[objectMetadata.urls.self]} />
-                    </NotificationContextProvider>
+                    <NavbarContextProvider>
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[objectMetadata.urls.self]} />
+                        </NotificationContextProvider>
+                    </NavbarContextProvider>
                 </backendContext.Provider>
             );
 
@@ -1624,9 +1652,11 @@ describe("NotificationDrawer", () => {
                         url: 'url'
                     }}
                 >
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[objectMetadata.urls.self]} />
-                    </NotificationContextProvider>
+                    <NavbarContextProvider>
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[objectMetadata.urls.self]} />
+                        </NotificationContextProvider>
+                    </NavbarContextProvider>
                 </backendContext.Provider>
             );
 
@@ -1709,9 +1739,11 @@ describe("NotificationDrawer", () => {
                         url: 'url'
                     }}
                 >
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[objectMetadata.urls.self]} />
-                    </NotificationContextProvider>
+                    <NavbarContextProvider>
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[objectMetadata.urls.self]} />
+                        </NotificationContextProvider>
+                    </NavbarContextProvider>
                 </backendContext.Provider>
             );
 
@@ -1811,9 +1843,11 @@ describe("NotificationDrawer", () => {
                         url: 'url'
                     }}
                 >
-                    <NotificationContextProvider>
-                        <Stub initialEntries={[objectMetadata.urls.self]} />
-                    </NotificationContextProvider>
+                    <NavbarContextProvider>
+                        <NotificationContextProvider>
+                            <Stub initialEntries={[objectMetadata.urls.self]} />
+                        </NotificationContextProvider>
+                    </NavbarContextProvider>
                 </backendContext.Provider>
             );
 
