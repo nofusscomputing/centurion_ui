@@ -48,10 +48,10 @@ export interface BackendVersion {
  */
 export interface apiRootMetadata extends apiCommonMetadata {
 
-    // /**
-    //  * Name of the site. This value will be displayed in the page header.
-    //  */
-    // name: String;
+    /**
+     * Name of the site. This value will be displayed in the page header.
+     */
+    name: String;
 
     // /**
     //  * Description on the site.

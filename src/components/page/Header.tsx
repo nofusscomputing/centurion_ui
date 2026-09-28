@@ -18,6 +18,10 @@ import Navbar, {
     useNavbarContext
 } from "./Navbar";
 
+import {
+    useBackendProvider
+} from "../../App/providers/backend";
+
 import '../../../node_modules/@patternfly/patternfly/components/Masthead/masthead.css'
 
 
@@ -47,6 +51,8 @@ export type HeaderProps = {}
 const Header = ({
 }: HeaderProps): React.JSX.Element => {
 
+    const backend = useBackendProvider();
+
     const {
         navVariant,
     } = useNavbarContext();
@@ -68,7 +74,9 @@ const Header = ({
                     />
                 </MastheadToggle>}
                 <Title headingLevel="h1" className="nfc-text-no-wrap">
-                    <Link style={{textDecoration: "none"}} to='/'>Centurion ERP</Link>
+                    <Link style={{textDecoration: "none"}} to='/'>
+                    {backend.rootMetadata && backend.rootMetadata.name}
+                    </Link>
                 </Title>
             </MastheadMain>
             <MastheadContent>
