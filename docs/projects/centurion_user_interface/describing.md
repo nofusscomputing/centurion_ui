@@ -74,3 +74,7 @@ The page content area does not have a single description. However what must be d
 #### Views
 
 Views are used to establish the layout of the page content. A view is a child of the Page Content Area.
+
+![Views Layout](./assets/images/ViewsLayout.png)
+
+_Fig 2. Purple shaded area shows the location where the view will be rendered._
