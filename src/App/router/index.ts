@@ -11,13 +11,13 @@ import {
 import History from "../../layout/history"
 import List from "../../layout/List"
 import Settings from "../../layout/Settings"
-import Ticket from "../../layout/Ticket"
 
 import BackendLayout from "../../layouts/Backend"
 import Base from "../../layouts/Base"
 import DetailLayout from "../../layouts/Detail"
 import Markdown from "../../layout/Markdown"
 import Redirect from "../../layouts/Redirect"
+import Ticket from "../../layouts/Ticket"
 
 import {
     RouteDescription,
