@@ -262,6 +262,7 @@ export interface ViewsProps {
  * 
  * @category Component
  * @expandType ViewsProps
+ * @see [Sidebar Example in Ticket - Demo Site](https://centurion-ui.nofusscomputing.com/layout/ticket/request/1)
  * @since 0.15.0
  */
 const Views = ({
