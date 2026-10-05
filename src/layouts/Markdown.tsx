@@ -1,4 +1,5 @@
 import {
+    useContext,
     useEffect,
     useState
 } from "react";
@@ -15,19 +16,30 @@ import {
     Label,
     LabelGroup,
     PageSection,
-    Sidebar,
-    SidebarContent,
-    SidebarPanel,
     Title
 } from "@patternfly/react-core";
 
-import RenderMarkdown from "../functions/RenderMarkdown";
-import { useIsMobile } from "../hooks/useIsMobile";
+import {
+    TagIcon
+} from "@patternfly/react-icons"
 
-import { TagIcon } from "@patternfly/react-icons"
+import
+    Views,
+    {
+        viewsContext,
+        ViewsVariant
+} from "../components/Views";
+
+import RenderMarkdown from "../functions/RenderMarkdown";
+
+import {
+    useIsMobile
+} from "../hooks/useIsMobile";
+
 import {
     usePageContext
 } from "../layouts/PageContent";
+
 
 
 function getHeadings( root = null ) {
@@ -149,7 +161,12 @@ const Markdown = (): React.JSX.Element => {
 
     const [ markdownDocumentFrontMatter, setMarkdownDocumentFrontMatter ] = useState(null)
 
-    const [ markdownDocumentTOC, setMarkdownDocumentTOC ] = useState(null)
+    const [offsetHeight, setOffsetHeight] = useState(100);
+
+    const {
+        pageContent, setPageContent,
+        sidebarContent, setSidebarContent
+    } = useContext(viewsContext);
 
     const [ pageHeadings, setPageHeadings] = useState(null);
 
@@ -187,12 +204,6 @@ const Markdown = (): React.JSX.Element => {
         const RemoveFrontmatter = new RegExp(/^(?<frontMatter>---\n[\S|\s]+\n---\n)(?<document>[\S|\s]+)/g)
 
     };
-
-    const tocCallback = (toc) => {
-
-        if( ! markdownDocumentTOC ) setMarkdownDocumentTOC(toc);
-
-    }
 
 
     const mdPageFooter = (
@@ -233,95 +244,86 @@ const Markdown = (): React.JSX.Element => {
         }
 
     }, [
-        // mdPageFooter
         markdownDocumentFrontMatter
     ]);
 
 
-    const [offsetHeight, setOffsetHeight] = useState(100);
+
+    useEffect(() => {
+
+        if( pageHeadings ) setSidebarContent(
+            <>
+                <JumpLinks
+                    isVertical={!isVertical}
+                    isCentered={isVertical}
+                    label="Contents"
+                    offset={offsetHeight}
+                    scrollableSelector="#page-main"
+                    expandable={{
+                        default: isVertical ? 'expandable' : 'nonExpandable',
+                        lg: 'nonExpandable'
+                    }}
+                    isExpanded={!isVertical}
+                >
+                    <JumpLinksWrapper toc={pageHeadings} />
+
+                </JumpLinks>
+
+            </>
+        );
+
+    }, [ pageHeadings ]);
+
+
+    useEffect(() => {
+
+        if( markdownDocument ) setPageContent(<>
+            {markdownDocumentFrontMatter?.tags &&
+            <LabelGroup
+                categoryName = "Tags"
+            >
+                {markdownDocumentFrontMatter.tags.map(tag => {
+
+                    return (
+                        <Label icon={<TagIcon />}>{tag}</Label>
+                    );
+                })}
+            </LabelGroup>}
+
+            <Content isEditorial={true}>
+
+                <RenderMarkdown
+                    full_width={true}
+                    env={{}}
+                    frontmatterCallback={frontmatterCallback}
+                >
+                    {String(
+                        markdownDocument
+                    ).replaceAll(
+                        '(./', `(${document.location.pathname}/`
+                    ).replaceAll(
+                        `(${document.location.pathname}/`, `(${document.location.pathname}`
+                    ).replaceAll(
+                        'index.md)', ')'
+                    ).replaceAll(
+                        '.md)', ')'
+                    )}
+                </RenderMarkdown>
+
+            </Content>
+
+        </>);
+
+    }, [
+        markdownDocument,
+        document.location.pathname
+    ]);
 
 
     return (
-        <>
-            <PageSection
-                isFilled = {true}
-                padding={{ default: 'noPadding'}}
-            >
-                <Sidebar
-                    hasGutter
-                    isPanelRight
-                    id="scrollable-element"
-                >
-                    { pageHeadings &&
-                    
-                    <SidebarPanel
-                        variant="sticky"
-                    >
-
-                        <JumpLinks
-                            isVertical={!isVertical}
-                            isCentered={isVertical}
-                            label="Contents"
-                            // offset={offsetHeight}
-                            scrollableSelector="#scrollable-element"
-                            expandable={{
-                                default: isVertical ? 'expandable' : 'nonExpandable',
-                                lg: 'nonExpandable'
-                            }}
-                            isExpanded={!isVertical}
-                        >
-                            <JumpLinksWrapper toc={pageHeadings} />
-
-                        </JumpLinks>
-
-                    </SidebarPanel>}
-                    <SidebarContent>
-                        {markdownDocumentFrontMatter?.tags &&
-                        <PageSection
-                            padding={{ default: 'noPadding'}}
-                        >
-
-                            <LabelGroup
-                                categoryName = "Tags"
-                            >
-                                {markdownDocumentFrontMatter.tags.map(tag => {
-
-                                    return (
-                                        <Label icon={<TagIcon />}>{tag}</Label>
-                                    );
-                                })}
-                            </LabelGroup>
-                        </PageSection>}
-
-                        <PageSection
-                            padding={{ default: 'noPadding'}}
-                        >
-
-                            <Content isEditorial={true}>
-
-                                <RenderMarkdown
-                                    full_width={true}
-                                    env={{}}
-                                    frontmatterCallback={frontmatterCallback}
-                                    tocCallback = {tocCallback}
-                                >
-                                    {String(
-                                        markdownDocument
-                                    ).replaceAll(
-                                        '(./', `(${document.location.pathname}/`
-                                    ).replaceAll(
-                                        'index.md)', ')'
-                                    ).replaceAll(
-                                        '.md)', ')'
-                                    )}
-                                </RenderMarkdown>
-
-                            </Content>
-                        </PageSection>
-                    </SidebarContent>
-                </Sidebar>
-            </PageSection>
-        </>
+        <Views
+            variant = {ViewsVariant.sidebar}
+        />
     );
 
 }
