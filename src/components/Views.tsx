@@ -1,5 +1,18 @@
-import { Flex, Gallery, PageSection, Sidebar, SidebarContent, SidebarPanel } from "@patternfly/react-core";
-import { createContext, useContext, useState } from "react";
+import React, {
+    createContext,
+    useContext,
+    useState
+} from "react";
+
+import {
+    Card,
+    Flex,
+    Gallery,
+    PageSection,
+    Sidebar,
+    SidebarContent,
+    SidebarPanel
+} from "@patternfly/react-core";
 
 
 
@@ -18,15 +31,94 @@ export enum CardLayout {
 
 
 /**
+ * dsfds
  * 
  * @category Context
  * @since 0.15.0
  */
-export const viewsContext = createContext(null);
+export interface ViewsContext {
+
+    /**
+     * What layout to use for the cards.
+     * 
+     * @expandType CardLayout
+     */
+    cardLayout: CardLayout
+
+    /**
+     * Is the content to be layout cards.
+     */
+    isCardContent: boolean
+
+    /**
+     * Content that will be rendered as the "page"
+     */
+    pageContent: React.JSX.Element
+
+    /**
+     * Set the CardLayout value.
+     */
+    setCardLayout: React.Dispatch<React.SetStateAction<CardLayout>>
+
+    /**
+     * Set the value of if this view is for cards.
+     */
+    setIsCardContent: React.Dispatch<React.SetStateAction<boolean>>
+
+    /**
+     * Sets the value that will be used for the page content.
+     */
+    setPageContent: React.Dispatch<React.SetStateAction<React.ReactNode>>
+
+    /**
+     * Sets the value that will be used within the sidebar, if a sidbar view
+     * is to be used.
+     */
+    setSidebarContent: React.Dispatch<React.SetStateAction<React.ReactNode>>
+
+    /**
+     * Content that will be rendered in the sidebar.
+     */
+    sidebarContent: React.JSX.Element
+    
+}
 
 
 
-const CardContent = ({ children }) => {
+/**
+ * 
+ * @category Context
+ * @expandType ViewsContext
+ * @since 0.15.0
+ */
+export const viewsContext = createContext<ViewsContext>(null);
+
+
+
+/**
+ * Props for CardContent
+ * 
+ * @category Props
+ * @since 0.15.0
+ */
+export interface CardContentProps {
+
+    /**
+     * Cards to render.
+     */
+    children: React.ReactElement<Array<typeof Card> | typeof Card>
+}
+
+
+/**
+ * 
+ * @category Component
+ * @internal
+ * @since 0.15.0
+ */
+const CardContent = ({
+    children
+}: CardContentProps ): React.JSX.Element => {
 
     const {
         cardLayout,
@@ -68,9 +160,10 @@ const CardContent = ({ children }) => {
  * View that contains a sidebar.
  * 
  * @category View
+ * @internal
  * @since 0.15.0
  */
-export const SidebarView = () => {
+export const SidebarView = (): React.JSX.Element => {
 
     const {
         cardLayout,
@@ -163,15 +256,17 @@ export interface ViewsProps {
  * requires that you set the appropriate values as part of the
  * {@link viewsContext}.
  * 
+ * View content be set to be for cards or not.
+ * 
  * @summary Dynamic Views Layout
  * 
- * @category Layout
+ * @category Component
  * @expandType ViewsProps
  * @since 0.15.0
  */
 const Views = ({
     variant = ViewsVariant.plain
-}: ViewsProps) => {
+}: ViewsProps): React.JSX.Element => {
 
     const {
         cardLayout,
@@ -210,22 +305,26 @@ export default Views
 
 
 /**
- * This context provider contains the state for the view that is being used.
+ * This context provider contains the context from {@link viewsContext} for the
+ * view that is being used.
+ * 
+ * You do not need to define this provider as it is defined as part of
+ * {@link PageContent}
  * 
  * @category Provider
  * @since 0.15.0
  */
 export const ViewsProvider = ({
     children
-}) => {
+}): React.JSX.Element => {
 
-    const [ cardLayout, setCardLayout ] = useState(CardLayout.grid);
+    const [ cardLayout, setCardLayout ] = useState<CardLayout>(CardLayout.grid);
 
-    const [ isCardContent, setIsCardContent ] = useState(false);
+    const [ isCardContent, setIsCardContent ] = useState<boolean>(false);
 
-    const [ sidebarContent, setSidebarContent ] = useState(<></>);
+    const [ sidebarContent, setSidebarContent ] = useState<React.ReactElement>(<></>);
 
-    const [ pageContent, setPageContent ] = useState(<></>);
+    const [ pageContent, setPageContent ] = useState<React.ReactElement>(<></>);
 
     return (
         <viewsContext.Provider
