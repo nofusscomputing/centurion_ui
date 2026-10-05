@@ -3,7 +3,7 @@
     "description": "Models linked to ticket",
     "documentation": "https://nofusscomputing.com/projects/centurion_erp/user/core/ticket_linked_model",
     "urls": {
-        "self": "/layout/ticket/request/7/models"
+        "self": "/layout/ticket/request/1/models"
     },
     "renders": [
         "application/json",

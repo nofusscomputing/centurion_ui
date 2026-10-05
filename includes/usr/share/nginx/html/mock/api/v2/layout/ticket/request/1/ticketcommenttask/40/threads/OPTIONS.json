@@ -3,11 +3,11 @@
     "description": "Comments made on Ticket",
     "documentation": "https://nofusscomputing.com/projects/centurion_erp/user/core/ticket_comment",
     "urls": {
-        "self": "/layout/ticket/request/7/comment/40/threads",
+        "self": "/layout/ticket/request/1/comment/40/threads",
         "sub_models": {
-            "ticketcommentaction": "/layout/ticket/request/7/ticketcommentaction/40/threads",
-            "ticketcommentsolution": "/layout/ticket/request/7/ticketcommentsolution/40/threads",
-            "ticketcommenttask": "/layout/ticket/request/7/ticketcommenttask/40/threads"
+            "ticketcommentaction": "/layout/ticket/request/1/ticketcommentaction/40/threads",
+            "ticketcommentsolution": "/layout/ticket/request/1/ticketcommentsolution/40/threads",
+            "ticketcommenttask": "/layout/ticket/request/1/ticketcommenttask/40/threads"
         }
     },
     "renders": [

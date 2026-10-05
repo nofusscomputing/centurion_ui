@@ -3,15 +3,15 @@
     "description": "Comments made on Ticket",
     "documentation": "https://nofusscomputing.com/projects/centurion_erp/user/core/ticket_comment",
     "urls": {
-        "self": "/layout/ticket/request/7/comments",
+        "self": "/layout/ticket/request/1/comments",
         "sub_models": {
             "ticketcommentsolution": {
                 "display_name": "Solution",
-                "url": "/layout/ticket/request/7/ticketcommentsolution"
+                "url": "/layout/ticket/request/1/ticketcommentsolution"
             },
             "ticketcommenttask": {
                 "display_name": "Task",
-                "url": "/layout/ticket/request/7/ticketcommenttask"
+                "url": "/layout/ticket/request/1/ticketcommenttask"
             }
         }
     },
