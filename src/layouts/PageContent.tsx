@@ -61,7 +61,7 @@ export type PageContext = {
     /**
      * Icons to display as part of the page header.
      */
-    setPageHeaderIcons: React.Dispatch<React.SetStateAction<string>>
+    setPageHeaderIcons: React.Dispatch<React.SetStateAction<React.JSX.Element>>
 
 }
 
