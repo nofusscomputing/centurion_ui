@@ -21,24 +21,50 @@ import {
     CardHeader,
     DescriptionList,
     Flex,
-    PageSection,
-    Sidebar,
-    SidebarContent,
-    SidebarPanel,
 } from "@patternfly/react-core";
+
+import '@patternfly/react-styles/css/components/Button/button.css'
+import '@patternfly/react-styles/css/components/Card/card.css'
+import '@patternfly/react-styles/css/components/DescriptionList/description-list.css'
+import '@patternfly/react-styles/css/layouts/Flex/flex.css'
 
 import '../styles/ticket.css'
 
-import { Comments } from "../components/Comment";
+import CardDataSet from "../components/CardDataSet";
+import {
+    Comments
+} from "../components/Comment";
+import {
+    Fields
+} from "../components/DisplayFields";
+import
+    Views,
+    {
+        CardLayout,
+        viewsContext,
+        ViewsVariant
+} from "../components/Views";
+
 import FieldData from "../functions/FieldData";
-import { Fields } from "../components/DisplayFields";
+import URLSanitize from "../functions/URLSanitize";
+
 import urlBuilder from "../hooks/urlBuilder";
 import UserContext from "../hooks/UserContext";
-import URLSanitize from "../functions/URLSanitize";
-import CardDataSet from "../components/CardDataSet";
+import {
+    useIsMobile
+} from "../hooks/useIsMobile";
+
 import {
     usePageContext
 } from "../layouts/PageContent";
+
+import {
+    apiObject
+} from "../types/backend/apiObject/object";
+import {
+    apiMetadata
+} from "../types/backend/apiMetadata/metadata";
+
 
 
 /**
@@ -67,41 +93,45 @@ export function secondsToTime(secs) {
 }
 
 /**
+ * Use this Layout for displaying a data object that is a ticket and/or work
+ * item.
  * 
  * @summary Ticket Layout
  * 
  * @category Layout
- * @see [Ticket Layout - Demo Site](https://centurion-ui.nofusscomputing.com/layout/ticket/request/7)
+ * @see [Ticket Layout - Demo Site](https://centurion-ui.nofusscomputing.com/layout/ticket/request/1)
  * @since 0.1.0
  */
 const Ticket = (): React.JSX.Element => {
 
     const actionData = useActionData();
 
-    const [comment_metadata, setCommentMetaData] = useState(null);
+    const {
+        cardLayout, setCardLayout,
+        setIsCardContent,
+        sidebarContent, setSidebarContent,
+        pageContent, setPageContent
+    } = useContext(viewsContext);
 
     const fetcher = useFetcher();
 
     const [ formState, setFormState ] = useState({});
 
+    const [ editing_description, setEditingDescription ] = useState( false )
+
+    const isMobile = useIsMobile();
+
+    const navigate = useNavigate();
+
+    const { page_data, metadata } = useLoaderData<{page_data: apiObject, metadata: apiMetadata}>();
+
     const {
         setPageDescription, setPageHeading, setPageHeaderIcons
     } = usePageContext();
 
-    setPageDescription(null);
-    setPageHeaderIcons(null);
-
-    const [ editing_description, setEditingDescription ] = useState( false )
-
-    const navigate = useNavigate();
-
-    const {page_data, metadata} = useLoaderData();
-
     const [ ticket_data, setTicketData] = useState(null)
     
     const [ ticket_metadata, setTicketMetaData] = useState(null)
-
-    const [ ticket_type, SetTicketType ] = useState(null)
 
     const params = useParams();
 
@@ -120,7 +150,6 @@ const Ticket = (): React.JSX.Element => {
 
         if(fetcher.data?.body?._urls?._self && fetcher.data?.ok) {
 
-            // setTicketData(fetcher.data.body);
             navigate( URLSanitize(fetcher.data.body._urls._self));
 
         }
@@ -182,8 +211,6 @@ const Ticket = (): React.JSX.Element => {
             let ticket_type_entry = String(ticket_metadata.name).toLowerCase()
             ticket_type_entry = ticket_type_entry.endsWith('s') ? ticket_type_entry.substring(0, (ticket_type_entry.length - 1)) : ticket_type_entry
             ticket_type_entry = ticket_type_entry.replace(' ', '-').replace('_', '-')
-
-            SetTicketType(ticket_type_entry)
 
         }
 
@@ -265,11 +292,12 @@ const Ticket = (): React.JSX.Element => {
             <CardBody>
 
                 <Fields
-                    // errorState={actionData}
+                    errorState={fetcher.data}
                     fields = {[
                         new_ticket && 'title',
                         'description',
                     ].filter(Boolean)}
+                    formComponent={undefined}
                     formState={new_ticket ? formState : ticketDescriptionState }
                     isCreate={new_ticket}
                     isEdit={editing_description}
@@ -300,82 +328,67 @@ const Ticket = (): React.JSX.Element => {
     );
 
 
-    const ticketLayout = (
-        <PageSection
-            className = "ticket"
-            padding={{ default: 'noPadding'}}
-        >
-            <Sidebar
-                hasBorder
-                isPanelRight
-                
-            >
-                <SidebarContent>
-                    <PageSection
-                        style={{
-                            backgroundColor: "var(--pf-t--global--background--color--control--default)",
-                        }}
-                    >
+    useEffect(() => {
 
-                        <Flex
-                            direction={{ default: 'column' }}
-                            grow={{ default: 'grow' }}
-                            rowGap={{ default: 'rowGapMd' }}
-                        >
+        if( ticket_metadata && (ticket_data || new_ticket) ) {
 
-                            { ticket_metadata && 
-                            <>
-                                {editing_description && 
-                                    <fetcher.Form
-                                        className = "pf-v6-c-form pf-m-vertical"
-                                        id={'create-' + ticketElementId()}
-                                        method="PATCH"
-                                        action={String(document.location.href).replace(document.location.origin, '')}
-                                        onSubmit={(e) => {
-                                            
-                                            setFormState({})
-                                            setTicketDescriptionState({})
-                                            setEditingDescription(!editing_description)
-                                        }}
-                                    >
-                                        {ticketDescriptionCard}
+            setCardLayout(CardLayout.column);
 
-                                        <input id="metadata" type="hidden" name="metadata" value={JSON.stringify(ticket_metadata)} />
-                                        <input id="tz" type="hidden" name="tz" value={user.settings.timezone} />
-                                    </fetcher.Form>}
+            setPageContent(
+                <>
+                    { ticket_metadata && 
+                    <>
+                        {editing_description && 
+                            <fetcher.Form
+                                className = "pf-v6-c-form pf-m-vertical"
+                                id={'create-' + ticketElementId()}
+                                method="PATCH"
+                                action={String(document.location.href).replace(document.location.origin, '')}
+                                onSubmit={(e) => {
+                                    
+                                    setFormState({})
+                                    setTicketDescriptionState({})
+                                    setEditingDescription(!editing_description)
+                                }}
+                            >
+                                {ticketDescriptionCard}
 
-                                {!editing_description &&
-                                    ticketDescriptionCard}
+                                <input id="metadata" type="hidden" name="metadata" value={JSON.stringify(ticket_metadata)} />
+                                <input id="tz" type="hidden" name="tz" value={user.settings.timezone} />
+                            </fetcher.Form>}
 
-                                { ! new_ticket &&
-                                <>
+                        {!editing_description &&
+                            ticketDescriptionCard}
 
-                                <CardDataSet
-                                    hasRowDelete = {true}
-                                    isExpandable = {true}
-                                    url = { URLSanitize(ticket_data?._urls?.ticket_dependencies) }
-                                />
+                        { ! new_ticket &&
+                        <>
 
-                                <CardDataSet
-                                    hasRowDelete = {true}
-                                    isExpandable = {true}
-                                    url = { URLSanitize(ticket_data?._urls?.linked_models) }
-                                />
+                        <CardDataSet
+                            hasRowDelete = {true}
+                            isExpandable = {true}
+                            url = { URLSanitize(ticket_data?._urls?.ticket_dependencies) }
+                        />
 
-                                <Comments
-                                    comments_url = {URLSanitize(ticket_data?._urls?.comments)}
-                                />
-                                </>}
-                            </>}
+                        <CardDataSet
+                            hasRowDelete = {true}
+                            isExpandable = {true}
+                            url = { URLSanitize(ticket_data?._urls?.linked_models) }
+                        />
 
-                        </Flex>
+                        <Comments
+                            comments_url = {URLSanitize(ticket_data?._urls?.comments)}
+                        />
+                        </>}
+                    </>}
 
-                    </PageSection>
-                </SidebarContent>
-                <SidebarPanel
-                    hasPadding
-                    variant="sticky"
-                >
+                </>
+            );
+
+
+            setIsCardContent(true);
+
+            setSidebarContent(
+                <>
 
                     <Flex
                         direction={{ default: 'column' }}
@@ -388,7 +401,7 @@ const Ticket = (): React.JSX.Element => {
 
                         <DescriptionList
                             style={{
-                                maxHeight: "calc(100svh - 69px - 53px - 21px - 15px - 90px)",
+                                ...( isMobile ? {} : {maxHeight: "calc(100svh - 69px - 53px - 21px - 15px - 90px)"}),
                                 minHeight: "0",
                                 overflowY: "auto",
                                 scrollbarWidth: "thin",
@@ -398,6 +411,7 @@ const Ticket = (): React.JSX.Element => {
 
                         {ticket_metadata &&
                         <Fields
+                            errorState={fetcher.data}
                                 fields = {[
                                     'organization',
                                     !new_ticket && 'assigned_to',
@@ -430,9 +444,20 @@ const Ticket = (): React.JSX.Element => {
                         </DescriptionList>
                     </Flex>
 
-                </SidebarPanel>
-            </Sidebar>
-        </PageSection>
+                </>
+            );
+        }
+
+    }, [
+        editing_description,
+        ticket_data,
+        ticket_metadata
+    ]);
+
+    const ticketLayout = (
+        <Views
+            variant = {ViewsVariant.sidebar}
+        />
     );
 
 
@@ -456,9 +481,9 @@ const Ticket = (): React.JSX.Element => {
 
 
         return (
-            <PageSection isFilled = {true}>
+            <>
                 {ticketLayout}
-            </PageSection>
+            </>
         )
 
     }

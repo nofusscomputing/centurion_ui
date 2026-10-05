@@ -1,5 +1,6 @@
 
 import {
+    useContext,
     useEffect,
 } from "react";
 
@@ -12,29 +13,40 @@ import {
     Card,
     CardBody,
     CardTitle,
-    Gallery,
-    PageSection
 } from "@patternfly/react-core";
 
 import IconLoader from "../components/IconLoader";
+import
+    Views,
+    {
+        viewsContext,
+        ViewsVariant
+} from "../components/Views";
+
 import URLSanitize from "../functions/URLSanitize";
 
 import {
     usePageContext
 } from "../layouts/PageContent";
-import { apiObject } from "../types/backend/apiObject/object";
+
+import {
+    apiObject
+} from "../types/backend/apiObject/object";
+import {
+    apiMetadata
+} from "../types/backend/apiMetadata/metadata";
 
 
 /**
  * 
- * @summary Settings layout compontnt
+ * @summary Settings layout component
  * 
  * @category Layout
  * @since 0.1.0
  */
 const Settings = (): React.JSX.Element => {
 
-    const {metadata, page_data} = useLoaderData<{metadata: APIMetadata, page_data: apiObject}>();
+    const {metadata, page_data} = useLoaderData<{metadata: apiMetadata, page_data: apiObject}>();
 
     const {
         setPageDescription, setPageHeading, setPageHeaderIcons
@@ -61,33 +73,46 @@ const Settings = (): React.JSX.Element => {
     },[])
 
 
-    return (
-        <PageSection
-            isFilled = {true}
-        >
+    const {
+        setIsCardContent,
+        sidebarContent, setSidebarContent,
+        pageContent, setPageContent
+    } = useContext(viewsContext);
 
-            {metadata && page_data &&
+    useEffect(() => {
 
-                <Gallery hasGutter role="region" aria-label="Selectable card container">
-                    {metadata.layout.card.map((card) => {
+        if( metadata ) {
+
+            setPageContent(
+                <>
+                    {metadata.layout['card'].map((card) => {
                         return (
                             <Card>
                             <CardTitle>{card.title}</CardTitle>
                             <CardBody>
                                 <ul>
                                     {card.body.map((link) => 
-                                        (<li><Link to={URLSanitize(page_data[link.model])}>{link.name}</Link></li>)
+                                        (<li>{page_data && <Link to={URLSanitize(page_data[link.model])}>{link.name}</Link>}</li>)
                                     )}
                                 </ul>
                             </CardBody>
                             </Card>
                         );
                     })}
-                </Gallery>
+                </>
+            );
 
-            }
+            setIsCardContent(true);
+        }
 
-        </PageSection>
+    },[
+        metadata
+    ]);
+
+    return (
+        <Views
+            variant = {ViewsVariant.plain}
+        />
     );
 }
 

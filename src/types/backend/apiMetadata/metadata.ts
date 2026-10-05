@@ -1,4 +1,8 @@
 import {
+    Path
+} from "react-router";
+
+import {
     apiCommonMetadata
 } from ".";
 
@@ -35,7 +39,7 @@ export interface apiMetadata extends apiCommonMetadata {
      * Link to the documentation pertaining to this endpoint.
      * @since 0.5.0
      */
-    documentation: String;
+    documentation: Path;
 
     /**
      * Description of the backend fields

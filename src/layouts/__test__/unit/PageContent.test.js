@@ -87,7 +87,7 @@ import Detail from "../../../layout/Detail"
 import UI from "../../ui"
 import { UserProvider } from "../../../hooks/UserContext"
 import List from "../../../layout/List";
-import Ticket from "../../../layout/Ticket";
+import Ticket from "../../../layouts/Ticket";
 import { NotificationContextProvider } from "../../../components/NotificationDrawer";
 import PageContent from "../../PageContent";
 import { backendContext } from "../../../App/providers/backend";

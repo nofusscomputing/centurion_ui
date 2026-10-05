@@ -11,13 +11,13 @@
             "parent": {
                 "id": 64,
                 "display_name": "TicketCommentBase object (64)",
-                "url": "/layout/ticket/request/7/comment/64"
+                "url": "/layout/ticket/request/1/comment/64"
             },
             "ticket": {
-                "id": 7,
+                "id": 1,
                 "display_name": "dfdsf",
                 "title": "dfdsf",
-                "url": "/layout/ticket/request/7"
+                "url": "/layout/ticket/request/1"
             },
             "external_ref": null,
             "external_system": null,
@@ -46,7 +46,7 @@
             "created": "2026-04-29T19:41:31.316291+09:30",
             "modified": "2026-04-29T19:41:31+09:30",
             "_urls": {
-                "_self": "/layout/ticket/request/7/ticketcommenttask/40/threads/65"
+                "_self": "/layout/ticket/request/1/ticketcommenttask/40/threads/65"
             },
             "status": 1,
             "assignee": null,
@@ -64,8 +64,8 @@
         }
     },
     "links": {
-        "first": "/layout/ticket/request/7/ticketcommenttask/40/threads?page%5Bnumber%5D=1",
-        "last": "/layout/ticket/request/7/ticketcommenttask/40/threads?page%5Bnumber%5D=1",
+        "first": "/layout/ticket/request/1/ticketcommenttask/40/threads?page%5Bnumber%5D=1",
+        "last": "/layout/ticket/request/1/ticketcommenttask/40/threads?page%5Bnumber%5D=1",
         "next": null,
         "prev": null
     }

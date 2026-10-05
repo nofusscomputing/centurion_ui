@@ -26,6 +26,10 @@ import {
     Title
 } from "@patternfly/react-core";
 
+import {
+    ViewsProvider
+} from "../components/Views";
+
 
 
 /**
@@ -57,7 +61,7 @@ export type PageContext = {
     /**
      * Icons to display as part of the page header.
      */
-    setPageHeaderIcons: React.Dispatch<React.SetStateAction<string>>
+    setPageHeaderIcons: React.Dispatch<React.SetStateAction<React.JSX.Element>>
 
 }
 
@@ -141,6 +145,7 @@ const PageContent = (): React.JSX.Element => {
             setPageHeaderIcons: setPageHeaderIcons,
             setPageHeading: setPageHeading
         }} >
+            <ViewsProvider>
 
             <PageSection
                 className="pf-m-sticky-top"
@@ -219,7 +224,7 @@ const PageContent = (): React.JSX.Element => {
 
             </PageGroup>
             <BackToTop scrollableSelector="#page-main" />
-
+            </ViewsProvider>
         </pageContext.Provider>
     );
 }
