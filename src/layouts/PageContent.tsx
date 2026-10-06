@@ -67,7 +67,12 @@ export type PageContext = {
 
 
 
-const pageContext = createContext<PageContext>(null);
+const pageContext = createContext<PageContext>({
+            setAdditionalPageFooter: null,
+            setPageDescription: null,
+            setPageHeaderIcons: null,
+            setPageHeading: null
+});
 
 
 
