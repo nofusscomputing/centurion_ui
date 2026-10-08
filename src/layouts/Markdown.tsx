@@ -302,9 +302,9 @@ const Markdown = (): React.JSX.Element => {
                     ).replaceAll(
                         '(./', `(${document.location.pathname}/`
                     ).replaceAll(
-                        `(${document.location.pathname}/`, `(${document.location.pathname}`
-                    ).replaceAll(
                         'index.md)', ')'
+                    ).replaceAll(
+                        `(${document.location.pathname}/`, `(${document.location.pathname}`
                     ).replaceAll(
                         '.md)', ')'
                     )}
