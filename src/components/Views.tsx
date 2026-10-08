@@ -11,8 +11,13 @@ import {
     PageSection,
     Sidebar,
     SidebarContent,
-    SidebarPanel
+    SidebarPanel,
+    TabContent,
+    Tabs,
+    TabTitleText
 } from "@patternfly/react-core";
+
+import { Tab } from '../components/Tabs'
 
 
 
@@ -31,7 +36,38 @@ export enum CardLayout {
 
 
 /**
- * dsfds
+ * Tab content to display within the view.
+ * 
+ * @category .
+ * @since  0.15.0
+ */
+export interface pageTabs {
+
+    /**
+     * Name of the tab.
+     */
+    name: string
+
+    /**
+     * URL link for tab.
+     */
+    link: string
+
+    /**
+     * ref of tab.
+     */
+    ref: React.RefObject<any>
+
+    /**
+     * Tab Content to render.
+     */
+    content: React.JSX.Element
+}
+
+
+
+/**
+ * Context for Views.
  * 
  * @category Context
  * @since 0.15.0
@@ -56,6 +92,11 @@ export interface ViewsContext {
     pageContent: React.JSX.Element
 
     /**
+     * Tabs for the view.
+     */
+    tabs: Array<pageTabs>
+
+    /**
      * Set the CardLayout value.
      */
     setCardLayout: React.Dispatch<React.SetStateAction<CardLayout>>
@@ -71,10 +112,15 @@ export interface ViewsContext {
     setPageContent: React.Dispatch<React.SetStateAction<React.ReactNode>>
 
     /**
-     * Sets the value that will be used within the sidebar, if a sidbar view
+     * Sets the value that will be used within the sidebar, if a sidebar view
      * is to be used.
      */
     setSidebarContent: React.Dispatch<React.SetStateAction<React.ReactNode>>
+
+    /**
+     * Sets the value of the tabs that will be rendered within the view.
+     */
+    setTabs: React.Dispatch<React.SetStateAction<Array<pageTabs>>>
 
     /**
      * Content that will be rendered in the sidebar.
@@ -209,6 +255,105 @@ export const SidebarView = (): React.JSX.Element => {
 
 
 /**
+ * View that uses tabs.
+ * 
+ * @category View
+ * @since 0.15.0
+ */
+export const TabsView = (): React.JSX.Element => {
+
+    const {
+        tabs
+    } = useContext(viewsContext);
+
+    const [activeTabKey, setActiveTabKey] = useState('');
+
+    const handleTabClick = (_, tabIndex) => {
+        setActiveTabKey(tabIndex);
+    };
+
+    return (
+        <>
+        <PageSection
+            className="pf-m-sticky-top"
+            isFilled = {true}
+            padding = {{ default: 'noPadding'}}
+            type="tabs"
+        >
+
+            <Tabs
+                activeKey = {activeTabKey}
+                aria-label = "page-tabs"
+                onSelect = {handleTabClick}
+                usePageInsets
+                isNav = {tabs ? Object.hasOwn(tabs[0], 'link') : false}
+            >
+
+                {tabs && tabs.map(( tab, index ) => {
+                
+                    if(
+                        String(location.pathname).endsWith('/add')
+                        && index !== 0
+                    ) {
+                        return;
+                    }
+
+                    const currentTabKey = String(tab.name).toLowerCase().replace(' ' , '_')
+
+                    if( activeTabKey === '' && index === 0 ) setActiveTabKey(currentTabKey);
+
+
+                    return (
+                        <Tab
+                            eventKey = {currentTabKey}
+                            href = { tab.link ? tab.link : undefined }
+                            key = {currentTabKey}
+                            tabContentId = {`tab${index}`}
+                            tabContentRef = {tab.ref} 
+                            title = {
+                                <TabTitleText>{tab.name}</TabTitleText>
+                            }
+                        />
+                    );
+
+                })}
+
+            </Tabs>
+        </PageSection>
+
+        <PageSection
+            isFilled={true}
+            padding = {{ default: 'noPadding'}}
+        >
+            { tabs && tabs.map((tab, index) => {
+
+                const currentTabKey = String(tab.name).toLowerCase().replace(' ' , '_')
+
+                return (
+                    <TabContent
+                        aria-label = {`tab ${index}`}
+                        eventKey = {index}
+                        hidden = {activeTabKey !== currentTabKey}
+                        id = {`tab${index}`}
+                        key = {index}
+                        ref = {tab.ref}
+                    >
+
+                        {activeTabKey == currentTabKey && tab.content}
+
+                    </TabContent>
+                );
+
+            })}
+        </PageSection>
+        </>
+    );
+
+};
+
+
+
+/**
  * Selector for which view to use.
  * 
  * @category 
@@ -295,7 +440,7 @@ const Views = ({
                 <SidebarView />
             }
             {variant == ViewsVariant.tabs &&
-                <></>
+                <TabsView />
             }
         </PageSection>
     );
@@ -323,9 +468,11 @@ export const ViewsProvider = ({
 
     const [ isCardContent, setIsCardContent ] = useState<boolean>(false);
 
+    const [ pageContent, setPageContent ] = useState<React.ReactElement>(<></>);
+
     const [ sidebarContent, setSidebarContent ] = useState<React.ReactElement>(<></>);
 
-    const [ pageContent, setPageContent ] = useState<React.ReactElement>(<></>);
+    const [ tabs, setTabs ] = useState<Array<pageTabs>>(null);
 
     return (
         <viewsContext.Provider
@@ -334,6 +481,7 @@ export const ViewsProvider = ({
                 isCardContent, setIsCardContent,
                 pageContent, setPageContent,
                 sidebarContent, setSidebarContent,
+                tabs, setTabs
             }}
         >
             {children}

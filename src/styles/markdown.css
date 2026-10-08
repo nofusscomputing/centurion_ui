@@ -1,5 +1,4 @@
 
-
 .markdown hr.footnotes-sep {
     margin-top: 50px;
     margin-bottom: 50px;
@@ -22,6 +21,7 @@
   font-size: inherit;
   margin: 0px;
   padding: 2px 10px 2px 10px;
+  color: #fff;
 }
 
 .markdown div.admonition p:not(p.admonition-title) {
@@ -31,99 +31,101 @@
   padding: 10px;
   margin: 0px;
   width: 100%;
-  color: #3b3b3b;
 }
 
 .markdown div.admonition.info {
-  background-color: #b6f5dd;
-  border-color: #27ffbe;
+  border-color: #0BC19C;
 }
 
 .markdown div.admonition.info p.admonition-title {
-  background-color: #1ef59170;
+  background-color: #0BC19C;
 }
 
-.markdown div.admonition.note {
-  background-color: #b6d3f5;
-  border-color: #278cff;
+.markdown div.admonition.example,
+.markdown div.admonition.snippet {
+  border-color: #5A04C3;
 }
 
-.markdown div.admonition.note p.admonition-title {
-  background-color: #1e82f570;
-  color: #fff;
+.markdown div.admonition.example p.admonition-title,
+.markdown div.admonition.snippet p.admonition-title {
+  background-color: #5A04C3;
+}
+
+.markdown div.admonition.abstract,
+.markdown div.admonition.note,
+.markdown div.admonition.summary,
+.markdown div.admonition.tldr {
+  border-color: #013A83;
+}
+
+.markdown div.admonition.abstract p.admonition-title,
+.markdown div.admonition.note p.admonition-title,
+.markdown div.admonition.summary p.admonition-title,
+.markdown div.admonition.tldr p.admonition-title {
+  background-color: #013A83;
 }
 
 .markdown div.admonition.tip {
-  background-color: #bbf5b6;
-  border-color: #39ff27;
+  border-color: #08A206;
 }
 
 .markdown div.admonition.tip p.admonition-title {
-  background-color: #37f51e70;
-  color: #fff;
+  background-color: #08A206;
 }
 
+.markdown div.admonition.attention,
+.markdown div.admonition.caution,
 .markdown div.admonition.warning {
-  background-color: #f5d8b6;
-  border-color: #ffa127;
+  border-color: #DB7006;
 }
 
+.markdown div.admonition.attention p.admonition-title,
+.markdown div.admonition.caution p.admonition-title,
 .markdown div.admonition.warning p.admonition-title {
-  background-color: #f5911e70;
-  color: #fff;
+  background-color: #DB7006;
 }
 
-.markdown div.admonition.danger {
-  background-color: #f5b6b6;
-  border-color: #ff2727;
+.markdown div.admonition.bug,
+.markdown div.admonition.danger,
+.markdown div.admonition.error,
+.markdown div.admonition.fail,
+.markdown div.admonition.failure,
+.markdown div.admonition.missing {
+  border-color: #B10B0B;
 }
 
-.markdown div.admonition.danger p.admonition-title {
-  background-color: #f51e1e70;
-  color: #fff;
+
+.markdown div.admonition.bug p.admonition-title,
+.markdown div.admonition.danger p.admonition-title,
+.markdown div.admonition.error p.admonition-title,
+.markdown div.admonition.fail p.admonition-title,
+.markdown div.admonition.failure p.admonition-title,
+.markdown div.admonition.missing p.admonition-title {
+  background-color: #B10B0B;
 }
 
+.markdown div.admonition.cite,
 .markdown div.admonition.quote {
-  background-color: #d3d3d3;
-  border-color: #868686;
+  border-color: #A3A3A3;
 }
 
+.markdown div.admonition.cite p.admonition-title,
 .markdown div.admonition.quote p.admonition-title {
-  background-color: #81818170;
-  color: #fff;
+  background-color: #A3A3A3;
 }
 
 .markdown div.admonition.quote p:not(p.admonition-title) {
   font-style: italic;
 }
 
-
-
 .markdown div.admonition.success {
-  background-color: #00ff4c88;
-  border-color: #00ff4c;
+  border-color: #0EC10B;
 }
 
 .markdown div.admonition.success p.admonition-title {
-  background-color: #00ff4c;
-  color: #777;
+  background-color: #0EC10B;
 }
 
-
-.markdown div.admonition.failure {
-  background-color: #ff000088;
-  border-color: #ff0000;
-  color: #fff;
-}
-
-.markdown div.admonition.failure p.admonition-title {
-  background-color: #ff0000;
-  color: #fff;
-}
-
-.markdown div.admonition.failure p:not(p.admonition-title) {
-  color: #fff;
-}
 
 div.code-copy {
   display: flex;
@@ -210,23 +212,4 @@ button.code-copy svg {
 .hljs-strong {
   font-weight: bold;
 }
-
-
-
-
-
-
-
-
-
-/* .section fieldset.textarea div.full-width div.markdown {
-  display: flex;
-  margin: 0px auto;
-  width: 90%;
-} */
-
-
-
-
-
 
