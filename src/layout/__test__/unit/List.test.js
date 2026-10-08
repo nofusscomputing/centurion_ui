@@ -83,7 +83,7 @@ import {
     createRoutesStub,
 } from 'react-router'
 
-import Detail from "../../Detail"
+
 import UI from "../../../layouts/ui"
 import { UserProvider } from "../../../hooks/UserContext"
 import List from "../../List";
