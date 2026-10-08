@@ -12,11 +12,12 @@ import {
     Sidebar,
     SidebarContent,
     SidebarPanel,
-    Tab,
     TabContent,
     Tabs,
     TabTitleText
 } from "@patternfly/react-core";
+
+import { Tab } from '../components/Tabs'
 
 
 
@@ -46,6 +47,11 @@ export interface pageTabs {
      * Name of the tab.
      */
     name: string
+
+    /**
+     * URL link for tab.
+     */
+    link: string
 
     /**
      * ref of tab.
@@ -260,7 +266,7 @@ export const TabsView = (): React.JSX.Element => {
         tabs
     } = useContext(viewsContext);
 
-    const [activeTabKey, setActiveTabKey] = useState(0);
+    const [activeTabKey, setActiveTabKey] = useState('');
 
     const handleTabClick = (_, tabIndex) => {
         setActiveTabKey(tabIndex);
@@ -280,6 +286,7 @@ export const TabsView = (): React.JSX.Element => {
                 aria-label = "page-tabs"
                 onSelect = {handleTabClick}
                 usePageInsets
+                isNav = {tabs ? Object.hasOwn(tabs[0], 'link') : false}
             >
 
                 {tabs && tabs.map(( tab, index ) => {
@@ -291,10 +298,16 @@ export const TabsView = (): React.JSX.Element => {
                         return;
                     }
 
+                    const currentTabKey = String(tab.name).toLowerCase().replace(' ' , '_')
+
+                    if( activeTabKey === '' && index === 0 ) setActiveTabKey(currentTabKey);
+
+
                     return (
                         <Tab
-                            eventKey = {index}
-                            key = {index}
+                            eventKey = {currentTabKey}
+                            href = { tab.link ? tab.link : undefined }
+                            key = {currentTabKey}
                             tabContentId = {`tab${index}`}
                             tabContentRef = {tab.ref} 
                             title = {
@@ -314,17 +327,19 @@ export const TabsView = (): React.JSX.Element => {
         >
             { tabs && tabs.map((tab, index) => {
 
+                const currentTabKey = String(tab.name).toLowerCase().replace(' ' , '_')
+
                 return (
                     <TabContent
                         aria-label = {`tab ${index}`}
                         eventKey = {index}
-                        hidden = {activeTabKey!=index}
+                        hidden = {activeTabKey !== currentTabKey}
                         id = {`tab${index}`}
                         key = {index}
                         ref = {tab.ref}
                     >
 
-                        {activeTabKey == index && tab.content}
+                        {activeTabKey == currentTabKey && tab.content}
 
                     </TabContent>
                 );

@@ -202,6 +202,8 @@ const DetailLayout = (): React.JSX.Element => {
 
     const tabDetails = useMemo(() => {
 
+        if( ! metadata?.layout?.detail ) return;
+
         return metadata.layout.detail.map(( tab, index ) => {
 
             let metadataTab = metadata.layout.detail[index]
@@ -299,9 +301,25 @@ const DetailLayout = (): React.JSX.Element => {
                 })
             }
 
+            /**
+             * Commented out as feature to be disabled until it is figured out
+             * how to setup routing along with fetching the original details
+             * page then the tabbed content.
+             */
+            // const linkKey = String(tab.name).toLowerCase().replace(' ', '_')
+
+            // let tabLink = Object.hasOwn(page_data._urls,linkKey) ? `${URLSanitize(page_data._urls._self)}/${linkKey}` : `${URLSanitize(page_data._urls._self)}/${linkKey}`
+
+            // if( linkKey === 'details') {
+
+            //     tabLink = URLSanitize(page_data._urls._self);
+            // }
+
             return {
                 name: tab.name,
                 ref: createRef(),
+                // link: tabLink,
+                // link: Object.hasOwn(page_data._urls,String(tab.name).toLowerCase()),
                 content: page_content
             }
         });
@@ -310,6 +328,7 @@ const DetailLayout = (): React.JSX.Element => {
         metadata.layout.detail,
         notes,
         note_metadata,
+        page_data,
         user
     ])
 
