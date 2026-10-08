@@ -21,14 +21,14 @@ import RenderMarkdown from "../functions/RenderMarkdown";
  * markdown itself is contained within this component.
  * 
  * @param {object} params
- * @param {string} params.ariaLabel Label for the form field.
- * @param {boolean} params.grow Allow the editable text area to grow for every line.
+ * @param {string} [params.ariaLabel = null] Label for the form field.
+ * @param {boolean} [params.grow = false] Allow the editable text area to grow for every line.
  * @param {boolean} [params.isRequired=false] Form field is mandatory.
  * @param {String} params.id Form field id.
  * @param {String} params.name Form field name.
- * @param {object} params.objectData Object data as provided by the API.
- * @param {(e) => void} params.onChange Callback to run when field value changes.
- * @param {boolean} params.readOnly Is the form field read-only?
+ * @param {object} [params.objectData=null] Object data as provided by the API.
+ * @param {(e) => void} [params.onChange = null] Callback to run when field value changes.
+ * @param {boolean} [params.readOnly=false] Is the form field read-only?
  * @param {"vertical" | "horizontal" | "both" } [params.resizeOrientation="vertical"] Allow User to resize in specified direction.
  * @param {string} params.value Current value of the field.
  * 
