@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 
 
 /**
- * Custom implementation from @patterfly/react-core v6.6.0
+ * Custom implementation from \@patterfly/react-core v6.6.0
  * 
  * Why?
  * 
@@ -31,7 +31,7 @@ export interface TabButtonProps extends Omit<React.HTMLProps<HTMLAnchorElement |
 
 
 /**
- * Custom implementation from @patterfly/react-core v6.6.0
+ * Custom implementation from \@patterfly/react-core v6.6.0
  * 
  * Why?
  * 

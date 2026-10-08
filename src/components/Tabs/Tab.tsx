@@ -115,7 +115,7 @@ const TabBase: React.FunctionComponent<TabProps> = ({
 
 
 /**
- * Custom implementation from @patterfly/react-core v6.6.0
+ * Custom implementation from \@patterfly/react-core v6.6.0
  * 
  * Why?
  * 
