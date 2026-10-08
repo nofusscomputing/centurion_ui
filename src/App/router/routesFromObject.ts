@@ -239,11 +239,11 @@ export function routesFromObject({
 
                 case "revalidate":
 
-                    if( value === true ) {
+                    if( Boolean(value) === true ) {
 
                         builtRoute["shouldRevalidate"] = () => true;
 
-                    } else if( value === false ) {
+                    } else if( Boolean(value) === false ) {
 
                         builtRoute["shouldRevalidate"] = () => false;
 
