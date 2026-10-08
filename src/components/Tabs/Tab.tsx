@@ -2,9 +2,9 @@ import { useContext, forwardRef, useEffect } from 'react';
 
 import { TabAction, TabsContext, Tooltip } from '@patternfly/react-core';
 
-import { TabProps } from '@patternfly/react-core/src/components/Tabs'
+import { TabProps } from '@patternfly/react-core/'
 
-import RhMicronsCloseIcon from '@patternfly/react-icons/dist/esm/icons/rh-microns-close-icon';
+import { RhMicronsCloseIcon } from '@patternfly/react-icons';
 
 import { css } from '@patternfly/react-styles';
 import styles from '@patternfly/react-styles/css/components/Tabs/tabs';
