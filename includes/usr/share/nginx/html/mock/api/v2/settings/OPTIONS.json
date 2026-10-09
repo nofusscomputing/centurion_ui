@@ -30,63 +30,47 @@
                 ]
             },
             {
-                "title": "Assistanace",
+                "title": "Another card",
                 "body": [
                     {
-                        "name": "Knowledge Base Categories",
-                        "model": "knowledge_base_category"
+                        "name": "A link to nothing",
+                        "model": "app_settings"
                     }
                 ]
             },
             {
-                "title": "Core",
+                "title": "Another another card",
                 "body": [
                     {
-                        "name": "External Links",
-                        "model": "external_link"
+                        "name": "A link to nothing",
+                        "model": "app_settings"
                     }
                 ]
             },
             {
-                "title": "ITAM",
+                "title": "Another another'er card",
                 "body": [
                     {
-                        "name": "Device Model",
-                        "model": "device_model"
-                    },
-                    {
-                        "name": "Device Type",
-                        "model": "device_type"
-                    },
-                    {
-                        "name": "Software Category",
-                        "model": "software_category"
+                        "name": "A link to nothing",
+                        "model": "app_settings"
                     }
                 ]
             },
             {
-                "title": "ITIM",
+                "title": "A card",
                 "body": [
                     {
-                        "name": "Cluster Type",
-                        "model": "cluster_type"
-                    },
-                    {
-                        "name": "Service Port",
-                        "model": "port"
+                        "name": "A link to nothing",
+                        "model": "app_settings"
                     }
                 ]
             },
             {
-                "title": "Project Management",
+                "title": "B card",
                 "body": [
                     {
-                        "name": "Project State",
-                        "model": "project_state"
-                    },
-                    {
-                        "name": "Project Type",
-                        "model": "project_type"
+                        "name": "A link to nothing",
+                        "model": "app_settings"
                     }
                 ]
             }

@@ -1,3 +1,4 @@
 {
-  "user_settings": "/mock/api/v2/settings/user_settings/1"
+  "app_settings": "/mock/api/v2/settings/app_settings",
+  "knowledge_base_category": "/mock/api/v2/settings/knowledge_base_category"
 }

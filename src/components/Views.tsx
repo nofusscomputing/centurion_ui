@@ -23,12 +23,23 @@ import { Tab } from '../components/Tabs'
 
 /**
  * 
+ * @category Enum
  * @since 0.15.0
  */
 export enum CardLayout {
 
+    /**
+     * Setup cards to be laid out in a grid.
+     * 
+     * @see [Grid of cards Example - Demo Site](https://centurion-ui.nofusscomputing.com/settings)
+     */
     grid = 'grid',
 
+    /**
+     * Setup Card layout as a column of cards.
+     * 
+     * @see [Column of cards Example in Ticket - Demo Site](https://centurion-ui.nofusscomputing.com/layout/ticket/request/1)
+     */
     column = 'column'
 
 }

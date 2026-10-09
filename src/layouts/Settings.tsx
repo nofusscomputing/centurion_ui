@@ -19,6 +19,7 @@ import IconLoader from "../components/IconLoader";
 import
     Views,
     {
+        CardLayout,
         viewsContext,
         ViewsVariant
 } from "../components/Views";
@@ -74,7 +75,7 @@ const Settings = (): React.JSX.Element => {
 
 
     const {
-        setIsCardContent,
+        setIsCardContent, setCardLayout,
         sidebarContent, setSidebarContent,
         pageContent, setPageContent
     } = useContext(viewsContext);
@@ -103,6 +104,9 @@ const Settings = (): React.JSX.Element => {
             );
 
             setIsCardContent(true);
+
+            setCardLayout(CardLayout.grid);
+
         }
 
     },[
