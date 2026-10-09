@@ -95,6 +95,11 @@
                         "display_name": "Ticket",
                         "name": "ticket",
                         "link": "/layout/ticket/request"
+                    },
+                    {
+                        "display_name": "Settings",
+                        "name": "settings",
+                        "link": "/settings"
                     }
                 ]
             }
