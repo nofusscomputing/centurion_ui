@@ -4,7 +4,7 @@
   "private": true,
   "license": "AGPL-3.0-only",
   "dependencies": {
-    "@patternfly/patternfly": "^6.6.0",
+    "@patternfly/patternfly": "^6.6.1",
     "@patternfly/react-component-groups": "^6.5.0",
     "@patternfly/react-core": "^6.6.0",
     "@patternfly/react-drag-drop": "^6.6.0",
