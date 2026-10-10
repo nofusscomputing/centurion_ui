@@ -227,159 +227,155 @@ const HeaderToolbar = () => {
 
     return (
         <>
-        <Toolbar id="page-toolbar" isStatic>
-            <ToolbarContent>
-                <ToolbarGroup
-                    variant="action-group-plain"
-                    align={{
-                        default: 'alignEnd'
-                    }}
-                    gap={{
-                        default: 'gapNone',
-                        md: 'gapMd'
-                    }}
-                >
-                    <ToolbarGroup
-                        variant="action-group-plain"
-                        visibility={{
-                            default: 'hidden',
-                            lg: 'visible'
-                        }}
-                    >
-                        <ToolbarItem>
-                            <Button
-                                aria-label="Settings"
-                                // component={Link}
-                                // // @ts-expect-error TS[2322]
-                                //     to={"URLSanitize(user.settings._urls._self)"}
-                                // isCircle
-                                icon={<RhUiRefreshIcon />}
-                                onClick={ () => revalidator.revalidate() }
-                                title = "Reload Content"
-                                variant="plain"
-                            />
-                        </ToolbarItem>
-                        { isNotificationsOpen !== undefined && <NotificationBadge
-                            count = {totalUnreadNotifications}
-                            variant={totalUnreadNotifications === 0 ? NotificationBadgeVariant.read : notificationUnreadVariant}
-                            onClick={onNotificationBadgeClick}
-                            aria-label="Notifications"
-                            isExpanded={isNotificationsOpen}
-                        />}
-                        <ToolbarItem>
-                            {user.settings._urls &&
-                            <Button
-                                aria-label="Settings"
-                                component={Link}
-                                // @ts-expect-error TS[2322]
-                                    to={URLSanitize(user.settings._urls._self)}
-                                isSettings
-                                variant="plain"
-                            />}
-                        </ToolbarItem>
-                        <ToolbarItem>
-                            <Button
-                                aria-label="About"
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    toggleModal(e)
-                                }}
-                                variant={ButtonVariant.plain}
-                                icon={<QuestionCircleIcon />}
-                            />
-                        </ToolbarItem>
-
-                    </ToolbarGroup>
-                    <ToolbarItem>
-                        {/* <ThemeSelector id="ws-example-theme-select" /> */}
-                    </ToolbarItem>
-                    <ToolbarItem
-                        visibility={{
-                            default: 'hidden',
-                            md: 'visible',
-                            lg: 'hidden'
-                        }}
-                    >
-                        <Dropdown
-                            isOpen={isKebabDropdownOpen}
-                            onSelect={onKebabDropdownSelect}
-                            onOpenChange={isOpen => setIsKebabDropdownOpen(isOpen)}
-                            popperProps={{
-                                position: 'right'
-                            }}
-                            toggle={toggleRef => <MenuToggle
-                                ref={toggleRef}
-                                onClick={onKebabDropdownToggle}
-                                isExpanded={isKebabDropdownOpen}
-                                variant="plain"
-                                aria-label="Settings and help"
-                                icon={<EllipsisVIcon />}
-                            />}
-                        >
-                        <DropdownList>{(user.settings._urls && user.user.display_name) && <KebabDropdownItems />}</DropdownList>
-                        </Dropdown>
-                    </ToolbarItem>
-                    <ToolbarItem
-                        visibility={{
-                            md: 'hidden'
-                        }}
-                    >
-                        <Dropdown
-                            isOpen={isFullKebabDropdownOpen}
-                            onSelect={onFullKebabDropdownSelect}
-                            onOpenChange={isOpen => setIsFullKebabDropdownOpen(isOpen)}
-                            popperProps={{
-                                position: 'right'
-                            }}
-                            toggle={toggleRef => <MenuToggle
-                                ref={toggleRef}
-                                onClick={onFullKebabDropdownToggle}
-                                isExpanded={isFullKebabDropdownOpen}
-                                variant="plain"
-                                aria-label="Toolbar menu"
-                                icon={<EllipsisVIcon />}
-                            />}
-                        >
-
-                            <DropdownList>
-                                {(user.settings._urls && user.user.display_name) && <KebabDropdownItems />}
-                            </DropdownList>
-
-                            <Divider />
-
-                            <DropdownGroup key="group 2" aria-label="User actions">
-                                {(user.settings._urls && user.user.display_name) && <DropdownList><UserDropdownItems /></DropdownList>}
-                            </DropdownGroup>
-
-                        </Dropdown>
-                    </ToolbarItem>
-                </ToolbarGroup>
-                <ToolbarItem visibility={{
+        <ToolbarGroup
+            variant="action-group-plain"
+            align={{
+                default: 'alignEnd'
+            }}
+            gap={{
+                default: 'gapNone',
+                md: 'gapMd'
+            }}
+        >
+            <ToolbarGroup
+                variant="action-group-plain"
+                visibility={{
                     default: 'hidden',
-                    md: 'visible'
-                }}>
-                    <Dropdown
-                        isOpen={isDropdownOpen}
-                        onSelect={onDropdownSelect}
-                        onOpenChange={isOpen => setIsDropdownOpen(isOpen)}
-                        popperProps={{
-                            position: 'right'
-                        }}
-                        toggle={toggleRef => <MenuToggle
-                                ref={toggleRef}
-                                onClick={onDropdownToggle}
-                                isExpanded={isDropdownOpen}
-                                icon={<Avatar src={imgAvatar} alt="" size="sm" />}
-                            >
-                                {user.user.display_name}
-                            </MenuToggle>
-                        }
-                    >
-                        {(user.settings._urls && user.user.display_name) && <DropdownList><UserDropdownItems /></DropdownList>}
-                    </Dropdown>
+                    lg: 'visible'
+                }}
+            >
+                <ToolbarItem>
+                    <Button
+                        aria-label="Settings"
+                        // component={Link}
+                        // // @ts-expect-error TS[2322]
+                        //     to={"URLSanitize(user.settings._urls._self)"}
+                        // isCircle
+                        icon={<RhUiRefreshIcon />}
+                        onClick={ () => revalidator.revalidate() }
+                        title = "Reload Content"
+                        variant="plain"
+                    />
                 </ToolbarItem>
-            </ToolbarContent>
-        </Toolbar>
+                { isNotificationsOpen !== undefined && <NotificationBadge
+                    count = {totalUnreadNotifications}
+                    variant={totalUnreadNotifications === 0 ? NotificationBadgeVariant.read : notificationUnreadVariant}
+                    onClick={onNotificationBadgeClick}
+                    aria-label="Notifications"
+                    isExpanded={isNotificationsOpen}
+                />}
+                <ToolbarItem>
+                    {user.settings._urls &&
+                    <Button
+                        aria-label="Settings"
+                        component={Link}
+                        // @ts-expect-error TS[2322]
+                            to={URLSanitize(user.settings._urls._self)}
+                        isSettings
+                        variant="plain"
+                    />}
+                </ToolbarItem>
+                <ToolbarItem>
+                    <Button
+                        aria-label="About"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            toggleModal(e)
+                        }}
+                        variant={ButtonVariant.plain}
+                        icon={<QuestionCircleIcon />}
+                    />
+                </ToolbarItem>
+
+            </ToolbarGroup>
+            <ToolbarItem>
+                {/* <ThemeSelector id="ws-example-theme-select" /> */}
+            </ToolbarItem>
+            <ToolbarItem
+                visibility={{
+                    default: 'hidden',
+                    md: 'visible',
+                    lg: 'hidden'
+                }}
+            >
+                <Dropdown
+                    isOpen={isKebabDropdownOpen}
+                    onSelect={onKebabDropdownSelect}
+                    onOpenChange={isOpen => setIsKebabDropdownOpen(isOpen)}
+                    popperProps={{
+                        position: 'right'
+                    }}
+                    toggle={toggleRef => <MenuToggle
+                        ref={toggleRef}
+                        onClick={onKebabDropdownToggle}
+                        isExpanded={isKebabDropdownOpen}
+                        variant="plain"
+                        aria-label="Settings and help"
+                        icon={<EllipsisVIcon />}
+                    />}
+                >
+                <DropdownList>{(user.settings._urls && user.user.display_name) && <KebabDropdownItems />}</DropdownList>
+                </Dropdown>
+            </ToolbarItem>
+            <ToolbarItem
+                visibility={{
+                    md: 'hidden'
+                }}
+            >
+                <Dropdown
+                    isOpen={isFullKebabDropdownOpen}
+                    onSelect={onFullKebabDropdownSelect}
+                    onOpenChange={isOpen => setIsFullKebabDropdownOpen(isOpen)}
+                    popperProps={{
+                        position: 'right'
+                    }}
+                    toggle={toggleRef => <MenuToggle
+                        ref={toggleRef}
+                        onClick={onFullKebabDropdownToggle}
+                        isExpanded={isFullKebabDropdownOpen}
+                        variant="plain"
+                        aria-label="Toolbar menu"
+                        icon={<EllipsisVIcon />}
+                    />}
+                >
+
+                    <DropdownList>
+                        {(user.settings._urls && user.user.display_name) && <KebabDropdownItems />}
+                    </DropdownList>
+
+                    <Divider />
+
+                    <DropdownGroup key="group 2" aria-label="User actions">
+                        {(user.settings._urls && user.user.display_name) && <DropdownList><UserDropdownItems /></DropdownList>}
+                    </DropdownGroup>
+
+                </Dropdown>
+            </ToolbarItem>
+        </ToolbarGroup>
+        <ToolbarItem visibility={{
+            default: 'hidden',
+            md: 'visible'
+        }}>
+            <Dropdown
+                isOpen={isDropdownOpen}
+                onSelect={onDropdownSelect}
+                onOpenChange={isOpen => setIsDropdownOpen(isOpen)}
+                popperProps={{
+                    position: 'right'
+                }}
+                toggle={toggleRef => <MenuToggle
+                        ref={toggleRef}
+                        onClick={onDropdownToggle}
+                        isExpanded={isDropdownOpen}
+                        icon={<Avatar src={imgAvatar} alt="" size="sm" />}
+                    >
+                        {user.user.display_name}
+                    </MenuToggle>
+                }
+            >
+                {(user.settings._urls && user.user.display_name) && <DropdownList><UserDropdownItems /></DropdownList>}
+            </Dropdown>
+        </ToolbarItem>
 
         <Modal
             isOpen={isModalOpen}

@@ -69,3 +69,12 @@ UI [Routes description](./api/RouteDescription/index.md) is used to inform the U
 ### Page Content
 
 The page content area does not have a single description. However what must be described for this area is the data and it's structure. What description you use is dependent upon what ever  [route layout](./api/RouteComponentDescription/index.md) was chosen. The UI fetches these descriptions in an [apiMetadata](./api/apiMetadata/index.md) request on the backend the data is being obtained from.
+
+
+#### Views
+
+Views are used to establish the layout of the page content. A view is a child of the Page Content Area.
+
+![Views Layout](./assets/images/ViewsLayout.png)
+
+_Fig 2. Purple shaded area shows the location where the view will be rendered._

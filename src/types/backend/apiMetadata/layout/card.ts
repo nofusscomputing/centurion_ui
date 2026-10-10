@@ -8,15 +8,17 @@
  */
 export interface layoutCard {
 
-    card: {
-        /**
-         * Card Title
-         */
-        title: string
+    card: [
+        {
+            /**
+             * Card Title
+             */
+            title: string
 
-        /**
-         * Card Body
-         */
-        body: object[]
-    }
+            /**
+             * Card Body
+             */
+            body: object[]
+        }
+    ]
 }

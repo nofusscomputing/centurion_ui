@@ -150,7 +150,7 @@ html[data-theme='dark'] {
 #
 ############################################ */
 
-
+/* 
 button.align-right {
   float: right;
 }
@@ -195,7 +195,7 @@ select:invalid,
 textarea:invalid {
   border: 1px solid var(--border-colour-error);
 }
-
+ */
 
 
 
@@ -205,7 +205,7 @@ textarea:invalid {
 #   EoF Forms rewrite
 #
 ############################################ */
-
+/* 
 * {
   margin: 0;
   padding: 0;
@@ -982,10 +982,10 @@ div.submit-dropdown-button div.button {
   height: 30px;
   padding: 0px 20px;
 
-}
+} */
 
-
-div.menu .dropdown-menu { /* Default, Hide menu. */
+/* 
+div.menu .dropdown-menu { 
   display: none;
 }
 
@@ -1068,10 +1068,9 @@ footer .right {
   padding: 25px;
   color: var(--text-colour-footer);
   font-size: 9pt;
-}
+} */
 
-
-/* The switch - the box around the slider */
+/* 
 .switch {
   position: relative;
   display: block;
@@ -1079,14 +1078,13 @@ footer .right {
   height: 30px;
 }
 
-/* Hide default HTML checkbox */
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* The slider */
+
 .slider {
   position: absolute;
   cursor: pointer;
@@ -1125,7 +1123,6 @@ input:checked+.slider:before {
   transform: translateX(22px);
 }
 
-/* Rounded sliders */
 .slider.round {
   border-radius: 30px;
 }
@@ -1209,7 +1206,7 @@ div.testing p {
 
 .testing span.inline svg {
   margin: auto 0px;
-}
+} */
 
 
 
@@ -1219,7 +1216,7 @@ CSS Rewrite (mobile readyness)
 
 ******************************************* */
 
-
+/* 
 div.content .header .column {
   display: flex;
   flex-direction: column;
@@ -1307,7 +1304,7 @@ div.content .header .column.right {
 
 .badge.status.very-high {
   color: #ff0000;
-}
+} */
 
 
 
@@ -1317,10 +1314,10 @@ ticket fixed
 
    ################################################################### */
 
-
+/* 
 section h3 span {
   min-width: fit-content;
-}
+} */
 
 
 
@@ -1334,7 +1331,7 @@ fixme
 
 
 
-
+/* 
 div.submit-dropdown-button div.dropdown-button {
   height: 30px;
   margin: 0px;
@@ -1383,4 +1380,4 @@ div.submit-dropdown-button div.button svg {
 }
 
 
-
+ */

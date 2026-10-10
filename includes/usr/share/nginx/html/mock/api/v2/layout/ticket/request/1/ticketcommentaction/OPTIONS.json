@@ -1,9 +1,9 @@
 {
-  "name": "Task Comment",
+  "name": "Ticket Comment Actions",
   "description": "Comments made on Ticket",
-  "documentation": "https://nofusscomputing.com/projects/centurion_erp/user/core/ticket_comment_task",
+  "documentation": "https://nofusscomputing.com/projects/centurion_erp/user/core/ticket_comment_action",
   "urls": {
-    "self": "/layout/ticket/request/7/ticketcommenttask"
+    "self": "/layout/ticket/request/1/ticketcommentaction"
   },
   "renders": [
     "application/json",
@@ -89,36 +89,7 @@
       "write_only": false,
       "label": "Category",
       "help_text": "Category of the comment",
-      "choices": [
-        {
-          "value": 7,
-          "display_name": "Hardware"
-        },
-        {
-          "value": 6,
-          "display_name": "Services"
-        },
-        {
-          "value": 1,
-          "display_name": "cat one"
-        },
-        {
-          "value": 2,
-          "display_name": "not comment"
-        },
-        {
-          "value": 5,
-          "display_name": "not notificationn"
-        },
-        {
-          "value": 3,
-          "display_name": "not solution"
-        },
-        {
-          "value": 4,
-          "display_name": "not task"
-        }
-      ]
+      "choices": []
     },
     "body": {
       "multi_line": true,
@@ -187,32 +158,7 @@
       "write_only": false,
       "label": "Source",
       "help_text": "Origin type for this comment",
-      "choices": [
-        {
-          "value": 1,
-          "display_name": "Direct"
-        },
-        {
-          "value": 2,
-          "display_name": "E-Mail"
-        },
-        {
-          "value": 3,
-          "display_name": "Helpdesk"
-        },
-        {
-          "value": 4,
-          "display_name": "Phone"
-        },
-        {
-          "value": 5,
-          "display_name": "Service Catalog"
-        },
-        {
-          "value": 6,
-          "display_name": "SMS Message"
-        }
-      ]
+      "choices": []
     },
     "user": {
       "type": "Relationship",
@@ -264,67 +210,6 @@
       "read_only": true,
       "write_only": false,
       "label": " urls"
-    },
-    "status": {
-      "type": "Choice",
-      "required": false,
-      "read_only": false,
-      "write_only": false,
-      "label": "Status",
-      "help_text": "Status of task",
-      "choices": [
-        {
-          "value": 1,
-          "display_name": "To Do"
-        },
-        {
-          "value": 2,
-          "display_name": "Done"
-        }
-      ]
-    },
-    "assignee": {
-      "type": "Relationship",
-      "relationship_type": "ManyToOne",
-      "relationship_resource": "Entity",
-      "required": false,
-      "read_only": false,
-      "write_only": false,
-      "label": "Assignee",
-      "help_text": "whom is responsible for the completion of comment",
-      "choices": []
-    },
-    "planned_start_date": {
-      "type": "DateTime",
-      "required": false,
-      "read_only": false,
-      "write_only": false,
-      "label": "Planned Start Date",
-      "help_text": "Planned start date."
-    },
-    "planned_finish_date": {
-      "type": "DateTime",
-      "required": false,
-      "read_only": false,
-      "write_only": false,
-      "label": "Planned Finish Date",
-      "help_text": "Planned finish date"
-    },
-    "real_start_date": {
-      "type": "DateTime",
-      "required": false,
-      "read_only": false,
-      "write_only": false,
-      "label": "Real Start Date",
-      "help_text": "Real start date"
-    },
-    "real_finish_date": {
-      "type": "DateTime",
-      "required": false,
-      "read_only": false,
-      "write_only": false,
-      "label": "Real Finish Date",
-      "help_text": "Real finish date"
     }
   }
 }

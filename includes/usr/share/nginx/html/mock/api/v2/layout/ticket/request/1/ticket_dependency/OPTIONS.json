@@ -3,7 +3,7 @@
     "description": "Tickets that a dependent upon one another.",
     "documentation": "https://nofusscomputing.com/projects/centurion_erp/user/core/ticket_dependency",
     "urls": {
-        "self": "/layout/ticket/request/7/ticket_dependency"
+        "self": "/layout/ticket/request/1/ticket_dependency"
     },
     "renders": [
         "application/json",
