@@ -1,3 +1,44 @@
+## 0.15.0 (2026-10-10)
+
+### feat
+
+- **component**: [currently disabled] Support tabs being part of navigation
+- **layout**: Update DetailLayout to use Views
+- **component**: Add tabs view
+- **layout**: Update MarkdownLayout to  use Views
+- **layout**: Update SettingsLayout to  use Views
+- **layout**: Update TicketLayout to  use Views
+- **layout**: Add view Provider to PageContent View
+- **layout**: Add Sidebar View
+- **component**: Use rootMetadata.name for site title
+- **component**: Add functionality to "Copy Link" button for Comment
+- **component**: Adjust the navbar variant to whatever the backend provides
+- **component**: Dynamic rendering of Navigation variant
+- **component**: Add ability to specify Navigation variant
+
+### Fixes
+
+- **layout**: When rendering Detail set setIsCardContent=false
+- **layout**: When rendering set CardLayout
+- **Component**: Correct module imports for Tabs
+- **router**: Cast expected bool string value to Boolean when setting up dynamic routes
+- **Layout**: Correct order of relative URL replace's for Markdown
+- **Layout**: Add missing import apiFetch
+- **layout**: ListLayout isFilled corrected. Layouts must return PageSection / PageGroup
+
+### Refactoring
+
+- **layout**: PageSidebar defintion moved to UILayout
+- **component**: HeaderToolbar adjusted to return children
+- **layout**: Navbar to obtain navigation date from backendProvider
+- **layout**: Move NavbarContextProvider into backendLayout
+
+### Tests
+
+- **Component**: Unit Test Suite for Views Tabs
+- **Component**: Unit Test Suite for Views Sidebar
+- **Component**: Unit Test suite for NavBar
+
 ## 0.14.4 (2026-09-21)
 
 ### Fixes
