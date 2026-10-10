@@ -1,18 +1,13 @@
 {
-    "name": "Comment",
+    "name": "Ticket Comments",
     "description": "Comments made on Ticket",
     "documentation": "https://nofusscomputing.com/projects/centurion_erp/user/core/ticket_comment",
     "urls": {
-        "self": "/layout/ticket/request/7/comments",
+        "self": "/layout/ticket/request/1/comment/40/threads",
         "sub_models": {
-            "ticketcommentsolution": {
-                "display_name": "Solution",
-                "url": "/layout/ticket/request/7/ticketcommentsolution"
-            },
-            "ticketcommenttask": {
-                "display_name": "Task",
-                "url": "/layout/ticket/request/7/ticketcommenttask"
-            }
+            "ticketcommentaction": "/layout/ticket/request/1/ticketcommentaction/40/threads",
+            "ticketcommentsolution": "/layout/ticket/request/1/ticketcommentsolution/40/threads",
+            "ticketcommenttask": "/layout/ticket/request/1/ticketcommenttask/40/threads"
         }
     },
     "renders": [
@@ -101,32 +96,32 @@
             "help_text": "Category of the comment",
             "choices": [
                 {
-                "value": 7,
-                "display_name": "Hardware"
+                    "value": 7,
+                    "display_name": "Hardware"
                 },
                 {
-                "value": 6,
-                "display_name": "Services"
+                    "value": 6,
+                    "display_name": "Services"
                 },
                 {
-                "value": 1,
-                "display_name": "cat one"
+                    "value": 1,
+                    "display_name": "cat one"
                 },
                 {
-                "value": 2,
-                "display_name": "not comment"
+                    "value": 2,
+                    "display_name": "not comment"
                 },
                 {
-                "value": 5,
-                "display_name": "not notificationn"
+                    "value": 5,
+                    "display_name": "not notificationn"
                 },
                 {
-                "value": 3,
-                "display_name": "not solution"
+                    "value": 3,
+                    "display_name": "not solution"
                 },
                 {
-                "value": 4,
-                "display_name": "not task"
+                    "value": 4,
+                    "display_name": "not task"
                 }
             ]
         },
@@ -197,31 +192,30 @@
             "write_only": false,
             "label": "Source",
             "help_text": "Origin type for this comment",
-            "initial": 3,
             "choices": [
                 {
-                "value": 1,
-                "display_name": "Direct"
+                    "value": 1,
+                    "display_name": "Direct"
                 },
                 {
-                "value": 2,
-                "display_name": "E-Mail"
+                    "value": 2,
+                    "display_name": "E-Mail"
                 },
                 {
-                "value": 3,
-                "display_name": "Helpdesk"
+                    "value": 3,
+                    "display_name": "Helpdesk"
                 },
                 {
-                "value": 4,
-                "display_name": "Phone"
+                    "value": 4,
+                    "display_name": "Phone"
                 },
                 {
-                "value": 5,
-                "display_name": "Service Catalog"
+                    "value": 5,
+                    "display_name": "Service Catalog"
                 },
                 {
-                "value": 6,
-                "display_name": "SMS Message"
+                    "value": 6,
+                    "display_name": "SMS Message"
                 }
             ]
         },

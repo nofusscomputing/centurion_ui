@@ -3,7 +3,7 @@
     "description": "Comments made on Ticket",
     "documentation": "https://nofusscomputing.com/projects/centurion_erp/user/core/ticket_comment_solution",
     "urls": {
-        "self": "/layout/ticket/request/7/ticketcommentsolution"
+        "self": "/layout/ticket/request/1/ticketcommentsolution"
     },
     "renders": [
         "application/json",

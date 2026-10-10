@@ -5,6 +5,8 @@ import {
 import {
     AlertGroup,
     Page,
+    PageSidebar,
+    PageSidebarBody,
 } from "@patternfly/react-core";
 
 
@@ -24,7 +26,7 @@ import {
 import
     Navbar,
     {
-        NavbarContextProvider
+        useNavbarContext,
 } from "../components/page/Navbar";
 
 import { UserProvider } from "../hooks/UserContext";
@@ -43,6 +45,11 @@ import { UserProvider } from "../hooks/UserContext";
 const UI = (): React.JSX.Element => {
 
     const backend = useBackendProvider();
+
+    const {
+        navVariant,
+        isSidebarOpen,
+    } = useNavbarContext();
 
     const {
         alerts,
@@ -65,34 +72,38 @@ const UI = (): React.JSX.Element => {
     return (
         <UserProvider>
 
-                <NavbarContextProvider>
+            {alerts !== undefined && <AlertGroup
+                hasAnimations
+                isToast
+                isLiveRegion
+                overflowMessage={overflowMessage}
+                onOverflowClick={onAlertGroupOverflowClick}
+            >
+                {alerts.slice(0, maxDisplayed)}
+            </AlertGroup>}
 
-                    {alerts !== undefined && <AlertGroup
-                        hasAnimations
-                        isToast
-                        isLiveRegion
-                        overflowMessage={overflowMessage}
-                        onOverflowClick={onAlertGroupOverflowClick}
+            <Page
+                isContentFilled
+                isManagedSidebar
+                isNotificationDrawerExpanded = {isNotificationsOpen}
+                masthead = {<Header />}
+                notificationDrawer = { setNotificationsOpen !== undefined ? <Notifications /> : null }
+                sidebar = { navVariant == 'default' ?
+                    <PageSidebar
+                        id = "fill-sidebar"
+                        isSidebarOpen = {isSidebarOpen}
                     >
-                        {alerts.slice(0, maxDisplayed)}
-                    </AlertGroup>}
+                        <PageSidebarBody>
+                            <Navbar />
+                        </PageSidebarBody>
+                    </PageSidebar>
+                    : undefined
+                }
+            >
 
-                    <Page
-                        isContentFilled
-                        isManagedSidebar
-                        isNotificationDrawerExpanded = {isNotificationsOpen}
-                        masthead = {<Header />}
-                        notificationDrawer = { setNotificationsOpen !== undefined ? <Notifications /> : null }
-                        sidebar = {<Navbar
-                            apiMetadata = {backend.rootMetadata}
-                        />}
-                    >
+                {backend.rootMetadata && <Outlet />}
 
-                        {backend.rootMetadata && <Outlet />}
-
-                    </Page>
-
-                </NavbarContextProvider>
+            </Page>
 
         </UserProvider>
     );

@@ -83,15 +83,16 @@ import {
     createRoutesStub,
 } from 'react-router'
 
-import Detail from "../../../layout/Detail"
+import Detail from "../../../layouts/Detail"
 import UI from "../../ui"
 import { UserProvider } from "../../../hooks/UserContext"
 import List from "../../../layout/List";
-import Ticket from "../../../layout/Ticket";
+import Ticket from "../../../layouts/Ticket";
 import { NotificationContextProvider } from "../../../components/NotificationDrawer";
 import PageContent from "../../PageContent";
 import { backendContext } from "../../../App/providers/backend";
 import Base from "../../Base";
+import { NavbarContextProvider } from "../../../components/page/Navbar";
 
 
 const fs = require('fs')
@@ -209,9 +210,11 @@ describe("PageContent Layout", () => {
                             url: 'url'
                         }}
                     >
-                        <NotificationContextProvider>
-                            <Stub initialEntries={[options.urls.self]} />
-                        </NotificationContextProvider>
+                        <NavbarContextProvider>
+                            <NotificationContextProvider>
+                                <Stub initialEntries={[options.urls.self]} />
+                            </NotificationContextProvider>
+                        </NavbarContextProvider>
                     </backendContext.Provider>
                 );
 
@@ -262,9 +265,11 @@ describe("PageContent Layout", () => {
                             url: 'url'
                         }}
                     >
-                        <NotificationContextProvider>
-                            <Stub initialEntries={[options.urls.self]} />
-                        </NotificationContextProvider>
+                        <NavbarContextProvider>
+                            <NotificationContextProvider>
+                                <Stub initialEntries={[options.urls.self]} />
+                            </NotificationContextProvider>
+                        </NavbarContextProvider>
                     </backendContext.Provider>
                 );
 
@@ -351,9 +356,11 @@ describe("PageContent Layout", () => {
                             url: 'url'
                         }}
                     >
-                        <NotificationContextProvider>
-                            <Stub initialEntries={[data._urls._self.split('api/v2')[1]]} />
-                        </NotificationContextProvider>
+                        <NavbarContextProvider>
+                            <NotificationContextProvider>
+                                <Stub initialEntries={[data._urls._self.split('api/v2')[1]]} />
+                            </NotificationContextProvider>
+                        </NavbarContextProvider>
                     </backendContext.Provider>
                 );
 
@@ -404,9 +411,11 @@ describe("PageContent Layout", () => {
                             url: 'url'
                         }}
                     >
-                        <NotificationContextProvider>
-                            <Stub initialEntries={[data._urls._self.split('api/v2')[1]]} />
-                        </NotificationContextProvider>
+                        <NavbarContextProvider>
+                            <NotificationContextProvider>
+                                <Stub initialEntries={[data._urls._self.split('api/v2')[1]]} />
+                            </NotificationContextProvider>
+                        </NavbarContextProvider>
                     </backendContext.Provider>
                 );
 
@@ -495,9 +504,11 @@ describe("PageContent Layout", () => {
                             url: 'url'
                         }}
                     >
-                        <NotificationContextProvider>
-                            <Stub initialEntries={[data._urls._self.split('api/v2')[1]]} />
-                        </NotificationContextProvider>
+                        <NavbarContextProvider>
+                            <NotificationContextProvider>
+                                <Stub initialEntries={[data._urls._self.split('api/v2')[1]]} />
+                            </NotificationContextProvider>
+                        </NavbarContextProvider>
                     </backendContext.Provider>
                 );
 
@@ -549,9 +560,11 @@ describe("PageContent Layout", () => {
                             url: 'url'
                         }}
                     >
-                        <NotificationContextProvider>
-                            <Stub initialEntries={[data._urls._self.split('api/v2')[1]]} />
-                        </NotificationContextProvider>
+                        <NavbarContextProvider>
+                            <NotificationContextProvider>
+                                <Stub initialEntries={[data._urls._self.split('api/v2')[1]]} />
+                            </NotificationContextProvider>
+                        </NavbarContextProvider>
                     </backendContext.Provider>
                 );
 

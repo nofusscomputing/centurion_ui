@@ -1,7 +1,10 @@
 import {
     apiCommonMetadata
 } from ".";
-import { NavigationEntryDescription } from "./navigation";
+
+import {
+    NavigationDescription,
+} from "./navigation";
 
 import {
     RouteDescription
@@ -45,10 +48,10 @@ export interface BackendVersion {
  */
 export interface apiRootMetadata extends apiCommonMetadata {
 
-    // /**
-    //  * Name of the site. This value will be displayed in the page header.
-    //  */
-    // name: String;
+    /**
+     * Name of the site. This value will be displayed in the page header.
+     */
+    name: String;
 
     // /**
     //  * Description on the site.
@@ -58,9 +61,9 @@ export interface apiRootMetadata extends apiCommonMetadata {
     /**
      * Navigation structure for the UI.
      * 
-     * @expandType NavigationEntryDescription
+     * @expandType NavigationDescription
      */
-    navigation: Array<NavigationEntryDescription>;
+    navigation: NavigationDescription;
 
     /**
      * Route layout description the UI will use to create the route layout.

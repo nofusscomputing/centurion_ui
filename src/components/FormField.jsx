@@ -34,6 +34,12 @@ import DualFieldSelector from "./form/DualFieldSelector";
 import MarkdownEditor from "./MarkdownEditor";
 import UserContext from "../hooks/UserContext";
 
+import '@patternfly/react-styles/css/components/Form/form.css'
+import '@patternfly/react-styles/css/components/FormControl/form-control'
+import '@patternfly/react-styles/css/components/HelperText/helper-text.css'
+import '@patternfly/react-styles/css/components/Popover/popover.css'
+import '@patternfly/react-styles/css/components/Switch/switch.css'
+import '@patternfly/react-styles/css/components/TextInputGroup/text-input-group.css'
 
 
 /** Display a Form Field

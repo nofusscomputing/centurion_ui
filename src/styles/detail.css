@@ -38,9 +38,9 @@ section .model-notes fieldset {
   width: 90%;
 }
 
-section .content .section fieldset.textarea div.markdown {
+/* section .content .section fieldset.textarea div.markdown {
   border: 1px solid var(--border-colour-form-field);
   flex-grow: 1;
   min-height: 100px;
   padding: .5rem;
-}
+} */
