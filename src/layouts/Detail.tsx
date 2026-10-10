@@ -74,6 +74,7 @@ const DetailLayout = (): React.JSX.Element => {
     } = usePageContext();
 
     const {
+        setIsCardContent,
         tabs, setTabs
     } = useContext(viewsContext);
 
@@ -333,6 +334,8 @@ const DetailLayout = (): React.JSX.Element => {
     ])
 
     setTabs(tabDetails)
+
+    setIsCardContent(false);
 
 
     return (
