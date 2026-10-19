@@ -141,6 +141,10 @@ export const Fields = ({
 
     return fields.map((field) => {
 
+        if( ! Object(objectData).hasOwnProperty(field) && ! isCreate ) {
+            return;
+        }
+
         if(
             String(objectMetadata.fields[field]?.type).toLowerCase() == 'markdown'
             && field !== 'model_notes'
