@@ -298,6 +298,7 @@ const Column = ({isEdit, isMobile, children}) => {
                     default: '1Col'
                 }}
                 aria-label="Model fields"
+                displaySize = "lg"
                 isCompact = {true}
                 isFillColumns = {true}
             >

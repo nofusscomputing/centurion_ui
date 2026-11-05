@@ -439,9 +439,6 @@ const DisplayTable = ({
                             <Tr>
                             {collapsable_fields.length > 0 && <Th screenReaderText="Row expansion" />}
                             {tableHeaderColumns}
-                            { table_columns_count > 0 &&
-                                <Th>&nbsp;</Th>
-                            }
                             </Tr>
                         </Thead>
 
@@ -565,7 +562,6 @@ const DisplayTable = ({
                                             }
                                         }
                                     })}
-                                    <Td></Td>
                                 </Tr>
                                 {collapsable_fields.length > 0 &&
                                 <Tr isExpanded={isTableRowExpanded(rowId)}>

@@ -224,7 +224,7 @@ const DetailLayout = (): React.JSX.Element => {
 
                                 <fetcher.Form
                                     method = "POST"
-                                    action = {URLSanitize(page_data['_urls']['notes'])}
+                                    action = {URLSanitize(page_data['_urls']?.['notes'])}
                                 >
                                     <CardBody>
                                         <MarkdownEditor
