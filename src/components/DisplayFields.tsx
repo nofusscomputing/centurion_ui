@@ -773,6 +773,7 @@ export async function APISubmitAction({
 
                 break;
 
+            case 'json':
             case 'relationship':
 
                 value = JSON.parse(fieldValue);
