@@ -289,6 +289,7 @@ const DetailLayout = (): React.JSX.Element => {
 
                             <FlexItem>
                                 <DetailSection
+                                    errorState = {fetcher.data}
                                     FormComponent = {fetcher.Form}
                                     index = { section_index }
                                     layout = {section}
