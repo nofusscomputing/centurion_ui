@@ -1,3 +1,9 @@
+## 0.15.1 (2026-11-14)
+
+### Fixes
+
+- **layout**: dont try to access notes when adding via detail
+
 ## 0.15.0 (2026-10-10)
 
 ### feat
