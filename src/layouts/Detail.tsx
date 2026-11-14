@@ -211,7 +211,7 @@ const DetailLayout = (): React.JSX.Element => {
 
             let page_content
 
-            if( tab.name.toLowerCase() === 'notes' ) {
+            if( page_data && tab.name.toLowerCase() === 'notes' && ! String(location.pathname).endsWith('/add')) {
 
                 page_content = (
                     <Flex
