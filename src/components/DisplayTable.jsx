@@ -10,6 +10,7 @@ import {
 
 import {
     Button,
+    Content,
     Pagination,
     PaginationVariant,
     Toolbar,
@@ -533,13 +534,14 @@ const DisplayTable = ({
                                                         <Td
                                                             dataLabel={key}
                                                             key={key}
-                                                        >
+                                                        ><Content isEditorial={true}>
                                                             <FieldData
                                                                 autolink = {autolink}
                                                                 data={data}
                                                                 field_name={key}
                                                                 metadata={metadata}
                                                             />
+                                                            </Content>
                                                         </Td>
                                                     );
                                                 }
@@ -550,12 +552,14 @@ const DisplayTable = ({
 
                                                     return (
                                                         <Td dataLabel={key}>
+                                                            <Content isEditorial={true}>
                                                             <FieldData
                                                                 autolink = {true}
                                                                 data={data}
                                                                 field_name={key}
                                                                 metadata={metadata}
                                                             />
+                                                            </Content>
                                                         </Td>
                                                     );
                                                 }
