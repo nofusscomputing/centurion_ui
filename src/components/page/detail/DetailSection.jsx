@@ -38,6 +38,7 @@ import URLSanitize from "../../../functions/URLSanitize";
  * @returns Card Component ready to be placed.
  */
 const DetailSection = ({
+    errorState = undefined,
     FormComponent = Form,
     layout,
     data,
@@ -70,6 +71,7 @@ const DetailSection = ({
 
         cardData = (
             <DisplayFields
+                errorState = {errorState}
                 existingFormData = {data}
                 FormComponent = {FormComponent}
                 isCreate = {String(location.pathname).endsWith('/add')}

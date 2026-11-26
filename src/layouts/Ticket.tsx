@@ -400,6 +400,7 @@ const Ticket = (): React.JSX.Element => {
                     >
 
                         <DescriptionList
+                            displaySize = "lg"
                             style={{
                                 ...( isMobile ? {} : {maxHeight: "calc(100svh - 69px - 53px - 21px - 15px - 90px)"}),
                                 minHeight: "0",
