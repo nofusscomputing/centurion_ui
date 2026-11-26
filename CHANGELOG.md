@@ -1,3 +1,21 @@
+## 0.16.0 (2026-11-26)
+
+### feat
+
+- **component**: Collapse threads if thread is closed
+- **action**: Sanitize url for action dialog
+- **action**: Pass error state to fields
+- **Component**: only render fields that are in both apiMetadata and apiData
+
+### Fixes
+
+- **action**: Ensure that JSON fields are correctly formatted prior to submitting
+
+### Refactoring
+
+- **component**: Display DisplayTable text as large
+- **component**: Display DescriptionList text as large
+
 ## 0.15.1 (2026-11-14)
 
 ### Fixes
