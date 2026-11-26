@@ -141,6 +141,10 @@ export const Fields = ({
 
     return fields.map((field) => {
 
+        if( ! Object(objectData).hasOwnProperty(field) && ! isCreate ) {
+            return;
+        }
+
         if(
             String(objectMetadata.fields[field]?.type).toLowerCase() == 'markdown'
             && field !== 'model_notes'
@@ -294,6 +298,7 @@ const Column = ({isEdit, isMobile, children}) => {
                     default: '1Col'
                 }}
                 aria-label="Model fields"
+                displaySize = "lg"
                 isCompact = {true}
                 isFillColumns = {true}
             >
@@ -359,6 +364,7 @@ export type DisplayFieldsProps = {
  * @since 0.9.0
  */
 const DisplayFields = ({
+    errorState = undefined,
     existingFormData = null,
     FormComponent = Form,
     isCreate = false,
@@ -367,7 +373,7 @@ const DisplayFields = ({
     onClose = null,
 }: DisplayFieldsProps): React.JSX.Element => {
 
-    const actionData = useActionData();
+    // const actionData = useActionData();
 
     const [ data, setformData ] = useState(existingFormData);
 
@@ -400,33 +406,33 @@ const DisplayFields = ({
     }, [existingFormData]);
 
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        if(actionData?.body && actionData?.ok) {
+    //     if(actionData?.body && actionData?.ok) {
 
-            setformData(actionData?.body);
+    //         setformData(actionData?.body);
 
-            if( isCreate && isLoading ) {
+    //         if( isCreate && isLoading ) {
 
-                delete actionData.body;
-                delete actionData.errors;
-                delete actionData.ok;
+    //             delete actionData.body;
+    //             delete actionData.errors;
+    //             delete actionData.ok;
 
-                if( onClose ) {
-                    onClose(true)
-                }
+    //             if( onClose ) {
+    //                 onClose(true)
+    //             }
 
-            }
+    //         }
 
-        }
-    }, [actionData])
+    //     }
+    // }, [actionData])
 
 
     useEffect(() => {
 
         setIsEdit(() => {
             if(
-                actionData?.errors
+                errorState
                 ||
                 String(location.pathname).endsWith('/add')
                 ||
@@ -438,7 +444,7 @@ const DisplayFields = ({
             return false;
         })
 
-    }, [actionData, location.pathname])
+    }, [errorState, location.pathname])
 
 
     let cardData;
@@ -463,7 +469,7 @@ const DisplayFields = ({
                         isMobile={isMobile}
                     >
                         <Fields
-                            errorState={actionData}
+                            errorState={errorState}
                             fields={layout.left}
                             formState={formState}
                             isCreate={isCreate}
@@ -487,7 +493,7 @@ const DisplayFields = ({
                         isMobile={isMobile}
                     >
                         <Fields
-                            errorState={actionData}
+                            errorState={errorState}
                             fields={layout.right}
                             formState={formState}
                             isCreate={isCreate}
@@ -518,7 +524,7 @@ const DisplayFields = ({
                 isMobile={isMobile}
             >
                 <Fields
-                    errorState={actionData}
+                    errorState={errorState}
                     fields={columnFields}
                     formState={formState}
                     isCreate={isCreate}
@@ -598,7 +604,7 @@ const DisplayFields = ({
                 }}
                 navigate = {false}
             >
-                {actionData?.errors &&
+                {errorState &&
                 <AlertGroup>
                     <Alert
                         variant="danger"
@@ -607,7 +613,7 @@ const DisplayFields = ({
                         timeout={false}
                     >
                         <List>
-                        {Object.entries(actionData.errors).map(([fieldKey, fieldErrors]) => {
+                        {Object.entries(errorState.errors).map(([fieldKey, fieldErrors]) => {
 
                             return (<ListItem>{pageMetadata.fields[fieldKey].label}</ListItem>);
 
@@ -769,6 +775,7 @@ export async function APISubmitAction({
 
                 break;
 
+            case 'json':
             case 'relationship':
 
                 value = JSON.parse(fieldValue);

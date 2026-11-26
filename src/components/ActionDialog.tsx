@@ -3,6 +3,7 @@ import { Button, ButtonVariant, Spinner } from "@patternfly/react-core";
 import React, { useState } from "react";
 import { apiFetch } from "../hooks/apiFetch";
 import { apiObject } from "../types/backend/apiObject/object";
+import URLSanitize from "../functions/URLSanitize";
 
 
 const sleep = ms => new Promise(r => setTimeout(r, ms))
@@ -22,7 +23,7 @@ const ActionDeleteRow = async (
 ): Promise<boolean> => {
 
     const action = await apiFetch(
-        deleteURL,
+        URLSanitize(deleteURL),
         null,
         "DELETE",
         null,

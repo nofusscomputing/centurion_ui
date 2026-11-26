@@ -96,7 +96,9 @@ const DualFieldSelector = ({
 
             pageData[name]?.map((permission) => {
 
-                data[permission.id]["selected"] = true
+                if( ! data?.[permission.id] ) console.error(`permission "${permission.display_name}" id "${permission.id} does not exist in data."`)
+
+                if( data?.[permission.id] ) data[permission.id]["selected"] = true
 
             });
         }

@@ -10,6 +10,7 @@ import {
 
 import {
     Button,
+    Content,
     Pagination,
     PaginationVariant,
     Toolbar,
@@ -439,9 +440,6 @@ const DisplayTable = ({
                             <Tr>
                             {collapsable_fields.length > 0 && <Th screenReaderText="Row expansion" />}
                             {tableHeaderColumns}
-                            { table_columns_count > 0 &&
-                                <Th>&nbsp;</Th>
-                            }
                             </Tr>
                         </Thead>
 
@@ -536,13 +534,14 @@ const DisplayTable = ({
                                                         <Td
                                                             dataLabel={key}
                                                             key={key}
-                                                        >
+                                                        ><Content isEditorial={true}>
                                                             <FieldData
                                                                 autolink = {autolink}
                                                                 data={data}
                                                                 field_name={key}
                                                                 metadata={metadata}
                                                             />
+                                                            </Content>
                                                         </Td>
                                                     );
                                                 }
@@ -553,19 +552,20 @@ const DisplayTable = ({
 
                                                     return (
                                                         <Td dataLabel={key}>
+                                                            <Content isEditorial={true}>
                                                             <FieldData
                                                                 autolink = {true}
                                                                 data={data}
                                                                 field_name={key}
                                                                 metadata={metadata}
                                                             />
+                                                            </Content>
                                                         </Td>
                                                     );
                                                 }
                                             }
                                         }
                                     })}
-                                    <Td></Td>
                                 </Tr>
                                 {collapsable_fields.length > 0 &&
                                 <Tr isExpanded={isTableRowExpanded(rowId)}>
