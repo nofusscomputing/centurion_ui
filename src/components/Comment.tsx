@@ -874,7 +874,7 @@ export const Comment = ({
 
             { (comment_page_data?._urls?.threads || start_thread ) &&
             <ExpandableSection
-                isExpanded = { ! comment_page_data.is_closed }
+                isExpanded = { isExpanded }
                 onToggle={onToggle}
                 style={{
                     borderBottom: "1px groove var(--pf-t--global--border--color--subtle",
