@@ -1,3 +1,9 @@
+## 0.16.1 (2026-11-28)
+
+### Fixes
+
+- **component**: Use isExpanded to determine if threads should display. This is a revert commit.
+
 ## 0.16.0 (2026-11-26)
 
 ### feat
